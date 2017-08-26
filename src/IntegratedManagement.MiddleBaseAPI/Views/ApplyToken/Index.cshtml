@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<h2>RefreshToken</h2>
+
+<hr />
+<div>
+    <label>用户名：</label><input type="text" id="txtUserName" name="txtUserName" />
+</div>
+<div>
+    <label>密  码：</label><input type="password" id="txtPassword" name="txtPassword" />
+</div>
+<div>
+    <input type="button" id="btnApplyRefreshToken" onclick="onApplyRefreshToken()" value="申请RefreshToken" />
+
+</div>
+<div>
+    <label>RefreshToken:</label><label id="lblRefreshToken" />
+</div>
+<div>
+    <label>ClientId    :</label><label id="lblClientId"></label>
+</div>
+<div>
+    <label>ClientSecret:</label><label id="lblClientSecret"></label>
+</div>
+
+@Scripts.Render("~/Content/JS/jquery-1.10.2.min.js")
+<script>
+    function onApplyRefreshToken() {
+        var userName = $("#txtUserName").val();
+        var password = $("#txtPassword").val();
+        $.post('/ApplyToken/RefreshToken', { UserName: userName, Password: password }, function (data) {
+            $("#lblRefreshToken").html(data.RefreshToken);
+            $("#lblClientId").html(data.ClientId);
+            $("#lblClientSecret").html(data.ClientSecret);
+        });
+    }
+
+    
+</script>

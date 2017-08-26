@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WindowsServices>
+  <Setting>
+    <ServiceName Name="SAPtoBOne"/>
+    <DisplayName Name="SAP push data to BOne"/>
+    <Description Name="中间表的数据生成到BOne"/>
+  </Setting>
+  <Services>
+    <Service UniqueID="0" Name="物料主数据" Assembly="IntegrateManagement.MiddleBaseService.dll" Object="IntegrateManagement.MiddleBaseService.MaterialService" FrequencyType="Second" Frequency="300"/>
+    <Service UniqueID="1" Name="业务伙伴" Assembly="IntegrateManagement.MiddleBaseService.dll" Object="IntegrateManagement.MiddleBaseService.BusinessPartnerService" FrequencyType="Second" Frequency="300"/>
+    <Service UniqueID="2" Name="退款" Assembly="IntegrateManagement.MiddleBaseService.dll" Object="IntegrateManagement.MiddleBaseService.RefundService" FrequencyType="Second" Frequency="300"/>
+    <Service UniqueID="3" Name="采购订单" Assembly="IntegrateManagement.MiddleBaseService.dll" Object="IntegrateManagement.MiddleBaseService.PurchaseOrderService" FrequencyType="Second" Frequency="300"/>
+    <Service UniqueID="4" Name="采购退货" Assembly="IntegrateManagement.MiddleBaseService.dll" Object="IntegrateManagement.MiddleBaseService.PurchaseReturnService" FrequencyType="Second" Frequency="300"/>
+    <Service UniqueID="5" Name="销售模块" Assembly="IntegrateManagement.MiddleBaseService.dll" Object="IntegrateManagement.MiddleBaseService.SalesOrderService" FrequencyType="Second" Frequency="300"/>
+  </Services>
+</WindowsServices>

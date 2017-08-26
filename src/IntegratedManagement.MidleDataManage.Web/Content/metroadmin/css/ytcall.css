@@ -1,0 +1,99 @@
+/* footer */
+#footer {
+    background: #f0f0f0;
+    bottom: 0;
+    color:#757575 ;
+    font-size: 12px;
+    padding: 5px;
+    position: fixed;
+    height:28px;
+    line-height:28px;
+    width: 100%;
+    z-index: 102;
+}
+#footer ul li { list-style: none;}
+
+#tabOfContent{height:30px; position:relative; width:100%;}
+.tabOfContent{background: #cccccc url(../img/working_platforms/tabbar_bg.gif) 0 50% repeat-x ; width:100%;}
+.agentindeskheader{color: #222222;
+                   font-weight: bold;
+                   height:30px;
+                   padding-left:2px;
+                   }
+
+.agentindeskheader li{ float:left; margin:3px 2px -2px 0;font-size:100%;height:25px; line-height:25px;width:140px;}
+#tab{ float:left;height:30px;position:relative; min-width:1150px; clear:none;}
+#tab ul{float:left;}                      
+.agentindeskheader li a{
+background-color:#e2eaed;
+border:1px solid #99bbe8;
+border-bottom:0px;
+font-size:1em !important;
+color:#555555;
+font-weight:bold;
+-moz-border-radius-topleft:4px;
+-moz-border-radius-topright:4px;
+text-decoration:none;
+display: block;
+padding:0 20px 0 5px;
+white-space:nowrap;
+text-overflow:ellipsis;
+overflow: hidden;
+-moz-binding: url('ellipsis.xml#ellipsis');
+}   
+.agentindeskheader li img{
+  position:relative;
+  top:-27px;
+  *top:-18px;
+  right:10px;
+  left:125px;
+}              
+.agentindeskheader li a:hover{ 
+border: 1px solid #71a0dd;
+border-bottom:0px;
+font-size:1em !important;
+background:url(../img/working_platforms/blue_bg_hover.gif) 0 50% repeat-x;
+font-weight: normal;
+color: #212121;
+-moz-border-radius-topleft:4px;
+-moz-border-radius-topright:4px;
+text-decoration:none;
+padding:0 20px 0 5px;
+}
+#welcome{background: url(../img/working_platforms/welcome.png) no-repeat ; width:15px; height:15px; float:left; margin-top:6px; margin-left:5px;}
+.welcome{float:right; padding-top:3px; margin-right:20px; text-align:center;font:"宋体"; font-size:12px; color:#000; line-height:25px;}
+#update{width:18px; height:22px; margin:1px 2px 0 0; float:left;cursor:pointer;}
+#closeall{width:18px; height:22px; margin:1px 8px 0 0; float:left;cursor:pointer; border-right:1px dotted #939393;padding-right:8px;}
+.toolbarBtn{width:18px; height:22px; margin:1px 2px 0 0; float:left;cursor:pointer;}
+#tab_right{width:18px; height:22px; margin:6px 2px 0 2px; float:left;cursor:pointer;}
+#tab_left{width:18px; height:22px; margin:6px 2px 0 2px; float:left;cursor:pointer;position: relative;}
+.allopentab{float:right; position:relative; height:30px;}
+.allopentab ul li ul{ display:none;float:right; right:-40px; border:1px solid #aca899; padding:5px 3px;background:#fefefe;}
+.allopentab ul li:hover ul{ display:block;bottom:22px; position:absolute;float:right; border:1px soild #aca899;}
+.allopentab ul li {float:right; position:relative;}
+.allopentab ul li img{float:right; position:relative;}
+.allopentab ul li ul li{background:#fefefe; font-size:13px; padding:0px 5px; line-height:24px; border-bottom:1px dotted #aca899; width:140px; text-align:left;}
+.allopentab ul li ul li a{font-size:13px;line-height:22px;color:#000;text-decoration:none;}
+.allopentab ul li ul li:hover{color:#000; font-weight:bold; text-decoration:none;background:#e1e1e1;}
+
+#footer{}
+.operbox{padding:0 30px 0;position: relative;float: left;}
+.xh_scroll{width:862px;overflow: hidden;}
+.operbox a:hover{text-decoration: none;}
+.operbox .xh_prev,
+.operbox .xh_next{position: absolute;width:24px;height:30px;line-height: 30px;text-align: center;border: 1px solid #99bbe8;}
+.operbox .xh_prev{left:0;}
+.operbox .xh_next{right:2px;}
+.operbox a.oitem {display: inline-block;background-color: #e2eaed;border: 1px solid #99bbe8;color: #555555;font-weight: bold;text-decoration: none;padding: 0 24px 0 6px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;height: 30px;line-height: 30px;position: relative;margin-right: 3px;min-widht:60px;width: 70px;}
+.operbox a.active{background:#fff;}
+a.oitem i.xic{position:absolute;right:0;height: 30px;line-height: 30px;width:28px;text-align: center;font-size: 20px;font-weight: normal;color:#888;}
+a.oitem:hover i.xic{color:red;}
+.obtnbox{float:right;padding:0 50px 0 20px;overflow:hidden;text-align: left;}
+.obtnbox a.obtn{width:24px;height:30px;line-height: 30px;display: inline-block;margin-right: 3px;border: 1px solid #99bbe8;text-align: center;}
+.obtnbox a.obtn img{vertical-align: middle;}
+
+
+
+
+
+

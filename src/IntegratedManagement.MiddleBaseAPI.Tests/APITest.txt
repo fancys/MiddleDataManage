@@ -1,0 +1,42 @@
+﻿/*---------------------C#调用get方法-------------------------------------*/
+ string token = "lcxxG-Rwt_z7M0CkalY-fSCCxdf-00uQueMnl0XbF0W407ERWA86jLUzllI9nBMz8Ko6QNMdtK1t42uxuZSSok1RKTo9-ZVFBxLRbk-tp90fJidpkWnJm_9MavM_z_itc_B0Qe74ryoS4SGfk48Lw4QjedhxIV3Dq7ek1T425eQ1Kc3EaNFGrRRdDlLpAc7vGk8PW4qK0HplSrw3b9mt9Q";
+_httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+var rt = (await _httpClient.GetAsync("/api/salesOrders")).Content.ReadAsStringAsync();
+
+/*----------------------C#调用post方法----------------------------------*/
+//soList为订单集合
+ HttpContent httpContent = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(soList), Encoding.UTF8, "application/json");
+string token = "lcxxG-Rwt_z7M0CkalY-fSCCxdf-00uQueMnl0XbF0W407ERWA86jLUzllI9nBMz8Ko6QNMdtK1t42uxuZSSok1RKTo9-ZVFBxLRbk-tp90fJidpkWnJm_9MavM_z_itc_B0Qe74ryoS4SGfk48Lw4QjedhxIV3Dq7ek1T425eQ1Kc3EaNFGrRRdDlLpAc7vGk8PW4qK0HplSrw3b9mt9Q";
+_httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+var rt = (await _httpClient.PostAsync("/api/salesOrders", httpContent)).Content.ReadAsStringAsync();
+
+
+
+/*---------------------Node.js调用get方法--------------------------------*/
+var options =
+    {
+        host: "localhost",
+        port: "8090",
+        path: "/api/salesOrders",
+        method: 'GET',
+        headers:
+        {
+            Authorization: "Bearer lcxxG-Rwt_z7M0CkalY-fSCCxdf-00uQueMnl0XbF0W407ERWA86jLUzllI9nBMz8Ko6QNMdtK1t42uxuZSSok1RKTo9-ZVFBxLRbk-tp90fJidpkWnJm_9MavM_z_itc_B0Qe74ryoS4SGfk48Lw4QjedhxIV3Dq7ek1T425eQ1Kc3EaNFGrRRdDlLpAc7vGk8PW4qK0HplSrw3b9mt9Q"
+        }
+		
+	
+    };
+    var callback = function (res) {
+        // console.log(res.statusCode);
+        // console.log(res.headers);
+        var str = "";
+        res.on("data", function(chunk) {
+            str += chunk;
+        });
+        res.on("end", function() {
+            console.log(str);
+        });
+    };
+
+    var request = require('http').request(options, callback);
+    request.end();

@@ -1,0 +1,725 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C992C19C-B461-41A7-8633-734BAB0811BB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IntegratedManagement.MidleDataManage.Web</RootNamespace>
+    <AssemblyName>IntegratedManagement.MidleDataManage.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="ReportFormManage.Code, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\ReportFormManage.Code.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\framework-about.css" />
+    <Content Include="Content\css\framework-font.css" />
+    <Content Include="Content\css\framework-login.css" />
+    <Content Include="Content\css\framework-theme.css" />
+    <Content Include="Content\css\framework-ui.css" />
+    <Content Include="Content\css\multiselect\bootstrap-3.3.2.min.css" />
+    <Content Include="Content\css\multiselect\bootstrap-multiselect.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\weathericons-regular-webfont.svg" />
+    <Content Include="Content\img\ajax-loader.gif" />
+    <Content Include="Content\img\alipay.jpg" />
+    <Content Include="Content\img\alipayimg.png" />
+    <Content Include="Content\img\button_pm_close.png" />
+    <Content Include="Content\img\cy-reward-title-bg.jpg" />
+    <Content Include="Content\img\DAT00003.png" />
+    <Content Include="Content\img\loading.gif" />
+    <Content Include="Content\img\radio1.jpg" />
+    <Content Include="Content\img\radio2.jpg" />
+    <Content Include="Content\img\samples\angelina-300.jpg" />
+    <Content Include="Content\img\samples\emma-300.jpg" />
+    <Content Include="Content\img\samples\emma.png" />
+    <Content Include="Content\img\samples\george.png" />
+    <Content Include="Content\img\samples\head_120.png" />
+    <Content Include="Content\img\samples\jessica.jpg" />
+    <Content Include="Content\img\samples\kunis-300.jpg" />
+    <Content Include="Content\img\samples\kunis.png" />
+    <Content Include="Content\img\samples\lima-300.jpg" />
+    <Content Include="Content\img\samples\messages-photo-1.png" />
+    <Content Include="Content\img\samples\messages-photo-2.png" />
+    <Content Include="Content\img\samples\messages-photo-3.png" />
+    <Content Include="Content\img\samples\miranda-560-300.png" />
+    <Content Include="Content\img\samples\robert-300.jpg" />
+    <Content Include="Content\img\samples\robert.png" />
+    <Content Include="Content\img\samples\ryan-300.jpg" />
+    <Content Include="Content\img\samples\ryan.png" />
+    <Content Include="Content\img\samples\scarlet-159.png" />
+    <Content Include="Content\img\samples\scarlet.png" />
+    <Content Include="Content\img\samples\scarlett-300.jpg" />
+    <Content Include="Content\img\signet.gif" />
+    <Content Include="Content\img\wechat.jpg" />
+    <Content Include="Content\img\weipayimg.png" />
+    <Content Include="Content\img\weixin_nfine.png" />
+    <Content Include="Content\js\bootstrap\bootstrap.js" />
+    <Content Include="Content\js\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\js\charts\Chart.js" />
+    <Content Include="Content\js\charts\Chart.min.js" />
+    <Content Include="Content\js\cookie\jquery.cookie.js" />
+    <Content Include="Content\js\datepicker\calendar.js" />
+    <Content Include="Content\js\datepicker\DatePicker.js" />
+    <Content Include="Content\js\datepicker\lang\en.js" />
+    <Content Include="Content\js\datepicker\lang\zh-cn.js" />
+    <Content Include="Content\js\datepicker\lang\zh-tw.js" />
+    <Content Include="Content\js\datepicker\skin\datePicker.gif" />
+    <Content Include="Content\js\datepicker\skin\datePicker.png" />
+    <Content Include="Content\js\datepicker\skin\datepicker_icon.png" />
+    <Content Include="Content\js\datepicker\skin\default\datepicker-dev.css" />
+    <Content Include="Content\js\datepicker\skin\default\datepicker.css" />
+    <Content Include="Content\js\datepicker\skin\default\img.gif" />
+    <Content Include="Content\js\datepicker\skin\default\img.png" />
+    <Content Include="Content\js\datepicker\skin\WdatePicker.css" />
+    <Content Include="Content\js\datepicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\js\datepicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\js\datepicker\skin\whyGreen\img.gif" />
+    <Content Include="Content\js\datepicker\WdatePicker.js" />
+    <Content Include="Content\js\datepicker\开发包\lang\en.js" />
+    <Content Include="Content\js\datepicker\开发包\lang\zh-cn.js" />
+    <Content Include="Content\js\datepicker\开发包\lang\zh-tw.js" />
+    <Content Include="Content\js\datepicker\开发包\readme.txt" />
+    <Content Include="Content\js\datepicker\开发包\skin\datePicker.gif" />
+    <Content Include="Content\js\datepicker\开发包\skin\datePicker.png" />
+    <Content Include="Content\js\datepicker\开发包\skin\default\datepicker.css" />
+    <Content Include="Content\js\datepicker\开发包\skin\default\img.gif" />
+    <Content Include="Content\js\datepicker\开发包\skin\WdatePicker.css" />
+    <Content Include="Content\js\datepicker\开发包\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\js\datepicker\开发包\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\js\datepicker\开发包\skin\whyGreen\img.gif" />
+    <Content Include="Content\js\dialog\dialog.css" />
+    <Content Include="Content\js\dialog\dialog.js" />
+    <Content Include="Content\js\dialog\img\icon-ext.png" />
+    <Content Include="Content\js\dialog\img\icon.png" />
+    <Content Include="Content\js\dialog\img\loading-0.gif" />
+    <Content Include="Content\js\dialog\img\loading-1.gif" />
+    <Content Include="Content\js\dialog\img\loading-2.gif" />
+    <Content Include="Content\js\dialog\img\loading-3.gif" />
+    <Content Include="Content\js\echarts\echarts-all.js" />
+    <Content Include="Content\js\echarts\echarts.js" />
+    <Content Include="Content\js\echarts\echarts.min.js" />
+    <Content Include="Content\js\echarts\infographic.js" />
+    <Content Include="Content\js\framework-clientdata.js" />
+    <Content Include="Content\js\framework-ui.js" />
+    <Content Include="Content\js\highcharts\adapters\mootools-adapter.js" />
+    <Content Include="Content\js\highcharts\adapters\mootools-adapter.src.js" />
+    <Content Include="Content\js\highcharts\adapters\prototype-adapter.js" />
+    <Content Include="Content\js\highcharts\adapters\prototype-adapter.src.js" />
+    <Content Include="Content\js\highcharts\adapters\standalone-framework.js" />
+    <Content Include="Content\js\highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="Content\js\highcharts\highcharts-all.js" />
+    <Content Include="Content\js\highcharts\highcharts-more.js" />
+    <Content Include="Content\js\highcharts\highcharts-more.src.js" />
+    <Content Include="Content\js\highcharts\highcharts.js" />
+    <Content Include="Content\js\highcharts\highcharts.src.js" />
+    <Content Include="Content\js\highcharts\modules\canvas-tools.js" />
+    <Content Include="Content\js\highcharts\modules\canvas-tools.src.js" />
+    <Content Include="Content\js\highcharts\modules\data.js" />
+    <Content Include="Content\js\highcharts\modules\data.src.js" />
+    <Content Include="Content\js\highcharts\modules\drilldown.js" />
+    <Content Include="Content\js\highcharts\modules\drilldown.src.js" />
+    <Content Include="Content\js\highcharts\modules\exporting.js" />
+    <Content Include="Content\js\highcharts\modules\exporting.src.js" />
+    <Content Include="Content\js\highcharts\modules\funnel.js" />
+    <Content Include="Content\js\highcharts\modules\funnel.src.js" />
+    <Content Include="Content\js\highcharts\modules\no-data-to-display.js" />
+    <Content Include="Content\js\highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="Content\js\highcharts\themes\dark-blue.js" />
+    <Content Include="Content\js\highcharts\themes\dark-green.js" />
+    <Content Include="Content\js\highcharts\themes\gray.js" />
+    <Content Include="Content\js\highcharts\themes\grid.js" />
+    <Content Include="Content\js\highcharts\themes\skies.js" />
+    <Content Include="Content\js\index.js" />
+    <Content Include="Content\js\indextab.js" />
+    <Content Include="Content\js\jqgrid\grid.locale-cn.js" />
+    <Content Include="Content\js\jqgrid\jqgrid.css" />
+    <Content Include="Content\js\jqgrid\jqgrid.min.js" />
+    <Content Include="Content\js\jqprint\jquery.jqprint-0.3.js" />
+    <Content Include="Content\js\jqprint\jquery.jqprint.css" />
+    <Content Include="Content\js\jquery-ui\images\calendar.gif" />
+    <Content Include="Content\js\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\js\jquery-ui\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\js\jquery-ui\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\js\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\js\jquery-ui\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\js\jquery-ui\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\js\jquery-ui\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\js\jquery-ui\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\js\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\js\jquery-ui\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\js\jquery-ui\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\js\jquery-ui\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\js\jquery-ui\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\js\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Content\js\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Content\js\jquery\jquery-2.1.1.min.js" />
+    <Content Include="Content\js\layout\jquery.layout.js" />
+    <Content Include="Content\js\loading\pace.min.js" />
+    <Content Include="Content\js\md5\jquery.md5.js" />
+    <Content Include="Content\js\multiselect\dist\css\bootstrap-multiselect.css" />
+    <Content Include="Content\js\multiselect\dist\js\bootstrap-multiselect.js" />
+    <Content Include="Content\js\multiselect\docs\css\bootstrap-3.3.2.min.css" />
+    <Content Include="Content\js\multiselect\docs\css\bootstrap-example.css" />
+    <Content Include="Content\js\multiselect\docs\css\prettify.css" />
+    <Content Include="Content\js\multiselect\docs\js\bootstrap-3.3.2.min.js" />
+    <Content Include="Content\js\multiselect\docs\js\jquery-2.1.3.min.js" />
+    <Content Include="Content\js\multiselect\docs\js\prettify.js" />
+    <Content Include="Content\js\qrcode\jquery.qrcode.js" />
+    <Content Include="Content\js\qrcode\qrcode.js" />
+    <Content Include="Content\js\select2\select2.min.css" />
+    <Content Include="Content\js\select2\select2.min.js" />
+    <Content Include="Content\js\simditor\css\simditor.css" />
+    <Content Include="Content\js\simditor\js\hotkeys.js" />
+    <Content Include="Content\js\simditor\js\hotkeys.min.js" />
+    <Content Include="Content\js\simditor\js\module.js" />
+    <Content Include="Content\js\simditor\js\module.min.js" />
+    <Content Include="Content\js\simditor\js\simditor.js" />
+    <Content Include="Content\js\simditor\js\simditor.min.js" />
+    <Content Include="Content\js\simditor\js\uploader.js" />
+    <Content Include="Content\js\simditor\js\uploader.min.js" />
+    <Content Include="Content\js\validate\jquery.validate.min.js" />
+    <Content Include="Content\js\wdtree\images\icons\add.png" />
+    <Content Include="Content\js\wdtree\images\icons\addStep.gif" />
+    <Content Include="Content\js\wdtree\images\icons\addStep_dsbl.gif" />
+    <Content Include="Content\js\wdtree\images\icons\btn-arrow.gif" />
+    <Content Include="Content\js\wdtree\images\icons\Btn.Close.gif" />
+    <Content Include="Content\js\wdtree\images\icons\Btn.Refresh.gif" />
+    <Content Include="Content\js\wdtree\images\icons\cal.gif" />
+    <Content Include="Content\js\wdtree\images\icons\checkbox_0.gif" />
+    <Content Include="Content\js\wdtree\images\icons\checkbox_0.png" />
+    <Content Include="Content\js\wdtree\images\icons\checkbox_1.gif" />
+    <Content Include="Content\js\wdtree\images\icons\checkbox_1.png" />
+    <Content Include="Content\js\wdtree\images\icons\checkbox_2.gif" />
+    <Content Include="Content\js\wdtree\images\icons\checkbox_2.png" />
+    <Content Include="Content\js\wdtree\images\icons\circle_animation.gif" />
+    <Content Include="Content\js\wdtree\images\icons\delete.png" />
+    <Content Include="Content\js\wdtree\images\icons\delItem.gif" />
+    <Content Include="Content\js\wdtree\images\icons\delItem_dsbl.gif" />
+    <Content Include="Content\js\wdtree\images\icons\edit.png" />
+    <Content Include="Content\js\wdtree\images\icons\folder_close.gif" />
+    <Content Include="Content\js\wdtree\images\icons\ico1.gif" />
+    <Content Include="Content\js\wdtree\images\icons\ico2.gif" />
+    <Content Include="Content\js\wdtree\images\icons\ico3.gif" />
+    <Content Include="Content\js\wdtree\images\icons\ico4-1-1.gif" />
+    <Content Include="Content\js\wdtree\images\icons\ico4-1.gif" />
+    <Content Include="Content\js\wdtree\images\icons\ico4-2.gif" />
+    <Content Include="Content\js\wdtree\images\icons\ico4-3.gif" />
+    <Content Include="Content\js\wdtree\images\icons\ico4-4.gif" />
+    <Content Include="Content\js\wdtree\images\icons\ico4.gif" />
+    <Content Include="Content\js\wdtree\images\icons\ico5.gif" />
+    <Content Include="Content\js\wdtree\images\icons\ico6-1.gif" />
+    <Content Include="Content\js\wdtree\images\icons\ico6-2.gif" />
+    <Content Include="Content\js\wdtree\images\icons\ico6.gif" />
+    <Content Include="Content\js\wdtree\images\icons\indicator.gif" />
+    <Content Include="Content\js\wdtree\images\icons\information.png" />
+    <Content Include="Content\js\wdtree\images\icons\Item.Add.gif" />
+    <Content Include="Content\js\wdtree\images\icons\Item.Delete.gif" />
+    <Content Include="Content\js\wdtree\images\icons\Item.Edit.gif" />
+    <Content Include="Content\js\wdtree\images\icons\Item.Input.gif" />
+    <Content Include="Content\js\wdtree\images\icons\Item.Save.gif" />
+    <Content Include="Content\js\wdtree\images\icons\Item.Search.gif" />
+    <Content Include="Content\js\wdtree\images\icons\none.gif" />
+    <Content Include="Content\js\wdtree\images\icons\note.gif" />
+    <Content Include="Content\js\wdtree\images\icons\rowdelete.png" />
+    <Content Include="Content\js\wdtree\images\icons\s.gif" />
+    <Content Include="Content\js\wdtree\images\icons\table_refresh.png" />
+    <Content Include="Content\js\wdtree\images\icons\view.png" />
+    <Content Include="Content\js\wdtree\images\tree\arrows.gif" />
+    <Content Include="Content\js\wdtree\images\tree\cbs.gif" />
+    <Content Include="Content\js\wdtree\images\tree\drop-yes.gif" />
+    <Content Include="Content\js\wdtree\images\tree\elbow-end-minus-nl.gif" />
+    <Content Include="Content\js\wdtree\images\tree\elbow-end-minus.gif" />
+    <Content Include="Content\js\wdtree\images\tree\elbow-end-plus-nl.gif" />
+    <Content Include="Content\js\wdtree\images\tree\elbow-end-plus.gif" />
+    <Content Include="Content\js\wdtree\images\tree\elbow-end.gif" />
+    <Content Include="Content\js\wdtree\images\tree\elbow-line.gif" />
+    <Content Include="Content\js\wdtree\images\tree\elbow-minus-nl.gif" />
+    <Content Include="Content\js\wdtree\images\tree\elbow-minus.gif" />
+    <Content Include="Content\js\wdtree\images\tree\elbow-plus-nl.gif" />
+    <Content Include="Content\js\wdtree\images\tree\elbow-plus.gif" />
+    <Content Include="Content\js\wdtree\images\tree\elbow.gif" />
+    <Content Include="Content\js\wdtree\images\tree\folder-open.gif" />
+    <Content Include="Content\js\wdtree\images\tree\folder.gif" />
+    <Content Include="Content\js\wdtree\images\tree\leaf.gif" />
+    <Content Include="Content\js\wdtree\images\tree\loading.gif" />
+    <Content Include="Content\js\wdtree\tree.css" />
+    <Content Include="Content\js\wdtree\tree.js" />
+    <Content Include="Content\js\wizard\wizard.css" />
+    <Content Include="Content\js\wizard\wizard.js" />
+    <Content Include="Content\js\zsign\jquery.zsign.css" />
+    <Content Include="Content\js\zsign\jquery.zsign.js" />
+    <Content Include="Content\js\zsign\signet.gif" />
+    <Content Include="Content\metroadmin\assets\bootstrap-colorpicker\css\colorpicker.css" />
+    <Content Include="Content\metroadmin\assets\bootstrap-colorpicker\img\alpha.png" />
+    <Content Include="Content\metroadmin\assets\bootstrap-colorpicker\img\hue.png" />
+    <Content Include="Content\metroadmin\assets\bootstrap-colorpicker\img\saturation.png" />
+    <Content Include="Content\metroadmin\assets\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <Content Include="Content\metroadmin\assets\bootstrap-datepicker\css\datepicker.css" />
+    <Content Include="Content\metroadmin\assets\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Content\metroadmin\assets\bootstrap-daterangepicker\date.js" />
+    <Content Include="Content\metroadmin\assets\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="Content\metroadmin\assets\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="Content\metroadmin\assets\bootstrap-inputmask\bootstrap-inputmask.min.js" />
+    <Content Include="Content\metroadmin\assets\bootstrap-timepicker\compiled\timepicker.css" />
+    <Content Include="Content\metroadmin\assets\bootstrap-timepicker\js\bootstrap-timepicker.js" />
+    <Content Include="Content\metroadmin\assets\bootstrap-toggle-buttons\static\js\jquery.toggle.buttons.js" />
+    <Content Include="Content\metroadmin\assets\bootstrap-toggle-buttons\static\stylesheets\bootstrap-toggle-buttons.css" />
+    <Content Include="Content\metroadmin\assets\bootstrap-tree\bootstrap-tree\css\bootstrap-tree.css" />
+    <Content Include="Content\metroadmin\assets\bootstrap-tree\bootstrap-tree\img\bstree-halflings.png" />
+    <Content Include="Content\metroadmin\assets\bootstrap-tree\bootstrap-tree\js\bootstrap-tree.js" />
+    <Content Include="Content\metroadmin\assets\bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
+    <Content Include="Content\metroadmin\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
+    <Content Include="Content\metroadmin\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <Content Include="Content\metroadmin\assets\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="Content\metroadmin\assets\bootstrap\css\bootstrap-fileupload.css" />
+    <Content Include="Content\metroadmin\assets\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\metroadmin\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\metroadmin\assets\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\metroadmin\assets\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Content\metroadmin\assets\bootstrap\js\bootstrap-fileupload.js" />
+    <Content Include="Content\metroadmin\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\metroadmin\assets\chart-master\Chart.js" />
+    <Content Include="Content\metroadmin\assets\chosen-bootstrap\chosen\chosen-sprite.png" />
+    <Content Include="Content\metroadmin\assets\chosen-bootstrap\chosen\chosen.css" />
+    <Content Include="Content\metroadmin\assets\chosen-bootstrap\chosen\chosen.jquery.min.js" />
+    <Content Include="Content\metroadmin\assets\ckeditor\ckeditor.js" />
+    <Content Include="Content\metroadmin\assets\clockface\css\clockface.css" />
+    <Content Include="Content\metroadmin\assets\clockface\js\clockface.js" />
+    <Content Include="Content\metroadmin\assets\data-tables\DT_bootstrap.css" />
+    <Content Include="Content\metroadmin\assets\data-tables\DT_bootstrap.js" />
+    <Content Include="Content\metroadmin\assets\data-tables\images\sort_asc.png" />
+    <Content Include="Content\metroadmin\assets\data-tables\images\sort_both.png" />
+    <Content Include="Content\metroadmin\assets\data-tables\images\sort_desc.png" />
+    <Content Include="Content\metroadmin\assets\data-tables\jquery.dataTables.js" />
+    <Content Include="Content\metroadmin\assets\dropzone\css\dropzone.css" />
+    <Content Include="Content\metroadmin\assets\dropzone\dropzone.js" />
+    <Content Include="Content\metroadmin\assets\dropzone\images\spritemap%402x.png" />
+    <Content Include="Content\metroadmin\assets\dropzone\images\spritemap.png" />
+    <Content Include="Content\metroadmin\assets\fancybox\source\blank.gif" />
+    <Content Include="Content\metroadmin\assets\fancybox\source\fancybox_loading.gif" />
+    <Content Include="Content\metroadmin\assets\fancybox\source\fancybox_overlay.png" />
+    <Content Include="Content\metroadmin\assets\fancybox\source\fancybox_sprite.png" />
+    <Content Include="Content\metroadmin\assets\fancybox\source\jquery.fancybox.css" />
+    <Content Include="Content\metroadmin\assets\fancybox\source\jquery.fancybox.pack.js" />
+    <Content Include="Content\metroadmin\assets\flot\jquery.flot.crosshair.js" />
+    <Content Include="Content\metroadmin\assets\flot\jquery.flot.js" />
+    <Content Include="Content\metroadmin\assets\flot\jquery.flot.pie.js" />
+    <Content Include="Content\metroadmin\assets\flot\jquery.flot.resize.js" />
+    <Content Include="Content\metroadmin\assets\flot\jquery.flot.stack.js" />
+    <Content Include="Content\metroadmin\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\metroadmin\assets\font-awesome\font\fontawesome-webfont.svg" />
+    <Content Include="Content\metroadmin\assets\fullcalendar\fullcalendar\bootstrap-fullcalendar.css" />
+    <Content Include="Content\metroadmin\assets\fullcalendar\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Content\metroadmin\assets\gritter\css\jquery.gritter.css" />
+    <Content Include="Content\metroadmin\assets\gritter\images\gritter-light.png" />
+    <Content Include="Content\metroadmin\assets\gritter\images\gritter.png" />
+    <Content Include="Content\metroadmin\assets\gritter\images\ie-spacer.gif" />
+    <Content Include="Content\metroadmin\assets\gritter\js\jquery.gritter.js" />
+    <Content Include="Content\metroadmin\assets\jquery-easy-pie-chart\jquery.easy-pie-chart.css" />
+    <Content Include="Content\metroadmin\assets\jquery-easy-pie-chart\jquery.easy-pie-chart.js" />
+    <Content Include="Content\metroadmin\assets\jquery-slimscroll\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Content\metroadmin\assets\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="Content\metroadmin\assets\jquery-tags-input\jquery.tagsinput.css" />
+    <Content Include="Content\metroadmin\assets\jquery-tags-input\jquery.tagsinput.min.js" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\images\animated-overlay.gif" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\jquery-ui-1.10.1.custom.min.css" />
+    <Content Include="Content\metroadmin\assets\jquery-ui\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="Content\metroadmin\assets\jqvmap\jqvmap\data\jquery.vmap.sampledata.js" />
+    <Content Include="Content\metroadmin\assets\jqvmap\jqvmap\jquery.vmap.js" />
+    <Content Include="Content\metroadmin\assets\jqvmap\jqvmap\jqvmap.css" />
+    <Content Include="Content\metroadmin\assets\jqvmap\jqvmap\maps\jquery.vmap.europe.js" />
+    <Content Include="Content\metroadmin\assets\jqvmap\jqvmap\maps\jquery.vmap.germany.js" />
+    <Content Include="Content\metroadmin\assets\jqvmap\jqvmap\maps\jquery.vmap.russia.js" />
+    <Content Include="Content\metroadmin\assets\jqvmap\jqvmap\maps\jquery.vmap.usa.js" />
+    <Content Include="Content\metroadmin\assets\jqvmap\jqvmap\maps\jquery.vmap.world.js" />
+    <Content Include="Content\metroadmin\assets\metr-folio\assets\grain.png" />
+    <Content Include="Content\metroadmin\assets\metr-folio\assets\link.png" />
+    <Content Include="Content\metroadmin\assets\metr-folio\assets\link_clean.png" />
+    <Content Include="Content\metroadmin\assets\metr-folio\assets\lupe.png" />
+    <Content Include="Content\metroadmin\assets\metr-folio\assets\socialbar-bg.png" />
+    <Content Include="Content\metroadmin\assets\metr-folio\assets\tiles\list.png" />
+    <Content Include="Content\metroadmin\assets\metr-folio\assets\tiles\topgradient.png" />
+    <Content Include="Content\metroadmin\assets\metr-folio\assets\zoom_clean.png" />
+    <Content Include="Content\metroadmin\assets\metr-folio\css\metro-gallery.css" />
+    <Content Include="Content\metroadmin\assets\metr-folio\icons\comments.png" />
+    <Content Include="Content\metroadmin\assets\metr-folio\icons\facebook.png" />
+    <Content Include="Content\metroadmin\assets\metr-folio\icons\like.png" />
+    <Content Include="Content\metroadmin\assets\metr-folio\icons\more.png" />
+    <Content Include="Content\metroadmin\assets\metr-folio\icons\twitter.png" />
+    <Content Include="Content\metroadmin\assets\metr-folio\js\jquery.metro-gal.megafoliopro.js" />
+    <Content Include="Content\metroadmin\assets\metr-folio\js\jquery.metro-gal.plugins.min.js" />
+    <Content Include="Content\metroadmin\assets\nestable\jquery.nestable.css" />
+    <Content Include="Content\metroadmin\assets\nestable\jquery.nestable.js" />
+    <Content Include="Content\metroadmin\assets\uniform\css\uniform.default.css" />
+    <Content Include="Content\metroadmin\assets\uniform\images\bg-input-focus.png" />
+    <Content Include="Content\metroadmin\assets\uniform\images\bg-input.png" />
+    <Content Include="Content\metroadmin\assets\uniform\images\sprite.png" />
+    <Content Include="Content\metroadmin\assets\uniform\jquery.uniform.min.js" />
+    <Content Include="Content\metroadmin\css\style-default.css" />
+    <Content Include="Content\metroadmin\css\style-responsive.css" />
+    <Content Include="Content\metroadmin\css\style.css" />
+    <Content Include="Content\metroadmin\css\timeline-component.css" />
+    <Content Include="Content\metroadmin\css\ytcall.css" />
+    <Content Include="Content\metroadmin\font\myriadprobold.svg" />
+    <Content Include="Content\metroadmin\font\myriadproit.svg" />
+    <Content Include="Content\metroadmin\font\myriadprolight.svg" />
+    <Content Include="Content\metroadmin\font\myriadproregular.svg" />
+    <Content Include="Content\metroadmin\img\404bg.jpg" />
+    <Content Include="Content\metroadmin\img\500bg.jpg" />
+    <Content Include="Content\metroadmin\img\about-us\img-1.jpg" />
+    <Content Include="Content\metroadmin\img\about-us\img-2.jpg" />
+    <Content Include="Content\metroadmin\img\about-us\img-3.jpg" />
+    <Content Include="Content\metroadmin\img\about-us\img-4.jpg" />
+    <Content Include="Content\metroadmin\img\avatar-mini.png" />
+    <Content Include="Content\metroadmin\img\avatar1.jpg" />
+    <Content Include="Content\metroadmin\img\avatar1_small.jpg" />
+    <Content Include="Content\metroadmin\img\avatar2.jpg" />
+    <Content Include="Content\metroadmin\img\avatar3.jpg" />
+    <Content Include="Content\metroadmin\img\blog\blog-thumb-2.jpg" />
+    <Content Include="Content\metroadmin\img\blog\blog-thumb-3.jpg" />
+    <Content Include="Content\metroadmin\img\blog\blog1-big.jpg" />
+    <Content Include="Content\metroadmin\img\blog\blog2-big.jpg" />
+    <Content Include="Content\metroadmin\img\blog\blog3-big.jpg" />
+    <Content Include="Content\metroadmin\img\file-search\ai.png" />
+    <Content Include="Content\metroadmin\img\file-search\doc.png" />
+    <Content Include="Content\metroadmin\img\file-search\email.png" />
+    <Content Include="Content\metroadmin\img\file-search\eps.png" />
+    <Content Include="Content\metroadmin\img\file-search\jpg.png" />
+    <Content Include="Content\metroadmin\img\file-search\pdf.png" />
+    <Content Include="Content\metroadmin\img\file-search\ppt.png" />
+    <Content Include="Content\metroadmin\img\file-search\psd.png" />
+    <Content Include="Content\metroadmin\img\file-search\rss.png" />
+    <Content Include="Content\metroadmin\img\file-search\xls.png" />
+    <Content Include="Content\metroadmin\img\file-search\zip.png" />
+    <Content Include="Content\metroadmin\img\gallery\image1.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image10.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image11.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image12.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image13.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image14.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image15.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image16.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image17.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image18.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image2.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image3.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image4.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image5.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image6.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image7.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image8.jpg" />
+    <Content Include="Content\metroadmin\img\gallery\image9.jpg" />
+    <Content Include="Content\metroadmin\img\lock-thumb.jpg" />
+    <Content Include="Content\metroadmin\img\logo.png" />
+    <Content Include="Content\metroadmin\img\overlay-icon.png" />
+    <Content Include="Content\metroadmin\img\product1.jpg" />
+    <Content Include="Content\metroadmin\img\product2.png" />
+    <Content Include="Content\metroadmin\img\product3.png" />
+    <Content Include="Content\metroadmin\img\product4.png" />
+    <Content Include="Content\metroadmin\img\product5.png" />
+    <Content Include="Content\metroadmin\img\profile-contact.jpg" />
+    <Content Include="Content\metroadmin\img\vector-lab.jpg" />
+    <Content Include="Content\metroadmin\img\working_platforms\agentindesk_bg.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\agentindesk_bg.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\blue_bg_hover.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\blue_bg_link.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\buttonbg.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\buttonbgon.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\callbarge.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\CallDetails.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\callspy.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\close.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\closeon.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\closex.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\closex_on.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\close_btn.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\close_btny.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\countdownwrap.jpg" />
+    <Content Include="Content\metroadmin\img\working_platforms\countDown_bg.jpg" />
+    <Content Include="Content\metroadmin\img\working_platforms\dataDesktop_show_cleartrash.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\dataDesktop_show_list.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\dataDesktop_show_trash.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\hand.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\hangup.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\hangupall.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\headerbg.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\headerbg30.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\history.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\left_btn.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\left_btny.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\logoutQueue.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\mailsends.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\noclosex.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\noclosex.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\nopauseQueue.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\pauseQueue.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\realtime_callbarge.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\realtime_callspy.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\realtime_forcedRelease.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\realtime_hangup.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\realtime_whisper.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\right.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\right02.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\right_btn.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\right_btny.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\search.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\tabbar_bg.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\tabbtn.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\tabs_close.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\topbarshow.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\up-open.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\update.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\volumelower.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\volumeraise.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\welcome.png" />
+    <Content Include="Content\metroadmin\img\working_platforms\whisper.gif" />
+    <Content Include="Content\metroadmin\img\working_platforms\wrong02.png" />
+    <Content Include="Content\metroadmin\js\additional-methods.min.js" />
+    <Content Include="Content\metroadmin\js\all-chartjs.js" />
+    <Content Include="Content\metroadmin\js\common-scripts.js" />
+    <Content Include="Content\metroadmin\js\custom-flot-chart.js" />
+    <Content Include="Content\metroadmin\js\draggable-portlet.js" />
+    <Content Include="Content\metroadmin\js\dynamic-table.js" />
+    <Content Include="Content\metroadmin\js\easy-pie-chart.js" />
+    <Content Include="Content\metroadmin\js\editable-table.js" />
+    <Content Include="Content\metroadmin\js\excanvas.js" />
+    <Content Include="Content\metroadmin\js\external-dragging-calendar.js" />
+    <Content Include="Content\metroadmin\js\flot-chart.js" />
+    <Content Include="Content\metroadmin\js\form-component.js" />
+    <Content Include="Content\metroadmin\js\form-validation-script.js" />
+    <Content Include="Content\metroadmin\js\form-wizard.js" />
+    <Content Include="Content\metroadmin\js\gmaps-scripts.js" />
+    <Content Include="Content\metroadmin\js\gmaps.js" />
+    <Content Include="Content\metroadmin\js\gritter.js" />
+    <Content Include="Content\metroadmin\js\home-chartjs.js" />
+    <Content Include="Content\metroadmin\js\home-page-calender.js" />
+    <Content Include="Content\metroadmin\js\jquery-1.8.2.min.js" />
+    <Content Include="Content\metroadmin\js\jquery-1.8.3.min.js" />
+    <Content Include="Content\metroadmin\js\jquery.blockui.js" />
+    <Content Include="Content\metroadmin\js\jQuery.dualListBox-1.3.js" />
+    <Content Include="Content\metroadmin\js\jquery.nicescroll.js" />
+    <Content Include="Content\metroadmin\js\jquery.pulsate.min.js" />
+    <Content Include="Content\metroadmin\js\jquery.scrollTo.min.js" />
+    <Content Include="Content\metroadmin\js\jquery.sparkline.js" />
+    <Content Include="Content\metroadmin\js\jquery.validate.min.js" />
+    <Content Include="Content\metroadmin\js\nestable.js" />
+    <Content Include="Content\metroadmin\js\pulstate.js" />
+    <Content Include="Content\metroadmin\js\respond.js" />
+    <Content Include="Content\metroadmin\js\sliders.js" />
+    <Content Include="Content\metroadmin\js\sparkline-chart.js" />
+    <Content Include="Content\metroadmin\js\tree.js" />
+    <Content Include="Content\metroadmin\js\vmaps-scripts.js" />
+    <Content Include="Content\metroadmin\js\ytdesk.js" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Dll\ReportFormManage.Code.dll" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="Content\fonts\weathericons-regular-webfont.eot" />
+    <Content Include="Content\fonts\weathericons-regular-webfont.ttf" />
+    <Content Include="Content\fonts\weathericons-regular-webfont.woff" />
+    <Content Include="Content\fonts\weathericons-regular-webfontd41d.eot" />
+    <Content Include="Content\img\samples\Thumbs.db" />
+    <Content Include="Content\js\simditor\css\editor.scss" />
+    <Content Include="Content\js\simditor\css\fonticon.scss" />
+    <Content Include="Content\js\simditor\css\simditor.scss" />
+    <Content Include="Content\metroadmin\assets\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="Content\metroadmin\assets\font-awesome\font\fontawesome-webfont.eot~.eot" />
+    <Content Include="Content\metroadmin\assets\font-awesome\font\fontawesome-webfont.eot~v=3.2.1.eot" />
+    <Content Include="Content\metroadmin\assets\font-awesome\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\metroadmin\assets\font-awesome\font\fontawesome-webfont.ttf~v=3.2.1.ttf" />
+    <Content Include="Content\metroadmin\assets\font-awesome\font\fontawesome-webfont.woff~v=3.2.1.woff" />
+    <Content Include="Content\metroadmin\font\myriadprobold.eot" />
+    <Content Include="Content\metroadmin\font\myriadprobold.eot~.eot" />
+    <Content Include="Content\metroadmin\font\myriadprobold.ttf" />
+    <Content Include="Content\metroadmin\font\myriadprobold.woff" />
+    <Content Include="Content\metroadmin\font\myriadproit.eot" />
+    <Content Include="Content\metroadmin\font\myriadproit.eot~.eot" />
+    <Content Include="Content\metroadmin\font\myriadproit.ttf" />
+    <Content Include="Content\metroadmin\font\myriadproit.woff" />
+    <Content Include="Content\metroadmin\font\myriadprolight.eot" />
+    <Content Include="Content\metroadmin\font\myriadprolight.eot~.eot" />
+    <Content Include="Content\metroadmin\font\myriadprolight.ttf" />
+    <Content Include="Content\metroadmin\font\myriadprolight.woff" />
+    <Content Include="Content\metroadmin\font\myriadproregular.eot" />
+    <Content Include="Content\metroadmin\font\myriadproregular.eot~.eot" />
+    <Content Include="Content\metroadmin\font\myriadproregular.ttf" />
+    <Content Include="Content\metroadmin\font\myriadproregular.woff" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\" />
+    <Folder Include="Configs\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5338</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5338/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

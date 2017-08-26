@@ -1,0 +1,1 @@
+IntegrateManagement.MiddleBaseService.Service uninstall
