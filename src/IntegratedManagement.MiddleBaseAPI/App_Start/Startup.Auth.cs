@@ -1,4 +1,5 @@
 ﻿using IntegratedManagement.MiddleBaseAPI.Providers;
+using IntegratedManagement.RepositoryDapper.Token;
 using IntegratedManageMent.Application.Token;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
@@ -22,7 +23,7 @@ namespace IntegratedManagement.MiddleBaseAPI
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
                 TokenEndpointPath = new PathString("/Token"),
-                Provider = new MidApplicationOAuthProvider(new ClientApp(),new UserApp()),
+                Provider = new MidApplicationOAuthProvider(new ClientApp(),new UserApp(new UserDapperRepository())),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 //在生产模式下设 AllowInsecureHttp = false
                 AllowInsecureHttp = true,

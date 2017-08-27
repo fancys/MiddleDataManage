@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IntegratedManagement.MidleDataManage.Web.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,7 @@ namespace IntegratedManagement.MidleDataManage.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            IocConfig.RegisterDependencies();
         }
     }
 }

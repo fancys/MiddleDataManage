@@ -4,6 +4,7 @@ using IntegratedManagement.Core;
 using IntegratedManagement.Entity.Token;
 using IntegratedManageMent.Application.Token;
 using System.Threading.Tasks;
+using IntegratedManagement.RepositoryDapper.Token;
 
 namespace IntegratedManagement.MiddleBaseAPI.Tests.OAuthUnitTest
 {
@@ -24,7 +25,7 @@ namespace IntegratedManagement.MiddleBaseAPI.Tests.OAuthUnitTest
             user.IsDelete = "N";
             user.CreateDate = DateTime.Now;
             user.UpdateTime = DateTime.Now;
-            UserApp _userApp = new UserApp();
+            UserApp _userApp = new UserApp(new UserDapperRepository());
             var saveRt = await _userApp.Save(user);
             Assert.IsTrue(saveRt);
 

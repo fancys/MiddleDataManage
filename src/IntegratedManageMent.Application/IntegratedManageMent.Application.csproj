@@ -70,6 +70,7 @@
     <Compile Include="SalesModule\SalesOrderApp.cs" />
     <Compile Include="SalesModule\SalesReturnApp.cs" />
     <Compile Include="Token\ClientApp.cs" />
+    <Compile Include="Token\IUserApp.cs" />
     <Compile Include="Token\RefreshTokenApp.cs" />
     <Compile Include="Token\UserApp.cs" />
   </ItemGroup>

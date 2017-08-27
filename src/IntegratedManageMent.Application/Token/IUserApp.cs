@@ -5,17 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IntegratedManagement.IRepository.Token
+namespace IntegratedManageMent.Application.Token
 {
     /*===============================================================================================================================
-	*	Create by Fancy at 2017/3/24 9:57:04
+	*	Create by Fancy at 2017/8/27 17:41:57
 	===============================================================================================================================*/
-    public interface IUserRepository
+    public interface IUserApp
     {
         Task<User> GetUser(string UserName, string Password);
 
         Task<User> GetUser(string UserName);
 
-        Task<bool> Insert(User User);
+        Task<bool> Save(User user);
+
+        Task<User> CheckUser(string UserName, string Password);
     }
 }

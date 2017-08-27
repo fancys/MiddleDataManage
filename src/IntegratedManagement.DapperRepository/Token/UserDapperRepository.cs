@@ -40,6 +40,31 @@ namespace IntegratedManagement.RepositoryDapper.Token
             }
         }
 
+
+        public async Task<User> GetUser(string UserName)
+        {
+            User client = null;
+            using (var conn = SqlConnectionFactory.CreateSqlConnection())
+            {
+                conn.Open();
+                string sql = $"SELECT  *  FROM T_User where UserName =  @UserName";
+                try
+                {
+                    var queryResult = await conn.QueryAsync<User>(sql, new { UserName = UserName });
+                    client = queryResult.FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return client;
+            }
+        }
+
         public async Task<bool> Insert(User User)
         {
             using (IDbConnection conn = SqlConnectionFactory.CreateSqlConnection())
