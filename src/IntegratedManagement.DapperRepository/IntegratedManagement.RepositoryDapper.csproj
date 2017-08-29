@@ -62,6 +62,9 @@
     <Compile Include="BaseRepository\IDataServiceRepository.cs" />
     <Compile Include="BaseRepository\SqlConnectionFactory.cs" />
     <Compile Include="BusinessPartnerModule\BusinessPartnerDapperRepository.cs" />
+    <Compile Include="FinancialModule\JournalDestinationDapperRepository.cs" />
+    <Compile Include="FinancialModule\JournalRelationMapDapperRepository.cs" />
+    <Compile Include="FinancialModule\JournalSourceDapperRepository.cs" />
     <Compile Include="InventoryModule\MaterialDapperRepository.cs" />
     <Compile Include="PaymentReceivedModule\RefundDapperRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

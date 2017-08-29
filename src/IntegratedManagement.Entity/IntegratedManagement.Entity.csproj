@@ -53,6 +53,11 @@
     <Compile Include="Document\IDocumentItemBase.cs" />
     <Compile Include="Document\DocumentSync.cs" />
     <Compile Include="Document\IDocumentSync.cs" />
+    <Compile Include="FinancialModule\JournalDestination\JournalDestination.cs" />
+    <Compile Include="FinancialModule\JournalRalationMap\JournalRelationMap.cs" />
+    <Compile Include="FinancialModule\JournalRalationMap\JournalRelationMapLine.cs" />
+    <Compile Include="FinancialModule\JournalSource\JournalSource.cs" />
+    <Compile Include="FinancialModule\JournalSource\JournalSourceLine.cs" />
     <Compile Include="InventoryModule\Material\Materiel.cs" />
     <Compile Include="Param\CallbackParam.cs" />
     <Compile Include="Param\QueryParam.cs" />

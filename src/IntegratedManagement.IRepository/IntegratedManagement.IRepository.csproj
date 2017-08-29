@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessPartnerModule\IBusinessPartnerRepository.cs" />
+    <Compile Include="FinancialModule\IJournalDestinationRepository.cs" />
+    <Compile Include="FinancialModule\IJournalRelationMapRepository.cs" />
+    <Compile Include="FinancialModule\IJournalSourceRepository.cs" />
     <Compile Include="InventoryModule\IMaterialRepository.cs" />
     <Compile Include="IRepositoryBase\IRepositoryBase.cs" />
     <Compile Include="PaymentReceivedModule\IRefundRepository.cs" />

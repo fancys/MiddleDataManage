@@ -15,7 +15,7 @@ namespace IntegratedManagement.MiddleBaseAPI.Tests.OAuthUnitTest
         public async Task TestMD5()
         {
             string userName = "KaiSheng";
-            string password = "kaisheng1q2w3e!@#";
+            string password = "1q2w3e";
             string passMd5 = Md5.GetMd5Hash(password);
             User user = new User();
             user.Id = Guid.NewGuid().ToString();

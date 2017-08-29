@@ -632,6 +632,7 @@
     <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Financial\Controllers\JournalController.cs" />
+    <Compile Include="Areas\Financial\Controllers\JournalSourceController.cs" />
     <Compile Include="Areas\Financial\FinancialAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -689,6 +690,7 @@
     <Content Include="Areas\Financial\Views\Journal\Index.cshtml" />
     <Content Include="Configs\database.config" />
     <Content Include="Configs\system.config" />
+    <Content Include="Areas\Financial\Views\JournalSource\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -54,6 +54,12 @@
     <Compile Include="BusinessPartnerModule\BusinessPartnerApp.cs" />
     <Compile Include="BusinessPartnerModule\IBusinessPartnerApp.cs" />
     <Compile Include="CallbackModule\DocCallbackApp.cs" />
+    <Compile Include="FinancialModule\IJournalDestinationApp.cs" />
+    <Compile Include="FinancialModule\IJournalRelationMapApp.cs" />
+    <Compile Include="FinancialModule\IJournalSourceApp.cs" />
+    <Compile Include="FinancialModule\JournalDestinationApp.cs" />
+    <Compile Include="FinancialModule\JournalRelationMapApp.cs" />
+    <Compile Include="FinancialModule\JournalSourceApp.cs" />
     <Compile Include="InventoryModule\IMaterialApp.cs" />
     <Compile Include="InventoryModule\MaterialApp.cs" />
     <Compile Include="PaymentReceivedModule\IRefundApp.cs" />
