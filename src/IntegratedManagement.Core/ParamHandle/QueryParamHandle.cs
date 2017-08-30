@@ -64,6 +64,7 @@ namespace IntegratedManagement.Core.ParamHandle
                 case "lt":return "<";
                 case "le":return "<=";
                 case "in":return " in ";
+                case "li":return " like ";
                 default:
                     throw new Exception("invalid filter.");
 

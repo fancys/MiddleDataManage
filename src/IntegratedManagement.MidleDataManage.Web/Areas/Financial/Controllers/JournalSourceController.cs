@@ -45,25 +45,6 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
             }
         }
 
-        public async Task<ActionResult> SearchJournalSource(string filter,string limit)
-        {
-            try
-            {
-                /*
-                 * 获取查询条件
-                 */
-                //if(param.MinCreateDate)
-
-                QueryParam queryParam = new QueryParam();
-                queryParam.filter = "(CreateDate gt '20170101')";
-                queryParam.orderby = "order by TransId";
-                var rt = await _JournalSourceApp.GetSalesOrderAsync(queryParam);
-                return Json(new { state = ResultType.success.ToString(), data = Newtonsoft.Json.JsonConvert.SerializeObject(rt) });
-            }
-            catch (Exception ex)
-            {
-                return Json(new { state = ResultType.error.ToString(), message = ex.Message });
-            }
-        }
+       
     }
 }

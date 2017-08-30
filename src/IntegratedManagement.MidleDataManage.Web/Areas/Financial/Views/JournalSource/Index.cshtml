@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8" />
-    <title>Metro风格响应式后台管理系统模板MetroAdmin 动态表格 - JS代码网</title>
+    
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -104,11 +104,14 @@
                                             </div>
                                         </div>
                                         <div class="span1">
-                                            <div class="input-append search-input-area" style="margin-left:30px">
-                                                <button class="btn" id="searchBtn" type="button"><i class="icon-search"></i> </button>
+                                            <div class="control-group">
+                                                    <button class="btn btn-inverse" id="searchBtn" type="button" style="margin-right:5px"><i class="icon-search"></i> </button>
+                                            </div>
+                                            <div class="control-group"style="min-width:60px">
+                                                <input type="checkbox" id="selectAllDataChk" />
+                                                <button class="btn btn-inverse" type="button" style="margin-right:5px"><i class="icon-refresh icon-white"></i> </button>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
 
                             </div>
@@ -384,8 +387,8 @@
             searchClick: function () {
                 alert('aa');
                 $.ajax({
-                    url: "/JournalSourceController/SearchJournalSource",
-                    data: { fileter: "()", limit: 50 },
+                    url: "/Financial/JournalSource/SearchJournalSource",
+                    data: { bplId: 1, BPLName: "asdf" },
                     type: "post",
                     dataType: "json",
                     success: function (data) {
