@@ -12,6 +12,12 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRalationMap
 	===============================================================================================================================*/
     public class JournalRelationMap: ResultObject
     {
+        public JournalRelationMap()
+        {
+            this.JournalRelationMapLines = new List<JournalRelationMapLine>();
+        }
+        public int DocEntry { get; set; }
+
         /// <summary>
         /// 编号
         /// </summary>
@@ -57,6 +63,8 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRalationMap
         /// </summary>
         public DateTime TaxDate { get; set; }
 
-       
+        public List<JournalRelationMapLine> JournalRelationMapLines { get; set; }
+
+
     }
 }

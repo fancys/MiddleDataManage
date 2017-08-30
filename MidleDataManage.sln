@@ -35,6 +35,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{7FBCBC5C-C5B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegratedManagement.MidleDataManage.Web", "src\IntegratedManagement.MidleDataManage.Web\IntegratedManagement.MidleDataManage.Web.csproj", "{C992C19C-B461-41A7-8633-734BAB0811BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrateManagement.MiddleBaseService.B1", "src\IntegrateManagement.MiddleBaseService.B1\IntegrateManagement.MiddleBaseService.B1.csproj", "{B1AE8922-2508-4585-BB5E-2C425FAF4F8D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{C992C19C-B461-41A7-8633-734BAB0811BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C992C19C-B461-41A7-8633-734BAB0811BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C992C19C-B461-41A7-8633-734BAB0811BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1AE8922-2508-4585-BB5E-2C425FAF4F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1AE8922-2508-4585-BB5E-2C425FAF4F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1AE8922-2508-4585-BB5E-2C425FAF4F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1AE8922-2508-4585-BB5E-2C425FAF4F8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,5 +101,6 @@ Global
 		{A5DB68E7-49E9-48C2-B594-6D61EB260E61} = {8763DAE6-CA2C-4EF9-8DE3-207895F5D72A}
 		{8C688E36-386D-4A69-ACE9-C962FA9718BD} = {8763DAE6-CA2C-4EF9-8DE3-207895F5D72A}
 		{C992C19C-B461-41A7-8633-734BAB0811BB} = {7FBCBC5C-C5BD-4029-AA7B-1B5CA39AEF70}
+		{B1AE8922-2508-4585-BB5E-2C425FAF4F8D} = {61083F4E-72F2-4A6E-BAB7-7E5B51BF87C8}
 	EndGlobalSection
 EndGlobal

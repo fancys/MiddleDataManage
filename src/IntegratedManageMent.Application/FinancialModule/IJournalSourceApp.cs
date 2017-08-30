@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IntegratedManagement.Entity.FinancialModule.JournalSource;
+using IntegratedManagement.Entity.Param;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +13,6 @@ namespace IntegratedManageMent.Application.FinancialModule
 	===============================================================================================================================*/
     public interface IJournalSourceApp
     {
-        
+        Task<List<JournalSource>> GetSalesOrderAsync(QueryParam QueryParam);
     }
 }

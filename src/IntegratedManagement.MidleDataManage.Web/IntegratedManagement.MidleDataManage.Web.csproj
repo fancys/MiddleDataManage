@@ -56,6 +56,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="ReportFormManage.Code, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Dll\ReportFormManage.Code.dll</HintPath>
@@ -624,6 +628,7 @@
     <Content Include="Content\metroadmin\js\vmaps-scripts.js" />
     <Content Include="Content\metroadmin\js\ytdesk.js" />
     <Content Include="Content\Site.css" />
+    <Content Include="Dll\Interop.SAPbobsCOM.dll" />
     <Content Include="Dll\ReportFormManage.Code.dll" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -632,6 +637,7 @@
     <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Financial\Controllers\JournalController.cs" />
+    <Compile Include="Areas\Financial\Controllers\JournalRelationMapController.cs" />
     <Compile Include="Areas\Financial\Controllers\JournalSourceController.cs" />
     <Compile Include="Areas\Financial\FinancialAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -691,6 +697,7 @@
     <Content Include="Configs\database.config" />
     <Content Include="Configs\system.config" />
     <Content Include="Areas\Financial\Views\JournalSource\Index.cshtml" />
+    <Content Include="Areas\Financial\Views\JournalRelationMap\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

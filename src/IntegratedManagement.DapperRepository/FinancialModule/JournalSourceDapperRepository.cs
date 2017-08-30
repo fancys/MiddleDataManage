@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IntegratedManagement.Entity.FinancialModule.JournalSource;
 using IntegratedManagement.Entity.Param;
+using IntegratedManagement.RepositoryDapper.BaseRepository;
 
 namespace IntegratedManagement.RepositoryDapper.FinancialModule
 {
@@ -14,9 +15,29 @@ namespace IntegratedManagement.RepositoryDapper.FinancialModule
 	===============================================================================================================================*/
     public class JournalSourceDapperRepository : IJournalSourceRepository
     {
-        public Task<List<JournalSource>> GetJournalSourceList(QueryParam queryParam)
+        public async Task<List<JournalSource>> GetJournalSourceList(QueryParam Param)
         {
-            throw new NotImplementedException();
+            List<JournalSource> collection = null;
+            using (var conn = SqlConnectionFactory.CreateSqlConnection())
+            {
+                conn.Open();
+
+                string sql = $"SELECT  top {Param.limit} {Param.select} FROM T_View_JournalSource t0 left JOIN T_View_JournalSourceItem t1 on t0.DocEntry = t1.DocEntry {Param.filter + " " + Param.orderby} ";
+                try
+                {
+                    var coll = await conn.QueryParentChildAsync<JournalSource, JournalSourceLine, int>(sql, p => p.TransId, p => p.JournalSourceLines, splitOn: "TransId");
+                    collection = coll.ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return collection;
+            }
         }
     }
 }

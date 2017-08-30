@@ -18,7 +18,7 @@ namespace IntegratedManagement.MiddleBaseAPI.Tests.DapperRepository.BusinessPart
             businessPartner.CardCode = "C1000001";
             businessPartner.CardName = "testCardCode";
             businessPartner.CreateDate = DateTime.Now;
-            businessPartner.PlatformCode = "C01";
+           // businessPartner.PlatformCode = "C01";
             var rt = await _BPDR.Save(businessPartner);
             Assert.AreEqual(rt.Code, 0);
         }

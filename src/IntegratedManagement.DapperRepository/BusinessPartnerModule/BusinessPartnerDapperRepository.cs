@@ -57,7 +57,7 @@ namespace IntegratedManagement.RepositoryDapper.BusinessPartnerModule
                     await conn.ExecuteScalarAsync(insertSql,
                         new
                         {
-                            PlatformCode = BusinessPartner.PlatformCode,
+                           // PlatformCode = BusinessPartner.PlatformCode,
                             CardCode = BusinessPartner.CardCode,
                             CardName = BusinessPartner.CardName,
                             CreateDate = DateTime.Now,
@@ -94,7 +94,7 @@ namespace IntegratedManagement.RepositoryDapper.BusinessPartnerModule
                 {
                     var rtCount = await conn.ExecuteAsync(sql, new {
                         CardName = businessPartner.CardName,
-                        PlatformCode = businessPartner.PlatformCode,
+                       // PlatformCode = businessPartner.PlatformCode,
                         UpdateDate = DateTime.Now,
                         CardCode = businessPartner.CardCode,
                         IsSync="N"

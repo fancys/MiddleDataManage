@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IntegratedManagement.Entity.FinancialModule.JournalRalationMap
+namespace IntegratedManagement.Entity.BusinessPartnerModule.CashFlow
 {
     /*===============================================================================================================================
-	*	Create by Fancy at 2017/8/29 18:01:00
+	*	Create by Fancy at 2017/8/30 17:14:18
+    *	现金流项目
 	===============================================================================================================================*/
-    public class JournalRelationMapLine
+    public class CashFlowItem
     {
+        public int CFWId { get; set; }
+        public string CFWName { get; set; }
+        public string Postable { get; set; }
     }
 }

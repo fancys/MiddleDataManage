@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IntegratedManagement.Entity.FinancialModule.JournalRalationMap;
 using IntegratedManagement.Entity.Param;
+using IntegratedManagement.RepositoryDapper.BaseRepository;
 
 namespace IntegratedManagement.RepositoryDapper.FinancialModule
 {
@@ -14,9 +15,29 @@ namespace IntegratedManagement.RepositoryDapper.FinancialModule
 	===============================================================================================================================*/
     public class JournalRelationMapDapperRepository : IJournalRelationMapRepository
     {
-        public Task<List<JournalRelationMap>> GetJournalRelationMapList(QueryParam queryParam)
+        public async Task<List<JournalRelationMap>> GetJournalRelationMapList(QueryParam Param)
         {
-            throw new NotImplementedException();
+            List<JournalRelationMap> collection = null;
+            using (var conn = SqlConnectionFactory.CreateSqlConnection())
+            {
+                conn.Open();
+
+                string sql = $"SELECT  top {Param.limit} {Param.select} FROM T_JournalRelationMap t0 left JOIN T_JournalRelationMapItem t1 on t0.DocEntry = t1.DocEntry {Param.filter + " " + Param.orderby} ";
+                try
+                {
+                    var coll = await conn.QueryParentChildAsync<JournalRelationMap, JournalRelationMapLine, int>(sql, p => p.DocEntry, p => p.JournalRelationMapLines, splitOn: "DocEntry");
+                    collection = coll.ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return collection;
+            }
         }
 
         public Task SaveJournalRelationMap(JournalRelationMap JournalSource)

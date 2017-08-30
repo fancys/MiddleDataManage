@@ -49,18 +49,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessPartnerModule\BusinessPartner\BPAddress.cs" />
+    <Compile Include="BusinessPartnerModule\BusinessPartner\BPContact.cs" />
     <Compile Include="BusinessPartnerModule\BusinessPartner\BusinessPartner.cs" />
+    <Compile Include="BusinessPartnerModule\BusinessPlaces\BusinessPlaces.cs" />
+    <Compile Include="BusinessPartnerModule\CashFlow\CashFlowItem.cs" />
+    <Compile Include="BusinessPartnerModule\ProfitCenter\ProfitCenters.cs" />
     <Compile Include="Document\IDocumentItemBase.cs" />
     <Compile Include="Document\DocumentSync.cs" />
     <Compile Include="Document\IDocumentSync.cs" />
     <Compile Include="FinancialModule\JournalDestination\JournalDestination.cs" />
-    <Compile Include="FinancialModule\JournalRalationMap\JournalRelationMap.cs" />
-    <Compile Include="FinancialModule\JournalRalationMap\JournalRelationMapLine.cs" />
+    <Compile Include="FinancialModule\JournalRelationMap\JournalRelationMap.cs" />
+    <Compile Include="FinancialModule\JournalRelationMap\JournalRelationMapLine.cs" />
     <Compile Include="FinancialModule\JournalSource\JournalSource.cs" />
     <Compile Include="FinancialModule\JournalSource\JournalSourceLine.cs" />
     <Compile Include="InventoryModule\Material\Materiel.cs" />
+    <Compile Include="InventoryModule\Warehouse\Warehouse.cs" />
     <Compile Include="Param\CallbackParam.cs" />
     <Compile Include="Param\QueryParam.cs" />
+    <Compile Include="Param\ViewParam.cs" />
     <Compile Include="PaymentReceivedModule\Payment\Payment.cs" />
     <Compile Include="PaymentReceivedModule\Payment\PaymentItem.cs" />
     <Compile Include="PaymentReceivedModule\Received\Received.cs" />
