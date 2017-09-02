@@ -52,7 +52,7 @@
                         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                         <div class="widget">
                             <div class="widget-title">
-                                <h4> 查询条件</h4>
+                                <h4> 分录来源处理</h4>
                                 <span class="tools">
                                     <a href="javascript:;" class="icon-chevron-down"></a>
                                 </span>
@@ -109,7 +109,7 @@
                                             </div>
                                             <div class="control-group"style="min-width:60px">
                                                 <input type="checkbox" id="selectAllDataChk" />
-                                                <button class="btn btn-inverse" type="button" style="margin-right:5px"><i class="icon-refresh icon-white"></i> </button>
+                                                <button class="btn btn-inverse" id="syncBtn" type="button" style="margin-right:5px"><i class="icon-refresh icon-white"></i> </button>
                                             </div>
                                         </div>
                                 </div>
@@ -132,11 +132,11 @@
                                     <thead>
                                         <tr>
                                             <th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>
-                                            <th>Username</th>
-                                            <th class="hidden-phone">Email</th>
-                                            <th class="hidden-phone">Points</th>
-                                            <th class="hidden-phone">Joined</th>
-                                            <th class="hidden-phone"></th>
+                                            <th class="hidden-phone">TransId</th>
+                                            <th class="hidden-phone">BPLId</th>
+                                            <th class="hidden-phone">ERPOrderNum</th>
+                                            <th class="hidden-phone">SourceTable</th>
+                                            <th class="hidden-phone">WorkFlow</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -239,7 +239,7 @@
                                         <tr class="odd gradeX">
                                             <td><input type="checkbox" class="checkboxes" value="1" /></td>
                                             <td>goop</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">lorem-ip@gmail.com</a></td>
+                                            <td class="hidden-phone">lorem-ip@gmail.com</td>
                                             <td class="hidden-phone">33</td>
                                             <td class="center hidden-phone">05.04.2013</td>
                                             <td class="hidden-phone"><span class="label label-success">Approved</span></td>
@@ -382,36 +382,88 @@
     <!-- END JAVASCRIPTS -->
     <script>
         
-    (function ($) {
-        $.search = {
-            searchClick: function () {
-                alert('aa');
-                $.ajax({
-                    url: "/Financial/JournalSource/SearchJournalSource",
-                    data: { bplId: 1, BPLName: "asdf" },
-                    type: "post",
-                    dataType: "json",
-                    success: function (data) {
-                        if (data.state == "success") {
-                            alert(data);
-                        } else {
-                            alert(data);
-                        }
-                    }
-                });
-            },
-            init: function () {
-                $("#searchBtn").click(function () {
-                    $.search.searchClick();
-                });
-            }
-        };
-        $(function () {
-            alert('b');
-            $.search.init();
-        });
+        (function ($) {
+            var selectAllData;
+            $.search = {
 
-    })(jQuery);
+                allData: function () {
+
+                },
+                bindTable: function (data) {
+                    var tbody = $("#sample_1 tbody");
+                    tbody.find('tr').remove();
+                    var journalList = eval(data);
+                    var tr = "";
+                    journalList.forEach(function (journal) {
+                        tr += " <tr class='odd gradeX'><td><input type='checkbox' class='checkboxes' value='"+journal.TransId +"' /></td><td>" +
+                            journal.TransId + "</td><td class='hidden-phone'>" +
+                            journal.bplId + "</td><td class='hidden-phone'>" +
+                            journal.ERPOrderNum + "</td><td class='hidden-phone'>" +
+                            journal.SourceTable + "</td><td class='hidden-phone'>" +
+                            journal.WorkFlow + "</td>";
+                    });
+                    tbody.append(tr);
+                },
+                syncClick: function () {
+                    var syncData;
+                    var bischecked = $('#selectAllDataChk').is(':checked');
+                    if (bischecked) {
+                        syncData = selectAllData;
+                        //同步所有数据
+                        $.ajax({
+                            url: "/Financial/JournalSource/SyncAllData",
+                            data: { JournalRelationMaps: eval(syncData.replace("JournalSourceLines", "JournalRelationMapLines")) },
+                            //data: {'Number':3,'TransId':1,'TransType':0,'BPLId':1,'ERPOrderNum':'1','SourceTable':'purchase','WorkFlow':'1','RefDate':'2017-09-02T00:00:00','DueDate':'2017-09-02T00:00:00','TaxDate':'2017-09-02T00:00:00','CreateDate':'2017-09-02T00:00:00','JournalSourceLines':[{'TransId':1,'LineId':1,'AcctCode':'1001','ShorName':'1001','BPLId':1,'Credit':0.0,'Debit':0.0,'ExpenseType':'1','PayCode':'3','WhsCode':'BJSP','ERPCardCode':null,'ERPBaseCardCode':null,'ERPDocEntry':null,'ERPBaseNum':null,'CardCode':null,'CardName':null},{'TransId':1,'LineId':2,'AcctCode':'1002','ShorName':'1002','BPLId':1,'Credit':0.0,'Debit':0.0,'ExpenseType':'1','PayCode':'3','WhsCode':'BJSP','ERPCardCode':null,'ERPBaseCardCode':null,'ERPDocEntry':null,'ERPBaseNum':null,'CardCode':null,'CardName':null}]},
+                            type: "post",
+                            dataType: "json",
+                            success: function (data) {
+                                if (data.state == "success") {
+                                    alert("数据全部成功同步到中间表");
+
+                                } else {
+                                    alert(data.data);
+                                }
+                            }
+                        });
+                    } else {
+                        //syncData = 
+                    }
+
+                },
+                searchClick: function () {
+                    //获取查询条件
+
+
+                    $.ajax({
+                        url: "/Financial/JournalSource/SearchJournalSource",
+                        data: { bplId: 1, "BPLName": "asdf" },
+                        type: "post",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.state == "success") {
+                                selectAllData = data.data;
+                                $.search.bindTable(data.data);
+
+                            } else {
+                                alert(data);
+                            }
+                        }
+                    });
+                },
+                init: function () {
+                    $("#searchBtn").click(function () {
+                        $.search.searchClick();
+                    });
+                    $("#syncBtn").click(function () {
+                        $.search.syncClick();
+                    });
+                }
+            };
+            $(function () {
+                $.search.init();
+            });
+
+        })(jQuery);
     </script>
 </body>
 <!-- END BODY -->

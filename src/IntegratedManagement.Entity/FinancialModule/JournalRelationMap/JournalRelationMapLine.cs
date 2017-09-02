@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IntegratedManagement.Entity.FinancialModule.JournalRalationMap
+namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
 {
     /*===============================================================================================================================
 	*	Create by Fancy at 2017/8/29 18:01:00

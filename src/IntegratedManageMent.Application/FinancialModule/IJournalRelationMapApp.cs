@@ -1,5 +1,6 @@
-﻿using IntegratedManagement.Entity.FinancialModule.JournalRalationMap;
+﻿using IntegratedManagement.Entity.FinancialModule.JournalRelationMap;
 using IntegratedManagement.Entity.Param;
+using IntegratedManagement.Entity.Result;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace IntegratedManageMent.Application.FinancialModule
 	===============================================================================================================================*/
     public interface IJournalRelationMapApp
     {
-        Task<List<JournalRelationMap>> GetSalesOrderAsync(QueryParam QueryParam);
+        Task<List<JournalRelationMap>> GetJournalRelationMapListAsync(QueryParam QueryParam);
+
+        Task<SaveResult> SaveJournalRelationMapAsync(JournalRelationMap JournalRelationMap);
     }
 }

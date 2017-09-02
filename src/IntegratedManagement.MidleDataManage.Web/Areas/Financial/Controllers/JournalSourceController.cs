@@ -1,4 +1,6 @@
-﻿using IntegratedManagement.Entity.Param;
+﻿using IntegratedManagement.Entity.FinancialModule.JournalRelationMap;
+using IntegratedManagement.Entity.FinancialModule.JournalSource;
+using IntegratedManagement.Entity.Param;
 using IntegratedManageMent.Application.FinancialModule;
 using ReportFormManage.Code.Web;
 using System;
@@ -13,9 +15,11 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
     public class JournalSourceController : Controller
     {
         private readonly IJournalSourceApp _JournalSourceApp;
-        public JournalSourceController(IJournalSourceApp IJournalSourceApp)
+        private readonly IJournalRelationMapApp _JournalRelationMapApp;
+        public JournalSourceController(IJournalSourceApp IJournalSourceApp, IJournalRelationMapApp IJournalRelationMapApp)
         {
             this._JournalSourceApp = IJournalSourceApp;
+            this._JournalRelationMapApp = IJournalRelationMapApp;
         }
         // GET: Financial/JournalSource
         public ActionResult Index()
@@ -35,7 +39,7 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
 
                 QueryParam queryParam = new QueryParam();
                 queryParam.filter = "(CreateDate gt '20170101')";
-                queryParam.orderby = "order by TransId";
+                queryParam.orderby = "TransId";
                 var rt = await _JournalSourceApp.GetSalesOrderAsync(queryParam);
                 return Json(new { state = ResultType.success.ToString(), data = Newtonsoft.Json.JsonConvert.SerializeObject(rt) });
             }
@@ -45,6 +49,31 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
             }
         }
 
-       
+        
+
+        [HttpPost]
+        public async Task<ActionResult> SyncAllData(JournalRelationMapList journalRelationMapList)
+        {
+           
+            string errorData = "";
+            foreach (var item in journalRelationMapList.JournalRelationMaps)
+            {
+                try
+                {
+                    await _JournalRelationMapApp.SaveJournalRelationMapAsync(item);
+                }
+                catch (Exception ex)
+                {
+                    errorData = item.TransId + ",";
+                }
+
+            }
+            if (!string.IsNullOrEmpty(errorData))
+                return Json(new { state = ResultType.error.ToString(), message = "单据：" + errorData.TrimEnd(',') + "同步失败" });
+            else
+                return Json(new { state = ResultType.success.ToString() });
+
+        }
+
     }
 }

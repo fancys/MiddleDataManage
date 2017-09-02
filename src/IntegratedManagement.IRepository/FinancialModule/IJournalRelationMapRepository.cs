@@ -1,5 +1,6 @@
-﻿using IntegratedManagement.Entity.FinancialModule.JournalRalationMap;
+﻿using IntegratedManagement.Entity.FinancialModule.JournalRelationMap;
 using IntegratedManagement.Entity.Param;
+using IntegratedManagement.Entity.Result;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,6 @@ namespace IntegratedManagement.IRepository.FinancialModule
     {
         Task<List<JournalRelationMap>> GetJournalRelationMapList(QueryParam queryParam);
 
-        Task SaveJournalRelationMap(JournalRelationMap JournalSource);
+        Task<SaveResult> SaveJournalRelationMap(JournalRelationMap JournalSource);
     }
 }
