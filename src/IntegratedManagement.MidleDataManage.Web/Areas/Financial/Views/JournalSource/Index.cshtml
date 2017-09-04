@@ -20,6 +20,7 @@
     <link href="~/Content/metroadmin/css/style-default.css" rel="stylesheet" id="style_color" />
     <link href="~/Content/metroadmin/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="~/Content/metroadmin/assets/uniform/css/uniform.default.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/metroadmin/assets/chosen-bootstrap/chosen/chosen.css" />
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -34,21 +35,6 @@
                 <!-- BEGIN PAGE HEADER-->
                 <div class="row-fluid">
                     <div class="span12">
-                        <!-- BEGIN THEME CUSTOMIZER-->
-                        <div id="theme-change" class="hidden-phone">
-                            <i class="icon-cogs"></i>
-                            <span class="settings">
-                                <span class="text">Theme Color:</span>
-                                <span class="colors">
-                                    <span class="color-default" data-style="default"></span>
-                                    <span class="color-green" data-style="green"></span>
-                                    <span class="color-gray" data-style="gray"></span>
-                                    <span class="color-purple" data-style="purple"></span>
-                                    <span class="color-red" data-style="red"></span>
-                                </span>
-                            </span>
-                        </div>
-                        <!-- END THEME CUSTOMIZER-->
                         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                         <div class="widget">
                             <div class="widget-title">
@@ -91,9 +77,19 @@
 
                                         <div class="span4">
                                             <div class="control-group">
-                                                <label class="control-label">订单号3：</label>
+                                                <label class="control-label">分支：</label>
                                                 <div class="controls">
-                                                    <input type="text" class="span8" />
+                                                    <select data-placeholder="选择分支" class="chzn-select-deselect span8" tabindex="-1" id="selCSI">
+                                                        <option value="1"></option>
+                                                        <option value="2">American Black Bear American Black BearAmerican Black BearAmerican Black Bear</option>
+                                                        <option value="3">Asiatic Black Bear</option>
+                                                        <option value="4">Brown Bear</option>
+                                                        <option value="5">Giant Panda</option>
+                                                        <option value="6">Sloth Bear</option>
+                                                        <option value="7">Sun Bear</option>
+                                                        <option value="8">Polar Bear</option>
+                                                        <option value="9">Spectacled Bear</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="control-group">
@@ -112,6 +108,7 @@
                                                 <button class="btn btn-inverse" id="syncBtn" type="button" style="margin-right:5px"><i class="icon-refresh icon-white"></i> </button>
                                             </div>
                                         </div>
+                                     </div>
                                 </div>
 
                             </div>
@@ -132,215 +129,14 @@
                                     <thead>
                                         <tr>
                                             <th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>
-                                            <th class="hidden-phone">TransId</th>
-                                            <th class="hidden-phone">BPLId</th>
-                                            <th class="hidden-phone">ERPOrderNum</th>
-                                            <th class="hidden-phone">SourceTable</th>
-                                            <th class="hidden-phone">WorkFlow</th>
+                                            <th class="hidden-phone">交易号</th>
+                                            <th class="hidden-phone">分支</th>
+                                            <th class="hidden-phone">ERP订单号</th>
+                                            <th class="hidden-phone">来源表</th>
+                                            <th class="hidden-phone">工作流</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>Jhone doe</td>
-                                            <td class="hidden-phone"><a href="mailto:jhone-doe@gmail.com">jhone-doe@gmail.com</a></td>
-                                            <td class="hidden-phone">10</td>
-                                            <td class="center hidden-phone">02.03.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>gada</td>
-                                            <td class="hidden-phone"><a href="mailto:gada-lal@gmail.com">gada-lal@gmail.com</a></td>
-                                            <td class="hidden-phone">34</td>
-                                            <td class="center hidden-phone">08.03.2013</td>
-                                            <td class="hidden-phone"><span class="label label-warning">Suspended</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>soa bal</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@yahoo.com">soa bal@yahoo.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">1.12.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>ram sag</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">soa bal@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">7.2.2013</td>
-                                            <td class="hidden-phone"><span class="label label-inverse">Blocked</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>durlab</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">test@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">03.07.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>durlab</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">lorem-ip@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">05.04.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>sumon</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">lorem-ip@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">05.04.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>bombi</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">lorem-ip@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">05.04.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>ABC ho</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">lorem-ip@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">05.04.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>test</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">lorem-ip@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">05.04.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>soa bal</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">soa bal@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">03.07.2013</td>
-                                            <td class="hidden-phone"><span class="label label-inverse">Blocked</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>test</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">test@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">03.07.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>goop</td>
-                                            <td class="hidden-phone">lorem-ip@gmail.com</td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">05.04.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>sumon</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">lorem-ip@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">01.07.2013</td>
-                                            <td class="hidden-phone"><span class="label label-inverse">Blocked</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>woeri</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">lorem-ip@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">09.10.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>soa bal</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">soa bal@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">9.12.2013</td>
-                                            <td class="hidden-phone"><span class="label label-inverse">Blocked</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>woeri</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">test@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">14.12.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>uirer</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">lorem-ip@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">13.11.2013</td>
-                                            <td class="hidden-phone"><span class="label label-warning">Suspended</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>samsu</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">lorem-ip@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">17.11.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>dipsdf</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">lorem-ip@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">05.04.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>soa bal</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">soa bal@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">03.07.2013</td>
-                                            <td class="hidden-phone"><span class="label label-inverse">Blocked</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>hilor</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">test@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">03.07.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>test</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">lorem-ip@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">19.12.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>botu</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">lorem-ip@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">17.12.2013</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                                            <td>sumon</td>
-                                            <td class="hidden-phone"><a href="mailto:soa bal@gmail.com">lorem-ip@gmail.com</a></td>
-                                            <td class="hidden-phone">33</td>
-                                            <td class="center hidden-phone">15.11.2011</td>
-                                            <td class="hidden-phone"><span class="label label-success">Approved</span></td>
-                                        </tr>
-                                    </tbody>
+                                    <tbody></tbody>
                                 </table>
                             </div>
                         </div>
@@ -371,21 +167,25 @@
     <script src="js/respond.js"></script>
     <![endif]-->
     <script type="text/javascript" src="~/Content/metroadmin/assets/uniform/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="~/Content/metroadmin/assets/chosen-bootstrap/chosen/chosen.jquery.min.js"></script>
     <script type="text/javascript" src="~/Content/metroadmin/assets/data-tables/jquery.dataTables.js"></script>
     <script type="text/javascript" src="~/Content/metroadmin/assets/data-tables/DT_bootstrap.js"></script>
     <script src="~/Content/metroadmin/js/jquery.scrollTo.min.js"></script>
 
-    <!--common script for all pages-->
     <script src="~/Content/metroadmin/js/common-scripts.js"></script>
-    <!--script for this page only-->
     <script src="~/Content/metroadmin/js/dynamic-table.js"></script>
-    <!-- END JAVASCRIPTS -->
+    <script src="~/Content/metroadmin/js/form-component.js"></script>
+
     <script>
-        
         (function ($) {
             var selectAllData;
+            $("#searchBtn").click(function () {
+                $.search.searchClick();
+            });
+            $("#syncBtn").click(function () {
+                $.search.syncClick();
+            });
             $.search = {
-
                 allData: function () {
 
                 },
@@ -408,6 +208,10 @@
                     var syncData;
                     var bischecked = $('#selectAllDataChk').is(':checked');
                     if (bischecked) {
+                        if (selectAllData == undefined || selectAllData == null){
+                            alert("未选择数据");
+                            return;
+                        }
                         syncData = selectAllData;
                         //同步所有数据
                         $.ajax({
@@ -421,7 +225,7 @@
                                     alert("数据全部成功同步到中间表");
 
                                 } else {
-                                    alert(data.data);
+                                    alert(data.message);
                                 }
                             }
                         });
@@ -450,19 +254,8 @@
                         }
                     });
                 },
-                init: function () {
-                    $("#searchBtn").click(function () {
-                        $.search.searchClick();
-                    });
-                    $("#syncBtn").click(function () {
-                        $.search.syncClick();
-                    });
-                }
+                
             };
-            $(function () {
-                $.search.init();
-            });
-
         })(jQuery);
     </script>
 </body>

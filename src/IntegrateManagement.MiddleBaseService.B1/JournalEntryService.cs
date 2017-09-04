@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IntegratedManagement.Entity.FinancialModule.JournalRelationMap;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,9 @@ namespace IntegrateManagement.MiddleBaseService.B1
 	===============================================================================================================================*/
     public class JournalEntryService
     {
+        public static void CreateJournal(JournalRelationMap JournalRelationMap)
+        {
 
+        }
     }
 }
