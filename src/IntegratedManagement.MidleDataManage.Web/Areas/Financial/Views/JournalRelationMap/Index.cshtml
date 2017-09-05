@@ -182,30 +182,32 @@
                     });
                     tbody.append(tr);
                 },
-                createJournal: function(data){
+                createJournal: function(journalData){
                     $.ajax({
                         url: "/Financial/JournalRelationMap/CreateJournal",
-                        data: { JournalRelationMaps: eval(data) },
+                        data: { JournalRelationMaps: eval(journalData) },
                         type: "post",
                         dataType: "json",
                         success: function (data) {
                             if (data.state == "success") {
                                 alert("数据全部成功生成到财务系统");
+                                $.search.searchClick();
                             } else {
                                 alert(data.message);
                             }
                         }
                     });
                 },
-                selectAndCreateJournal: function (data) {
+                selectAndCreateJournal: function (idsData) {
                     $.ajax({
                         url: "/Financial/JournalRelationMap/SelectAndCreateJournal",
-                        data: { JournalRelationMaps: eval(data) },
+                        data: { IDs: idsData.toString() },
                         type: "post",
                         dataType: "json",
                         success: function (data) {
                             if (data.state == "success") {
                                 alert("数据全部成功生成到财务系统");
+                                $.search.searchClick();
                             } else {
                                 alert(data.message);
                             }
@@ -223,19 +225,16 @@
                         $.search.createJournal(selectAllData);
                     } else {
                         //获取勾选的数据
-                        var selectedChData;
+                        var selectedChData = '';
                         $(":checkbox:checked").each(function () {
-                            var tablerow = $(this).parent("td").parent("tr");
-                            var transId = tablerow.find("[name='p_transId']").val();
-                            var sd = tablerow.find("[name='p_transId']").parent().prev().val();
+                            var transId = $(this).val();
                             selectedChData += transId + ',';
                         });
                         if (selectedChData == undefined || selectedChData == null) {
                             alert("未选择数据");
                             return;
                         }
-                        $.search.selectAndCreateJournal(selectedChData.trimRight(","));
-                        alert(selectedChData);
+                        $.search.selectAndCreateJournal(selectedChData);
                     }
                 },
                 searchClick: function () {

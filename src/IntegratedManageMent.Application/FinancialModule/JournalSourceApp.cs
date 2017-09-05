@@ -20,7 +20,7 @@ namespace IntegratedManageMent.Application.FinancialModule
         {
             this._JournalSourceRepository = IJournalSourceRepository;
         }
-        public async Task<List<JournalSource>> GetSalesOrderAsync(QueryParam QueryParam)
+        public async Task<List<JournalSource>> GetJournalSourceAsync(QueryParam QueryParam)
         {
             return await _JournalSourceRepository.GetJournalSourceList(QueryParamHandle.ParamHanle(QueryParam));
         }

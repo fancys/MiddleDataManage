@@ -186,8 +186,39 @@
                 $.search.syncClick();
             });
             $.search = {
-                allData: function () {
-
+                syncAllData: function (allData) {
+                    $.ajax({
+                        url: "/Financial/JournalSource/SyncAllData",
+                        data: { JournalRelationMaps: eval(allData.replace("JournalSourceLines", "JournalRelationMapLines")) },
+                        //data: {'Number':3,'TransId':1,'TransType':0,'BPLId':1,'ERPOrderNum':'1','SourceTable':'purchase','WorkFlow':'1','RefDate':'2017-09-02T00:00:00','DueDate':'2017-09-02T00:00:00','TaxDate':'2017-09-02T00:00:00','CreateDate':'2017-09-02T00:00:00','JournalSourceLines':[{'TransId':1,'LineId':1,'AcctCode':'1001','ShorName':'1001','BPLId':1,'Credit':0.0,'Debit':0.0,'ExpenseType':'1','PayCode':'3','WhsCode':'BJSP','ERPCardCode':null,'ERPBaseCardCode':null,'ERPDocEntry':null,'ERPBaseNum':null,'CardCode':null,'CardName':null},{'TransId':1,'LineId':2,'AcctCode':'1002','ShorName':'1002','BPLId':1,'Credit':0.0,'Debit':0.0,'ExpenseType':'1','PayCode':'3','WhsCode':'BJSP','ERPCardCode':null,'ERPBaseCardCode':null,'ERPDocEntry':null,'ERPBaseNum':null,'CardCode':null,'CardName':null}]},
+                        type: "post",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.state == "success") {
+                                alert("数据全部成功同步到中间表");
+                            } else {
+                                alert(data.message);
+                            }
+                        }
+                    });
+                    $.search.searchClick();
+                },
+                syncSelectedData: function(selecedIDsData){
+                    $.ajax({
+                        url: "/Financial/JournalSource/SyncSelectedData",
+                        data: { IDs: selecedIDsData },
+                        //data: {'Number':3,'TransId':1,'TransType':0,'BPLId':1,'ERPOrderNum':'1','SourceTable':'purchase','WorkFlow':'1','RefDate':'2017-09-02T00:00:00','DueDate':'2017-09-02T00:00:00','TaxDate':'2017-09-02T00:00:00','CreateDate':'2017-09-02T00:00:00','JournalSourceLines':[{'TransId':1,'LineId':1,'AcctCode':'1001','ShorName':'1001','BPLId':1,'Credit':0.0,'Debit':0.0,'ExpenseType':'1','PayCode':'3','WhsCode':'BJSP','ERPCardCode':null,'ERPBaseCardCode':null,'ERPDocEntry':null,'ERPBaseNum':null,'CardCode':null,'CardName':null},{'TransId':1,'LineId':2,'AcctCode':'1002','ShorName':'1002','BPLId':1,'Credit':0.0,'Debit':0.0,'ExpenseType':'1','PayCode':'3','WhsCode':'BJSP','ERPCardCode':null,'ERPBaseCardCode':null,'ERPDocEntry':null,'ERPBaseNum':null,'CardCode':null,'CardName':null}]},
+                        type: "post",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.state == "success") {
+                                alert("数据全部成功同步到中间表");
+                            } else {
+                                alert(data.message);
+                            }
+                        }
+                    });
+                    $.search.searchClick();
                 },
                 bindTable: function (data) {
                     var tbody = $("#sample_1 tbody");
@@ -205,32 +236,26 @@
                     tbody.append(tr);
                 },
                 syncClick: function () {
-                    var syncData;
                     var bischecked = $('#selectAllDataChk').is(':checked');
                     if (bischecked) {
                         if (selectAllData == undefined || selectAllData == null){
                             alert("未选择数据");
                             return;
                         }
-                        syncData = selectAllData;
+                        $.search.syncAllData(selectAllData);
                         //同步所有数据
-                        $.ajax({
-                            url: "/Financial/JournalSource/SyncAllData",
-                            data: { JournalRelationMaps: eval(syncData.replace("JournalSourceLines", "JournalRelationMapLines")) },
-                            //data: {'Number':3,'TransId':1,'TransType':0,'BPLId':1,'ERPOrderNum':'1','SourceTable':'purchase','WorkFlow':'1','RefDate':'2017-09-02T00:00:00','DueDate':'2017-09-02T00:00:00','TaxDate':'2017-09-02T00:00:00','CreateDate':'2017-09-02T00:00:00','JournalSourceLines':[{'TransId':1,'LineId':1,'AcctCode':'1001','ShorName':'1001','BPLId':1,'Credit':0.0,'Debit':0.0,'ExpenseType':'1','PayCode':'3','WhsCode':'BJSP','ERPCardCode':null,'ERPBaseCardCode':null,'ERPDocEntry':null,'ERPBaseNum':null,'CardCode':null,'CardName':null},{'TransId':1,'LineId':2,'AcctCode':'1002','ShorName':'1002','BPLId':1,'Credit':0.0,'Debit':0.0,'ExpenseType':'1','PayCode':'3','WhsCode':'BJSP','ERPCardCode':null,'ERPBaseCardCode':null,'ERPDocEntry':null,'ERPBaseNum':null,'CardCode':null,'CardName':null}]},
-                            type: "post",
-                            dataType: "json",
-                            success: function (data) {
-                                if (data.state == "success") {
-                                    alert("数据全部成功同步到中间表");
-
-                                } else {
-                                    alert(data.message);
-                                }
-                            }
-                        });
+                        
                     } else {
-                        //syncData = 
+                        var selectedChData = '';
+                        $(":checkbox:checked").each(function () {
+                            var transId = $(this).val();
+                            selectedChData += transId + ',';
+                        });
+                        if (selectedChData == undefined || selectedChData == null) {
+                            alert("未选择数据");
+                            return;
+                        }
+                        $.search.selectAndCreateJournal(selectedChData.toString());
                     }
 
                 },

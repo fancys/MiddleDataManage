@@ -70,7 +70,7 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
             if(string.IsNullOrEmpty(IDs))
                 return Json(new { state = ResultType.error.ToString(), message = "选择的数据为空" });
             QueryParam queryParam = new QueryParam();
-            queryParam.filter = string.Format("TransId in {0}", IDs);
+            queryParam.filter = string.Format("TransId in {0}", IDs.TrimEnd(','));
             queryParam.orderby = "TransId";
             var rt = await _journalRelationMapApp.GetJournalRelationMapListAsync(queryParam);
             foreach (var item in rt)

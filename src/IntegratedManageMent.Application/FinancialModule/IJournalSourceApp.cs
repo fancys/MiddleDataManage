@@ -13,6 +13,6 @@ namespace IntegratedManageMent.Application.FinancialModule
 	===============================================================================================================================*/
     public interface IJournalSourceApp
     {
-        Task<List<JournalSource>> GetSalesOrderAsync(QueryParam QueryParam);
+        Task<List<JournalSource>> GetJournalSourceAsync(QueryParam QueryParam);
     }
 }

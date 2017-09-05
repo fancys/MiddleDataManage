@@ -38,7 +38,7 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
         /// <summary>
         /// ERP订单号
         /// </summary>
-        public int ERPOrderNum { get; set; }
+        public string ERPOrderNum { get; set; }
 
         /// <summary>
         /// 订单来源
