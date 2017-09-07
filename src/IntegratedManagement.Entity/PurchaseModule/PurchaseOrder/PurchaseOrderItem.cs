@@ -17,16 +17,13 @@ namespace IntegratedManagement.Entity.PurchaseModule.PurchaseOrder
         public int DocEntry { get; set; }
         [JsonIgnore]
         public int LineNum { get; set; }
-        [Required]
-        public int OMSDocEntry { get; set; }
-        [Required]
-        public int OMSLineNum { get; set; }
-        [Required]
+       
         public string ItemCode { get; set; }
-        [Required]
+        
+        public string Dscription { get; set; }
         public decimal Quantity { get; set; }
         [Required]
-        public decimal Price { get; set; }
+        public string WhsCode { get; set; }
         
     }
 }

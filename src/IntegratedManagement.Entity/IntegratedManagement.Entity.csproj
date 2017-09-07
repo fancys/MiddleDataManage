@@ -76,6 +76,8 @@
     <Compile Include="PaymentReceivedModule\Refund\Refund.cs" />
     <Compile Include="PaymentReceivedModule\Refund\RefundItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseModule\PurchaseDelivery\PurchaseDelivery.cs" />
+    <Compile Include="PurchaseModule\PurchaseDelivery\PurchaseDeliveryItem.cs" />
     <Compile Include="PurchaseModule\PurchaseOrder\PurchaseOrderItem.cs" />
     <Compile Include="PurchaseModule\PurchaseOrder\PurchaseOrder.cs" />
     <Compile Include="PurchaseModule\PurchaseReturn\PurchaseReturn.cs" />

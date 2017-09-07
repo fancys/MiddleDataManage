@@ -66,7 +66,7 @@ namespace IntegratedManagement.MiddleBaseAPI.Controllers.PurchaseModule
                     {
                         result.Code = 10002;
                         result.Message = "数据校验未通过";
-                        result.ResultObject.Add(new SaveResult() { Code = 10002, UniqueKey = item.OMSDocEntry.ToString(), Message = validationResult.Errors.ForEachToString() });
+                        result.ResultObject.Add(new SaveResult() { Code = 10002, Message = validationResult.Errors.ForEachToString() });
                         continue;
                     }
                     
@@ -86,7 +86,7 @@ namespace IntegratedManagement.MiddleBaseAPI.Controllers.PurchaseModule
                     {
                         result.Code = 11002;
                         result.Message = "failed operation.";
-                        result.ResultObject.Add(new SaveResult() { Code = 11002, UniqueKey = item.OMSDocEntry.ToString(), Message = ex.Message });
+                        result.ResultObject.Add(new SaveResult() { Code = 11002, Message = ex.Message });
                     }
                 }
             }

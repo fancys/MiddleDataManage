@@ -17,10 +17,10 @@ namespace IntegratedManagement.Entity.PurchaseModule.PurchaseReturn
         [JsonIgnore]
         public int LineNum { get; set; }
 
-        public int OMSDocEntry { get; set; }
-        public int OMSLineNum { get; set; }
         public string ItemCode { get; set; }
+
+        public string Dscription { get; set; }
         public decimal Quantity { get; set; }
-        public decimal Price { get; set; }
+        public string WhsCode { get; set; }
     }
 }

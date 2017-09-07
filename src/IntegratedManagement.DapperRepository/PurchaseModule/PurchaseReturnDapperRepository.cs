@@ -55,49 +55,9 @@ namespace IntegratedManagement.RepositoryDapper.PurchaseModule
         public async Task<SaveResult> Save(PurchaseReturn PurchaseReturn)
         {
             SaveResult saveRlt = new SaveResult();
-            saveRlt.UniqueKey = PurchaseReturn.OMSDocEntry.ToString();//回传接收方的主键
-            using (IDbConnection conn = SqlConnectionFactory.CreateSqlConnection())
-            {
-                conn.Open();
-                IDbTransaction dbTransaction = conn.BeginTransaction();
-                try
-                {
-                    string insertSql = @"insert into T_PurchaseReturn(OMSDocEntry,OMSDocDate,BusinessType,CardCode,Comments,CreateDate,DocType,BatchNum) 
-                                    values(@OMSDocEntry,@OMSDocDate,@BusinessType,@CardCode,@Comments,@CreateDate,@DocType,@BatchNum)select SCOPE_IDENTITY();";
-                    string insertItemSql = @"insert into T_PurchaseReturnItem(DocEntry,LineNum,OMSDocEntry,OMSLineNum,ItemCode,Quantity,Price) 
-                                               values(@DocEntry,@LineNum,@OMSDocEntry,@OMSLineNum,@ItemCode,@Quantity,@Price)";
-
-                    object DocEntry = await conn.ExecuteScalarAsync(insertSql,
-                        new
-                        {
-                            OMSDocEntry = PurchaseReturn.OMSDocEntry,
-                            OMSDocDate = PurchaseReturn.OMSDocDate,
-                            BusinessType = PurchaseReturn.BusinessType,
-                            Comments = PurchaseReturn.Comments,
-                            CardCode = PurchaseReturn.CardCode,
-                            CreateDate = DateTime.Now,
-                            DocType = PurchaseReturn.DocType,
-                            BatchNum = PurchaseReturn.BatchNum
-                        }, dbTransaction);
-                    saveRlt.ReturnUniqueKey = DocEntry.ToString();//回传保存订单的主键
-                    //保存行集合
-                    conn.Execute(insertItemSql, DocumentItemHandle<PurchaseReturnItem>.GetDocumentItems(PurchaseReturn.PurchaseReturnItems, Convert.ToInt32(DocEntry)), dbTransaction);
-                    dbTransaction.Commit();
-                    saveRlt.Code = 0;
-                }
-                catch (Exception ex)
-                {
-                    dbTransaction.Rollback();
-                    saveRlt.Code = 1;
-                    saveRlt.Message = ex.Message;
-                    throw ex;
-                }
-                finally
-                {
-                    conn.Close();
-                }
+           
                 return saveRlt;
-            }
+            
         }
 
         public async Task<bool> UpdateSyncData(DocumentSync documentSyncResult)

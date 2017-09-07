@@ -18,15 +18,11 @@ namespace IntegratedManagement.Entity.PurchaseModule.PurchaseReturn
         }
         [JsonIgnore]
         public int DocEntry { get; set; }
-        
-        public int OMSDocEntry { get; set; }
-        public DateTime OMSDocDate { get; set; }
-        public string DocType { get; set; }
-        public string BusinessType { get; set; }
-        public string CardCode { get; set;}
-        public string Comments { get; set; }
 
-        public string BatchNum { get; set; }
+        public string DocStatus { get; set; }
+        public string CardCode { get; set; }
+        public string CardName { get; set; }
+        public DateTime DocDate { get; set; }
         public List<PurchaseReturnItem> PurchaseReturnItems { get; set; }
 
     }

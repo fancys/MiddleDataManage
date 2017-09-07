@@ -19,18 +19,11 @@ namespace IntegratedManagement.Entity.PurchaseModule.PurchaseOrder
         }
         [JsonIgnore]
         public int DocEntry { get; set; }
-        [Required]
-        public int OMSDocEntry { get; set; }
-        [Required]
-        public DateTime OMSDocDate { get; set; }
-        public string Comments { get; set; }
-        [Required]
-        public string BusinessType { get; set; }
-        [Required]
+        
+        public string DocStatus { get; set; }
         public string CardCode { get; set; }
-        [Required]
-        public string DocType { get; set; }
-        public string BatchNum { get; set; }
+        public string CardName { get; set; }
+        public DateTime DocDate { get; set; }
 
         [Required]
         public List<PurchaseOrderItem> PurchaseOrderItems { get; set; }
