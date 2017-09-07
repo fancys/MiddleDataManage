@@ -68,6 +68,7 @@
     <Compile Include="InventoryModule\MaterialDapperRepository.cs" />
     <Compile Include="PaymentReceivedModule\RefundDapperRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseModule\PurchaseDeliveryDapperRepository.cs" />
     <Compile Include="PurchaseModule\PurchaseOrderDapperRepository.cs" />
     <Compile Include="PurchaseModule\PurchaseReturnDapperRepository.cs" />
     <Compile Include="SalesModule\InvoicesReturnDapperRepository.cs" />

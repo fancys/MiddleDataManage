@@ -65,8 +65,10 @@
     <Compile Include="PaymentReceivedModule\IRefundApp.cs" />
     <Compile Include="PaymentReceivedModule\RefundApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseModule\IPurchaseDeliveryApp.cs" />
     <Compile Include="PurchaseModule\IPurchaseOrderApp.cs" />
     <Compile Include="PurchaseModule\IPurchaseReturnApp.cs" />
+    <Compile Include="PurchaseModule\PurchaseDeliveryApp.cs" />
     <Compile Include="PurchaseModule\PurchaseOrderApp.cs" />
     <Compile Include="PurchaseModule\PurchaseReturnApp.cs" />
     <Compile Include="SalesModule\IInvoicesReturnApp.cs" />

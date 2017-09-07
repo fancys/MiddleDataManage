@@ -52,6 +52,7 @@
     <Compile Include="IRepositoryBase\IRepositoryBase.cs" />
     <Compile Include="PaymentReceivedModule\IRefundRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseModule\IPurchaseDeliveryRepository.cs" />
     <Compile Include="PurchaseModule\IPurchaseOrderRepository.cs" />
     <Compile Include="PurchaseModule\IPurchaseReturnRepository.cs" />
     <Compile Include="SalesModule\IInvoicesReturnRepository.cs" />
