@@ -8,6 +8,7 @@ using IntegratedManagement.Entity.Document;
 using IntegratedManagement.Entity.Param;
 using IntegratedManagement.Entity.PurchaseModule.PurchaseDelivery;
 using IntegratedManagement.Entity.Result;
+using IntegratedManagement.RepositoryDapper.BaseRepository;
 
 namespace IntegratedManagement.RepositoryDapper.PurchaseModule
 {
@@ -16,22 +17,62 @@ namespace IntegratedManagement.RepositoryDapper.PurchaseModule
 	===============================================================================================================================*/
     public class PurchaseDeliveryDapperRepository : IPurchaseDeliveryRepository
     {
-        public Task<PurchaseDelivery> GetPurchaseOrder(int DocEntry)
+        public async Task<PurchaseDelivery> GetPurchaseDelivery(int DocEntry)
+        {
+            List<PurchaseDelivery> collection = null;
+            using (var conn = SqlConnectionFactory.CreateSqlConnection())
+            {
+                conn.Open();
+
+                string sql = $"SELECT  * FROM AVA_SP_VIEW_PURCHASE_OPOR t0 left JOIN AVA_SP_VIEW_PURCHASE_OPORLINE t1 on t0.DocEntry = t1.DocEntry where t0.DocEntry = {DocEntry} ";
+                try
+                {
+                    var coll = await conn.QueryParentChildAsync<PurchaseDelivery, PurchaseDeliveryItem, int>(sql, p => p.DocEntry, p => p.PurchaseDeliveryItems, splitOn: "DocEntry");
+                    collection = coll.ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return collection.FirstOrDefault();
+            }
+        }
+
+        public async Task<List<PurchaseDelivery>> GetPurchaseDeliveryList(QueryParam Param)
+        {
+            List<PurchaseDelivery> collection = null;
+            using (var conn = SqlConnectionFactory.CreateSqlConnection())
+            {
+                conn.Open();
+
+                string sql = $"SELECT  top {Param.limit} {Param.select} FROM AVA_SP_VIEW_PURCHASE_OPOR t0 left JOIN AVA_SP_VIEW_PURCHASE_OPORLINE t1 on t0.DocEntry = t1.DocEntry {Param.filter + " " + Param.orderby} ";
+                try
+                {
+                    var coll = await conn.QueryParentChildAsync<PurchaseDelivery, PurchaseDeliveryItem, int>(sql, p => p.DocEntry, p => p.PurchaseDeliveryItems, splitOn: "DocEntry");
+                    collection = coll.ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return collection;
+            }
+        }
+
+        public async Task<SaveResult> Save(PurchaseDelivery PurchaseOrder)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<PurchaseDelivery>> GetPurchaseOrder(QueryParam queryParam)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<SaveResult> Save(PurchaseDelivery PurchaseOrder)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> UpdateSyncData(DocumentSync documentSyncResult)
+        public async Task<bool> UpdateSyncData(DocumentSync documentSyncResult)
         {
             throw new NotImplementedException();
         }

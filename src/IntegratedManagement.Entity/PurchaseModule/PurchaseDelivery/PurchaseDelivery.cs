@@ -17,6 +17,7 @@ namespace IntegratedManagement.Entity.PurchaseModule.PurchaseDelivery
             this.PurchaseDeliveryItems = new List<PurchaseDeliveryItem>();
         }
         
+        public int DocEntry { get; set; }
         public int ERPDocEntry { get; set; }
 
         public string CardCode { get; set; }

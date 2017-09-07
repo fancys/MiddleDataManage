@@ -15,8 +15,8 @@ namespace IntegratedManagement.IRepository.PurchaseModule
 	===============================================================================================================================*/
     public interface IPurchaseDeliveryRepository
     {
-        Task<List<PurchaseDelivery>> GetPurchaseOrder(QueryParam queryParam);
-        Task<PurchaseDelivery> GetPurchaseOrder(int DocEntry);
+        Task<List<PurchaseDelivery>> GetPurchaseDeliveryList (QueryParam queryParam);
+        Task<PurchaseDelivery> GetPurchaseDelivery(int DocEntry);
 
         Task<SaveResult> Save(PurchaseDelivery PurchaseOrder);
 

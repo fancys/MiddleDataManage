@@ -1,4 +1,7 @@
-﻿using System;
+﻿using IntegratedManagement.Entity.Param;
+using IntegratedManagement.Entity.PurchaseModule.PurchaseDelivery;
+using IntegratedManagement.Entity.Result;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +14,10 @@ namespace IntegratedManageMent.Application.PurchaseModule
 	===============================================================================================================================*/
     public interface IPurchaseDeliveryApp
     {
+        Task<List<PurchaseDelivery>> GetPurchaseDeliveryListAsync(QueryParam queryParam);
+
+        Task<PurchaseDelivery> GetPurchaseDeliveryAsync(int DocEntry);
+
+
     }
 }
