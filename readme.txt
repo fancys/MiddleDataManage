@@ -1,2 +1,5 @@
-ASP.Net MVC 5.0 + ASP.Net API 2.0 + MetroAdmin 实现
+UI: Asp.net MVC 5.0 + MetroAdmin
+Service: Asp.net API2.0 + Auth2.0
+TaskManage: quartz
+
 
