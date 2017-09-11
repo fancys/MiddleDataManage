@@ -1,4 +1,5 @@
 ﻿using IntegratedManagement.Core.ParamHandle;
+using IntegratedManagement.Entity.Document;
 using IntegratedManagement.Entity.FinancialModule.JournalRelationMap;
 using IntegratedManagement.Entity.Param;
 using IntegratedManagement.Entity.Result;
@@ -31,9 +32,19 @@ namespace IntegratedManageMent.Application.FinancialModule
            return  await _JournalRelationMapRepository.SaveJournalRelationMap(JournalRelationMap);
         }
 
-        public Task<bool> UpdateJournalRelationMapStatuAsync()
+        public async Task<bool> UpdateJournalRelationMapMinusStatuAsync(DocumentSync SyncData)
         {
-            throw new NotImplementedException();
+            return await _JournalRelationMapRepository.ModifyJournalRelationMapMinus(SyncData);
+        }
+
+        public async Task<bool> UpdateJournalRelationMapPositiveStatuAsync(DocumentSync SyncData)
+        {
+            return await _JournalRelationMapRepository.ModifyJournalRelationMapPositive(SyncData);
+        }
+
+        public async Task<bool> UpdateJournalRelationMapStatuAsync(DocumentSync SyncData)
+        {
+            return await _JournalRelationMapRepository.ModifyJournalRelationMapStatus(SyncData);
         }
     }
 }

@@ -48,7 +48,7 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateJournal(JournalRelationMapList journalRelationMapList)
+        public async Task<ActionResult> CreateJournal(JournalRelationMapList journalRelationMapList)
         {
             if(journalRelationMapList == null)
                 return Json(new { state = ResultType.error.ToString(), message = "未选择需要同步的数据" });
@@ -56,7 +56,7 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
             {
                 try
                 {
-                    //生成分录条件
+                    #region 生成分录条件
                     //1 需要拆分且拆分标识字段为N的
                     if(item.IsApart == "Y")
                     {
@@ -64,23 +64,33 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                         {
                             //拆分正数单据
                             var rt = JournalEntryService.ApartPositiveJournal(item);
+                            await _journalRelationMapApp.UpdateJournalRelationMapPositiveStatuAsync(rt);
                         }
                         if(item.IsMinusSync == "N")
                         {
                             //拆分负数单据
                             var rt = JournalEntryService.ApartMinusJournal(item);
+                            await _journalRelationMapApp.UpdateJournalRelationMapMinusStatuAsync(rt);
                         }
                     }
                     //2 不需要拆分且生成标识字段为N的
                     else if (item.IsApart == "N" && item.IsSync == "N")
                     {
                         var rt = JournalEntryService.CreateJournal(item);
+                        await _journalRelationMapApp.UpdateJournalRelationMapStatuAsync(rt);
                     }
-                    
+                    #endregion
+
                 }
                 catch(Exception ex)
                 {
-
+                    await _journalRelationMapApp.UpdateJournalRelationMapStatuAsync(
+                        new Entity.Document.DocumentSync()
+                        {
+                            DocEntry = item.DocEntry.ToString(),
+                            SyncResult = "N",
+                            SyncMsg = ex.Message
+                        });
                 }
             }
             return Json(new { state = ResultType.success.ToString(), message = "" });

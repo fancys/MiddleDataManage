@@ -1,4 +1,5 @@
-﻿using IntegratedManagement.Entity.FinancialModule.JournalRelationMap;
+﻿using IntegratedManagement.Entity.Document;
+using IntegratedManagement.Entity.FinancialModule.JournalRelationMap;
 using IntegratedManagement.Entity.Param;
 using IntegratedManagement.Entity.Result;
 using System;
@@ -18,6 +19,8 @@ namespace IntegratedManageMent.Application.FinancialModule
 
         Task<SaveResult> SaveJournalRelationMapAsync(JournalRelationMap JournalRelationMap);
 
-        Task<bool> UpdateJournalRelationMapStatuAsync();
+        Task<bool> UpdateJournalRelationMapPositiveStatuAsync(DocumentSync SyncData);
+        Task<bool> UpdateJournalRelationMapMinusStatuAsync(DocumentSync SyncData);
+        Task<bool> UpdateJournalRelationMapStatuAsync(DocumentSync SyncData);
     }
 }
