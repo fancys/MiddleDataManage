@@ -74,6 +74,38 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
         public string IsSyncToCW { get; set; }
 
        
+        /// <summary>
+        /// 不需要拆分的分录是否生成成功
+        /// </summary>
+        public string IsSync { get; set; }
+
+        public DateTime SyncDate { get; set; }
+
+        public int NewTransId { get; set; }
+
+        public string SyncMessage { get; set; }
+
+        /// <summary>
+        /// 需要拆分负数单据是否生成成功
+        /// </summary>
+        public string IsMinusSync { get; set; }
+
+        public DateTime MinusSyncDate { get; set; }
+
+        public int NewMinusTransId { get; set; }
+
+        public string MinusSyncMessage { get; set; }
+
+        /// <summary>
+        /// 需要拆分的正数单据是否生成成功
+        /// </summary>
+        public string IsPositiveSync { get; set; }
+
+        public DateTime PositiveSyncDate { get; set; }
+
+        public int NewPositiveTransId { get; set; }
+        public string PositiveSyncMessage { get; set; }
+
 
         public List<JournalRelationMapLine> JournalRelationMapLines { get; set; }
 

@@ -55,7 +55,9 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
             {
                 try
                 {
-
+                    //生成分录条件
+                    //1 需要拆分且拆分标识字段为N的
+                    //2 不需要拆分且生成标识字段为N的
                 }
                 catch(Exception ex)
                 {
