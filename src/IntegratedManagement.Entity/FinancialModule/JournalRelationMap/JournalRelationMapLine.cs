@@ -17,6 +17,9 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
         /// </summary>
         public int TransId { get; set; }
 
+        /// <summary>
+        /// 交易行号
+        /// </summary>
         public int LineId { get; set; }
 
         public string AcctCode { get; set; }
@@ -35,6 +38,18 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
         /// 借
         /// </summary>
         public decimal Debit { get; set; }
+
+
+
+        /// <summary>
+        /// 现金流
+        /// </summary>
+        public int CashCode { get; set; }
+
+        public string OrcCode { get; set; }
+
+        public string OrcCode2 { get; set; }
+        public string OrcCode3 { get; set; }
 
         /// <summary>
         /// 报销明细类型
@@ -57,14 +72,11 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
         /// ERP原单据客户编码
         /// </summary>
         public string ERPBaseCardCode { get; set; }
+        
         /// <summary>
-        /// ERP单据号
+        /// 行备注
         /// </summary>
-        public string ERPDocEntry { get; set; }
-        /// <summary>
-        /// ERP原单据行号
-        /// </summary>
-        public string ERPBaseNum { get; set; }
+        public string LineMemo { get; set; }
         /// <summary>
         /// 贸易伙伴代码
         /// </summary>

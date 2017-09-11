@@ -36,6 +36,33 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
         public decimal Debit { get; set; }
 
         /// <summary>
+        /// 现金流
+        /// </summary>
+        public int CashCode { get; set; }
+
+        public string OrcCode { get; set; }
+
+        public string OrcCode2 { get; set; }
+
+        public string OrcCode3 { get; set; }
+
+        /// <summary>
+        /// 行备注
+        /// </summary>
+        public string LineMemo { get; set; }
+        /// <summary>
+        /// 贸易伙伴代码
+        /// </summary>
+        public string CardCode { get; set; }
+        /// <summary>
+        /// 贸易伙伴名称
+        /// </summary>
+        public string CardName { get; set; }
+
+
+
+
+        /// <summary>
         /// 报销明细类型
         /// </summary>
         public string ExpenseType { get; set; }
@@ -56,21 +83,9 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
         /// ERP原单据客户编码
         /// </summary>
         public string ERPBaseCardCode { get; set; }
-        /// <summary>
-        /// ERP单据号
-        /// </summary>
-        public string ERPDocEntry { get; set; }
-        /// <summary>
-        /// ERP原单据行号
-        /// </summary>
-        public string ERPBaseNum { get; set; }
-        /// <summary>
-        /// 贸易伙伴代码
-        /// </summary>
-        public string CardCode { get; set; }
-        /// <summary>
-        /// 贸易伙伴名称
-        /// </summary>
-        public string CardName { get; set; }
+      
+
+
+
     }
 }

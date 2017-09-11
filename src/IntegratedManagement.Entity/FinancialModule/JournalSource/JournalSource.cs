@@ -65,6 +65,21 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
         /// </summary>
         public DateTime CreateDate { get; set; }
 
+        /// <summary>
+        /// 是否拆分单据
+        /// </summary>
+        public string IsApart { get; set; }
+
+        /// <summary>
+        /// 是否同步至财务系统
+        /// </summary>
+        public string IsSyncToCW { get; set; }
+
+        /// <summary>
+        /// 创建人
+        /// </summary>
+        public string Creator { get; set; }
+
         public List<JournalSourceLine> JournalSourceLines { get; set; }
     }
 }

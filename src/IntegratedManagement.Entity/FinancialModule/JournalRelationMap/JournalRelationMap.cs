@@ -63,6 +63,18 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
         /// </summary>
         public DateTime TaxDate { get; set; }
 
+        /// <summary>
+        /// 是否拆分单据
+        /// </summary>
+        public string IsApart { get; set; }
+
+        /// <summary>
+        /// 是否同步至财务系统
+        /// </summary>
+        public string IsSyncToCW { get; set; }
+
+       
+
         public List<JournalRelationMapLine> JournalRelationMapLines { get; set; }
 
 

@@ -59,9 +59,9 @@ namespace IntegratedManagement.RepositoryDapper.FinancialModule
                                             VALUES
                                             (@Number,@TransId,@BPLId,@ERPOrderNum,@SourceTable,@WorkFlow,@RefDate,@DueDate,@TaxDate,@CreateDate)select SCOPE_IDENTITY();";
                     string insertItemSql = @"INSERT INTO T_JournalRelationMapItem
-                                            (DocEntry,LineNum,TransId,LineId,BPLId,AcctCode,ShorName,ExpenseType,PayCode,WhsCode,ERPCardCode,ERPBaseCardCode,ERPDocEntry,ERPBaseNum,CardCode,CardName,Credit,Debit)
+                                            (DocEntry,LineNum,TransId,LineId,BPLId,AcctCode,ShorName,ExpenseType,PayCode,WhsCode,ERPCardCode,ERPBaseCardCode,LineMemo,CardCode,CardName,Credit,Debit)
                                             VALUES
-                                            (@DocEntry,@LineNum,@TransId,@LineId,@BPLId,@AcctCode,@ShorName,@ExpenseType,@PayCode,@WhsCode,@ERPCardCode,@ERPBaseCardCode,@ERPDocEntry,@ERPBaseNum,@CardCode,@CardName,@Credit,@Debit)";
+                                            (@DocEntry,@LineNum,@TransId,@LineId,@BPLId,@AcctCode,@ShorName,@ExpenseType,@PayCode,@WhsCode,@ERPCardCode,@ERPBaseCardCode,,@LineMemo,@CardCode,@CardName,@Credit,@Debit)";
 
                     object DocEntry = await conn.ExecuteScalarAsync(insertSql,
                         new
