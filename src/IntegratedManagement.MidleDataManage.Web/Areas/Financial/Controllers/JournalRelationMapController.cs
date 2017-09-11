@@ -1,6 +1,7 @@
 ﻿using IntegratedManagement.Entity.FinancialModule.JournalRelationMap;
 using IntegratedManagement.Entity.Param;
 using IntegratedManageMent.Application.FinancialModule;
+using IntegrateManagement.MiddleBaseService.B1;
 using ReportFormManage.Code.Web;
 using System;
 using System.Collections.Generic;
@@ -57,7 +58,25 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                 {
                     //生成分录条件
                     //1 需要拆分且拆分标识字段为N的
+                    if(item.IsApart == "Y")
+                    {
+                        if(item.IsPositiveSync == "N")
+                        {
+                            //拆分正数单据
+                            var rt = JournalEntryService.ApartPositiveJournal(item);
+                        }
+                        if(item.IsMinusSync == "N")
+                        {
+                            //拆分负数单据
+                            var rt = JournalEntryService.ApartMinusJournal(item);
+                        }
+                    }
                     //2 不需要拆分且生成标识字段为N的
+                    else if (item.IsApart == "N" && item.IsSync == "N")
+                    {
+                        var rt = JournalEntryService.CreateJournal(item);
+                    }
+                    
                 }
                 catch(Exception ex)
                 {

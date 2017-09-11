@@ -69,7 +69,7 @@ namespace IntegrateManagement.MiddleBaseService.B1
         /// </summary>
         /// <param name="JournalRelationMap"></param>
         /// <returns></returns>
-        private static SaveResult ApartMinusJournal(JournalRelationMap JournalRelationMap)
+        public static SaveResult ApartMinusJournal(JournalRelationMap JournalRelationMap)
         {
             SaveResult rt = new SaveResult();
             rt.UniqueKey = JournalRelationMap.DocEntry.ToString();
@@ -126,7 +126,7 @@ namespace IntegrateManagement.MiddleBaseService.B1
         /// </summary>
         /// <param name="JournalRelationMap"></param>
         /// <returns></returns>
-        private static SaveResult ApartPositiveJournal(JournalRelationMap JournalRelationMap)
+        public static SaveResult ApartPositiveJournal(JournalRelationMap JournalRelationMap)
         {
             SaveResult rt = new SaveResult();
             rt.UniqueKey = JournalRelationMap.DocEntry.ToString();

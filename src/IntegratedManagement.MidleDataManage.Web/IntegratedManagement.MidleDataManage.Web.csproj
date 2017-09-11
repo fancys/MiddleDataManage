@@ -719,6 +719,10 @@
       <Project>{ee519714-39d3-487e-897e-c485acc46b5a}</Project>
       <Name>IntegratedManagement.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IntegrateManagement.MiddleBaseService.B1\IntegrateManagement.MiddleBaseService.B1.csproj">
+      <Project>{B1AE8922-2508-4585-BB5E-2C425FAF4F8D}</Project>
+      <Name>IntegrateManagement.MiddleBaseService.B1</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

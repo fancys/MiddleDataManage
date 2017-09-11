@@ -38,7 +38,7 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                 //if(param.MinCreateDate)
 
                 QueryParam queryParam = new QueryParam();
-                queryParam.filter = "(CreateDate gt '20170101')";
+                queryParam.filter = "(IsSyncToCW eq 'Y')";
                 queryParam.orderby = "TransId";
                 var rt = await _JournalSourceApp.GetJournalSourceAsync(queryParam);
                 return Json(new { state = ResultType.success.ToString(), data = Newtonsoft.Json.JsonConvert.SerializeObject(rt) });
