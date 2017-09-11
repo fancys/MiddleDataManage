@@ -17,5 +17,7 @@ namespace IntegratedManageMent.Application.FinancialModule
         Task<List<JournalRelationMap>> GetJournalRelationMapListAsync(QueryParam QueryParam);
 
         Task<SaveResult> SaveJournalRelationMapAsync(JournalRelationMap JournalRelationMap);
+
+        Task<bool> UpdateJournalRelationMapStatuAsync();
     }
 }

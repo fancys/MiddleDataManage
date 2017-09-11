@@ -1,4 +1,5 @@
-﻿using IntegratedManagement.Entity.FinancialModule.JournalRelationMap;
+﻿using IntegratedManagement.Entity.Document;
+using IntegratedManagement.Entity.FinancialModule.JournalRelationMap;
 using IntegratedManagement.Entity.Param;
 using IntegratedManagement.Entity.Result;
 using System;
@@ -17,5 +18,12 @@ namespace IntegratedManagement.IRepository.FinancialModule
         Task<List<JournalRelationMap>> GetJournalRelationMapList(QueryParam queryParam);
 
         Task<SaveResult> SaveJournalRelationMap(JournalRelationMap JournalSource);
+
+        Task<bool> ModifyJournalRelationMapMinus(DocumentSync documentSyncData);
+
+        Task<bool> ModifyJournalRelationMapPositive(DocumentSync documentSyncData);
+
+        Task<bool> ModifyJournalRelationMapStatus(DocumentSync documentSyncData);
+
     }
 }

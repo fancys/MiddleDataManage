@@ -30,5 +30,10 @@ namespace IntegratedManageMent.Application.FinancialModule
         {
            return  await _JournalRelationMapRepository.SaveJournalRelationMap(JournalRelationMap);
         }
+
+        public Task<bool> UpdateJournalRelationMapStatuAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

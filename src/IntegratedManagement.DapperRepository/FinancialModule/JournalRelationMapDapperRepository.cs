@@ -11,6 +11,7 @@ using IntegratedManagement.Entity.Result;
 using System.Data;
 using Dapper;
 using IntegratedManagement.Core.Document;
+using IntegratedManagement.Entity.Document;
 
 namespace IntegratedManagement.RepositoryDapper.FinancialModule
 {
@@ -41,6 +42,96 @@ namespace IntegratedManagement.RepositoryDapper.FinancialModule
                     conn.Close();
                 }
                 return collection;
+            }
+        }
+
+        public async Task<bool> ModifyJournalRelationMapMinus(DocumentSync documentSyncData)
+        {
+            bool isSuccessOperate = false;
+            using (var conn = SqlConnectionFactory.CreateSqlConnection())
+            {
+                string sql = $@"update T_JournalRelationMap set IsMinusSync = '{documentSyncData.SyncResult}',
+                                                        NewMinusTransId = '{documentSyncData.SAPDocEntry}',
+                                                        MinusSyncMessage = '{documentSyncData.SyncMsg}',
+                                                        MinusSyncDate='{DateTime.Now}'  
+                                    where DocEntry in ( {documentSyncData.DocEntry} )";
+                try
+                {
+                    var rtCount = await conn.ExecuteAsync(sql);
+                    if (rtCount >= 1)
+                        isSuccessOperate = true;
+                    else if (rtCount == 0)
+                        throw new Exception($"can't found the journalSource info by docentry:{documentSyncData.DocEntry}");
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return isSuccessOperate;
+            }
+        }
+
+        public async Task<bool> ModifyJournalRelationMapPositive(DocumentSync documentSyncData)
+        {
+            bool isSuccessOperate = false;
+            using (var conn = SqlConnectionFactory.CreateSqlConnection())
+            {
+                string sql = $@"update T_JournalRelationMap set IsPositiveSync = '{documentSyncData.SyncResult}',
+                                                        NewPositiveTransId = '{documentSyncData.SAPDocEntry}',
+                                                        PositiveSyncMessage = '{documentSyncData.SyncMsg}',
+                                                        PositiveSyncDate='{DateTime.Now}'  
+                                    where DocEntry in ( {documentSyncData.DocEntry} )";
+                try
+                {
+                    var rtCount = await conn.ExecuteAsync(sql);
+                    if (rtCount >= 1)
+                        isSuccessOperate = true;
+                    else if (rtCount == 0)
+                        throw new Exception($"can't found the journalSource info by docentry:{documentSyncData.DocEntry}");
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return isSuccessOperate;
+            }
+        }
+
+        public async Task<bool> ModifyJournalRelationMapStatus(DocumentSync documentSyncData)
+        {
+            bool isSuccessOperate = false;
+            using (var conn = SqlConnectionFactory.CreateSqlConnection())
+            {
+                string sql = $@"update T_JournalRelationMap set IsSync = '{documentSyncData.SyncResult}',
+                                                        NewTransId = '{documentSyncData.SAPDocEntry}',
+                                                        SyncMessage = '{documentSyncData.SyncMsg}',
+                                                        SyncDate='{DateTime.Now}'  
+                                    where DocEntry in ( {documentSyncData.DocEntry} )";
+                try
+                {
+                    var rtCount = await conn.ExecuteAsync(sql);
+                    if (rtCount >= 1)
+                        isSuccessOperate = true;
+                    else if (rtCount == 0)
+                        throw new Exception($"can't found the journalSource info by docentry:{documentSyncData.DocEntry}");
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return isSuccessOperate;
             }
         }
 

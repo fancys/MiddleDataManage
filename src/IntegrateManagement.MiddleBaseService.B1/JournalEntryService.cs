@@ -1,4 +1,5 @@
-﻿using IntegratedManagement.Entity.FinancialModule.JournalRelationMap;
+﻿using IntegratedManagement.Entity.Document;
+using IntegratedManagement.Entity.FinancialModule.JournalRelationMap;
 using IntegratedManagement.Entity.Result;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,10 @@ namespace IntegrateManagement.MiddleBaseService.B1
 	===============================================================================================================================*/
     public class JournalEntryService
     {
-        public static SaveResult CreateJournal(JournalRelationMap JournalRelationMap)
+        public static DocumentSync CreateJournal(JournalRelationMap JournalRelationMap)
         {
-            SaveResult rt = new SaveResult();
-            rt.UniqueKey = JournalRelationMap.DocEntry.ToString();
+            DocumentSync rt = new DocumentSync();
+            rt.DocEntry = JournalRelationMap.DocEntry.ToString();
             try
             {
                 SAPbobsCOM.JournalEntries myJE = SAP.SAPCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oJournalEntries);
@@ -50,16 +51,22 @@ namespace IntegrateManagement.MiddleBaseService.B1
 
                 }
                 int rtCode = myJE.Add();
-                rt.Code = rtCode;
-                rt.Message = SAP.SAPCompany.GetLastErrorCode() + SAP.SAPCompany.GetLastErrorDescription();
-                if (rtCode == 0)
-                    rt.ReturnUniqueKey = SAP.SAPCompany.GetNewObjectKey();
-
+                if (rtCode != 0)
+                {
+                    rt.SyncResult = "N";
+                    rt.SyncMsg = "sync successfull";
+                }
+                else
+                {
+                    rt.SyncResult = "Y";
+                    rt.SyncMsg = SAP.SAPCompany.GetLastErrorCode() + SAP.SAPCompany.GetLastErrorDescription();
+                    rt.SAPDocEntry = SAP.SAPCompany.GetNewObjectKey();
+                }
             }
             catch (Exception ex)
             {
-                rt.Code = 110001;
-                rt.Message = ex.Message;
+                rt.SyncResult = "N";
+                rt.SyncMsg = ex.Message;
             }
             return rt;
         }
@@ -69,10 +76,10 @@ namespace IntegrateManagement.MiddleBaseService.B1
         /// </summary>
         /// <param name="JournalRelationMap"></param>
         /// <returns></returns>
-        public static SaveResult ApartMinusJournal(JournalRelationMap JournalRelationMap)
+        public static DocumentSync ApartMinusJournal(JournalRelationMap JournalRelationMap)
         {
-            SaveResult rt = new SaveResult();
-            rt.UniqueKey = JournalRelationMap.DocEntry.ToString();
+            DocumentSync rt = new DocumentSync();
+            rt.DocEntry = JournalRelationMap.DocEntry.ToString();
             try
             {
                 SAPbobsCOM.JournalEntries myJE = SAP.SAPCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oJournalEntries);
@@ -106,16 +113,22 @@ namespace IntegrateManagement.MiddleBaseService.B1
 
                 }
                 int rtCode = myJE.Add();
-                rt.Code = rtCode;
-                rt.Message = SAP.SAPCompany.GetLastErrorCode() + SAP.SAPCompany.GetLastErrorDescription();
-                if (rtCode == 0)
-                    rt.ReturnUniqueKey = SAP.SAPCompany.GetNewObjectKey();
-
+                if (rtCode != 0)
+                {
+                    rt.SyncResult = "N";
+                    rt.SyncMsg = "sync successfull";
+                }
+                else
+                {
+                    rt.SyncResult = "Y";
+                    rt.SyncMsg = SAP.SAPCompany.GetLastErrorCode() + SAP.SAPCompany.GetLastErrorDescription();
+                    rt.SAPDocEntry = SAP.SAPCompany.GetNewObjectKey();
+                }
             }
             catch (Exception ex)
             {
-                rt.Code = 110001;
-                rt.Message = ex.Message;
+                rt.SyncResult = "N";
+                rt.SyncMsg = ex.Message;
             }
             return rt;
         }
@@ -126,10 +139,10 @@ namespace IntegrateManagement.MiddleBaseService.B1
         /// </summary>
         /// <param name="JournalRelationMap"></param>
         /// <returns></returns>
-        public static SaveResult ApartPositiveJournal(JournalRelationMap JournalRelationMap)
+        public static DocumentSync ApartPositiveJournal(JournalRelationMap JournalRelationMap)
         {
-            SaveResult rt = new SaveResult();
-            rt.UniqueKey = JournalRelationMap.DocEntry.ToString();
+            DocumentSync rt = new DocumentSync();
+            rt.DocEntry = JournalRelationMap.DocEntry.ToString();
             try
             {
                 SAPbobsCOM.JournalEntries myJE = SAP.SAPCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oJournalEntries);
@@ -163,16 +176,22 @@ namespace IntegrateManagement.MiddleBaseService.B1
 
                 }
                 int rtCode = myJE.Add();
-                rt.Code = rtCode;
-                rt.Message = SAP.SAPCompany.GetLastErrorCode() + SAP.SAPCompany.GetLastErrorDescription();
-                if (rtCode == 0)
-                    rt.ReturnUniqueKey = SAP.SAPCompany.GetNewObjectKey();
-
+                if (rtCode != 0)
+                {
+                    rt.SyncResult = "N";
+                    rt.SyncMsg = "sync successfull";
+                }
+                else
+                {
+                    rt.SyncResult = "Y";
+                    rt.SyncMsg = SAP.SAPCompany.GetLastErrorCode() + SAP.SAPCompany.GetLastErrorDescription();
+                    rt.SAPDocEntry = SAP.SAPCompany.GetNewObjectKey();
+                }
             }
             catch (Exception ex)
             {
-                rt.Code = 110001;
-                rt.Message = ex.Message;
+                rt.SyncResult = "N";
+                rt.SyncMsg = ex.Message;
             }
             return rt;
         }
