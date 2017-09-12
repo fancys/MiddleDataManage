@@ -51,7 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessPartnerModule\BranchApp.cs" />
     <Compile Include="BusinessPartnerModule\BusinessPartnerApp.cs" />
+    <Compile Include="BusinessPartnerModule\IBranchApp.cs" />
     <Compile Include="BusinessPartnerModule\IBusinessPartnerApp.cs" />
     <Compile Include="CallbackModule\DocCallbackApp.cs" />
     <Compile Include="FinancialModule\IJournalDestinationApp.cs" />

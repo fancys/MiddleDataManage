@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessPartnerModule\Branch\Branch.cs" />
     <Compile Include="BusinessPartnerModule\BusinessPartner\BPAddress.cs" />
     <Compile Include="BusinessPartnerModule\BusinessPartner\BPContact.cs" />
     <Compile Include="BusinessPartnerModule\BusinessPartner\BusinessPartner.cs" />

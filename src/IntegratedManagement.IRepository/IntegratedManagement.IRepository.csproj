@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessPartnerModule\IBranchRepository.cs" />
     <Compile Include="BusinessPartnerModule\IBusinessPartnerRepository.cs" />
     <Compile Include="FinancialModule\IJournalDestinationRepository.cs" />
     <Compile Include="FinancialModule\IJournalRelationMapRepository.cs" />
