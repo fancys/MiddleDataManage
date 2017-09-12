@@ -21,6 +21,12 @@
     <link href="~/Content/metroadmin/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="~/Content/metroadmin/assets/uniform/css/uniform.default.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/metroadmin/assets/chosen-bootstrap/chosen/chosen.css" />
+    <script src="~/Content/js/multiselect/docs/js/jquery-2.1.3.min.js"></script>
+    <script>
+        $(function () {
+            
+        })
+    </script>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -62,13 +68,13 @@
                                         </div>
                                         <div class="span4">
                                             <div class="control-group">
-                                                <label class="control-label">订单号1：</label>
+                                                <label class="control-label">创建人：</label>
                                                 <div class="controls">
                                                     <input type="text" class="span8" />
                                                 </div>
                                             </div>
                                             <div class="control-group">
-                                                <label class="control-label">订单号2：</label>
+                                                <label class="control-label">交易号：</label>
                                                 <div class="controls">
                                                     <input type="text" class="span8" />
                                                 </div>
@@ -80,7 +86,7 @@
                                                 <label class="control-label">分支：</label>
                                                 <div class="controls">
                                                     <select data-placeholder="选择分支" class="chzn-select-deselect span8" tabindex="-1" id="selCSI">
-                                                        <option value="1"></option>
+                                                        @*<option value="0"></option>
                                                         <option value="2">American Black Bear American Black BearAmerican Black BearAmerican Black Bear</option>
                                                         <option value="3">Asiatic Black Bear</option>
                                                         <option value="4">Brown Bear</option>
@@ -88,15 +94,15 @@
                                                         <option value="6">Sloth Bear</option>
                                                         <option value="7">Sun Bear</option>
                                                         <option value="8">Polar Bear</option>
-                                                        <option value="9">Spectacled Bear</option>
+                                                        <option value="9">Spectacled Bear</option>*@
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="control-group">
-                                                <label class="control-label">订单号4：</label>
+                                                @*<label class="control-label">订单号4：</label>
                                                 <div class="controls">
                                                     <input type="text" class="span8" />
-                                                </div>
+                                                </div>*@
                                             </div>
                                         </div>
                                         <div class="span1">
@@ -131,9 +137,9 @@
                                             <th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>
                                             <th class="hidden-phone">交易号</th>
                                             <th class="hidden-phone">分支</th>
-                                            <th class="hidden-phone">ERP订单号</th>
-                                            <th class="hidden-phone">来源表</th>
-                                            <th class="hidden-phone">工作流</th>
+                                            <th class="hidden-phone">订单类型</th>
+                                            <th class="hidden-phone">过账日期</th>
+                                            <th class="hidden-phone">创建人</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
@@ -180,6 +186,7 @@
         (function ($) {
             var selectAllData;
             $("#searchBtn").click(function () {
+                getSelectOption();
                 $.search.searchClick();
             });
             $("#syncBtn").click(function () {
@@ -229,9 +236,9 @@
                         tr += " <tr class='odd gradeX'><td><input type='checkbox' class='checkboxes' value='"+journal.TransId +"' /></td><td>" +
                             journal.TransId + "</td><td class='hidden-phone'>" +
                             journal.bplId + "</td><td class='hidden-phone'>" +
-                            journal.ERPOrderNum + "</td><td class='hidden-phone'>" +
-                            journal.SourceTable + "</td><td class='hidden-phone'>" +
-                            journal.WorkFlow + "</td>";
+                            journal.TransType + "</td><td class='hidden-phone'>" +
+                            journal.RefDate + "</td><td class='hidden-phone'>" +
+                            journal.Creator + "</td>";
                     });
                     tbody.append(tr);
                 },
@@ -282,6 +289,27 @@
                 
             };
         })(jQuery);
+    </script>
+    <script>
+        function getSelectOption() {
+            $.ajax({
+                url: "/Financial/JournalSource/GetBranchData",
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    bindSelect(data.data);
+                }
+            });
+        }
+        function bindSelect(data) {
+            var select = $("ul .chzn-results");
+            var optionList = eval(data);
+            var opStr = "";
+            optionList.forEach(function (i,op) {
+                opStr += "<li class='active-result' id='selCSI_chzn_o_" + op.bplId + "'>" + op.BPLName + "</li>";
+            });
+            select.append(opStr);
+        }
     </script>
 </body>
 <!-- END BODY -->

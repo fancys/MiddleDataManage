@@ -1,6 +1,7 @@
 ﻿using IntegratedManagement.Entity.FinancialModule.JournalRelationMap;
 using IntegratedManagement.Entity.FinancialModule.JournalSource;
 using IntegratedManagement.Entity.Param;
+using IntegratedManageMent.Application.BusinessPartnerModule;
 using IntegratedManageMent.Application.FinancialModule;
 using ReportFormManage.Code.Web;
 using System;
@@ -16,10 +17,15 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
     {
         private readonly IJournalSourceApp _JournalSourceApp;
         private readonly IJournalRelationMapApp _JournalRelationMapApp;
-        public JournalSourceController(IJournalSourceApp IJournalSourceApp, IJournalRelationMapApp IJournalRelationMapApp)
+        private readonly IBranchApp _BranchApp;
+        public JournalSourceController(
+            IJournalSourceApp IJournalSourceApp, 
+            IJournalRelationMapApp IJournalRelationMapApp,
+            IBranchApp IBranchApp)
         {
             this._JournalSourceApp = IJournalSourceApp;
             this._JournalRelationMapApp = IJournalRelationMapApp;
+            this._BranchApp = IBranchApp;
         }
         // GET: Financial/JournalSource
         public ActionResult Index()
@@ -110,6 +116,22 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                 return Json(new { state = ResultType.error.ToString(), message = $"失败单号：{errorNum};失败原因：{errorMsg}" });
         }
 
+        [HttpPost]
+        public async Task<ActionResult> GetBranchData()
+        {
+            try
+            {
+                QueryParam queryParam = new QueryParam();
+                queryParam.orderby = "BPLId";
+                var rt = await _BranchApp.GetBranchList(queryParam);
+                return Json(new { state = ResultType.success.ToString(), data = Newtonsoft.Json.JsonConvert.SerializeObject(rt) });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { state = ResultType.error.ToString(), message = ex.Message });
+            }
+        }
+
         private JournalRelationMap ToRelationMap(JournalSource JRSource)
         {
             JournalRelationMap jrMap = new JournalRelationMap();
@@ -126,5 +148,6 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
 
             return jrMap;
         }
+
     }
 }

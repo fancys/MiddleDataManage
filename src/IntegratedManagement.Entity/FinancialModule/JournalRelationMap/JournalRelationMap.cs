@@ -74,10 +74,10 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
         public string IsSyncToCW { get; set; }
 
        
-        /// <summary>
-        /// 不需要拆分的分录是否生成成功
-        /// </summary>
-        public string IsSync { get; set; }
+        ///// <summary>
+        ///// 不需要拆分的分录是否生成成功
+        ///// </summary>
+        //public string IsSync { get; set; }
 
         public DateTime SyncDate { get; set; }
 
@@ -106,6 +106,14 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
         public int NewPositiveTransId { get; set; }
         public string PositiveSyncMessage { get; set; }
 
+        /// <summary>
+        /// 处理结果
+        /// </summary>
+        public string HandleResult { get; set; }
+
+        public DateTime HandleDate { get; set; }
+
+        public string HandleMessage { get; set; }
 
         public List<JournalRelationMapLine> JournalRelationMapLines { get; set; }
 
