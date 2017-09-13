@@ -22,7 +22,7 @@ namespace IntegratedManagement.RepositoryDapper.FinancialModule
             {
                 conn.Open();
 
-                string sql = $"SELECT  top {Param.limit} {Param.select} FROM T_View_JournalSource t0 left JOIN T_View_JournalSourceItem t1 on t0.TransId = t1.TransId {Param.filter + " " + Param.orderby} ";
+                string sql = $"SELECT  top {Param.limit} {Param.select} FROM T_VIEW_JOURNAL_SOURCE t0 left JOIN T_View_JournalSourceItem t1 on t0.TransId = t1.TransId {Param.filter + " " + Param.orderby} ";
                 try
                 {
                     var coll = await conn.QueryParentChildAsync<JournalSource, JournalSourceLine, int>(sql, p => p.TransId, p => p.JournalSourceLines, splitOn: "TransId");
