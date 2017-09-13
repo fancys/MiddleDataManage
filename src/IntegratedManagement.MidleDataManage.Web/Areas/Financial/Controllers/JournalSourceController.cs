@@ -7,6 +7,7 @@ using ReportFormManage.Code.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -42,9 +43,21 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                  * 获取查询条件
                  */
                 //if(param.MinCreateDate)
-
+                StringBuilder paramStr = new StringBuilder();
                 QueryParam queryParam = new QueryParam();
-                queryParam.filter = "(IsSyncToCW eq 'Y')";
+                if (param.BeginDate != default(DateTime))
+                    paramStr.Append($"(CreateDate ge '{param.BeginDate}')");
+                if (param.EndDate != default(DateTime))
+                    paramStr.Append($"and (CreateDate le '{param.BeginDate}')");
+                if (!string.IsNullOrEmpty(param.Creator))
+                    paramStr.Append($" and (Creator eq '{param.Creator}')");
+                if (param.TransId != default(int))
+                    paramStr.Append($" and (TransId eq '{param.TransId}')");
+                if (param.TransType != default(int))
+                    paramStr.Append($" and (TransType eq '{param.TransType}')");
+                if (!string.IsNullOrEmpty(param.BPLName))
+                    paramStr.Append($" and (BPLName eq '{param.BPLName}')");
+                queryParam.filter = paramStr.ToString();
                 queryParam.orderby = "TransId";
                 var rt = await _JournalSourceApp.GetJournalSourceAsync(queryParam);
                 return Json(new { state = ResultType.success.ToString(), data = Newtonsoft.Json.JsonConvert.SerializeObject(rt) });

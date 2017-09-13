@@ -134,9 +134,26 @@
                                                 <label class="control-label">交易类型</label>
                                                 <div class="controls">
                                                     <select id="selTransType" class="span8">
-                                                        <option value="1">所有</option>
-                                                        <option value="2">未处理</option>
-                                                        <option value="3">已处理</option>
+                                                        <option value="0">所有类型</option>
+                                                        <option value="13">应收发票</option>
+                                                        <option value="14">应收贷项凭证</option>
+                                                        <option value="15">销售交货</option>
+                                                        <option value="16">销售退货</option>
+                                                        <option value="18">应付发票</option>
+                                                        <option value="19">应付贷项凭证</option>
+                                                        <option value="20">采购收货</option>
+                                                        <option value="21">采购退货</option>
+                                                        <option value="30">系统生成</option>
+                                                        <option value="46">付款</option>
+                                                        <option value="59">收货</option>
+                                                        <option value="60">发货</option>
+                                                        <option value="67">库存转储</option>
+                                                        <option value="162">库存重估</option>
+                                                        <option value="321">冲销</option>
+                                                        <option value="310000001">库存期初余额</option>
+                                                        <option value="1470000049">资本化</option>
+                                                        <option value="1470000071">折旧运行</option>
+                                                        <option value="1470000094">报废</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -250,7 +267,6 @@
                     $.ajax({
                         url: "/Financial/JournalSource/SyncSelectedData",
                         data: { IDs: selecedIDsData },
-                        //data: {'Number':3,'TransId':1,'TransType':0,'BPLId':1,'ERPOrderNum':'1','SourceTable':'purchase','WorkFlow':'1','RefDate':'2017-09-02T00:00:00','DueDate':'2017-09-02T00:00:00','TaxDate':'2017-09-02T00:00:00','CreateDate':'2017-09-02T00:00:00','JournalSourceLines':[{'TransId':1,'LineId':1,'AcctCode':'1001','ShorName':'1001','BPLId':1,'Credit':0.0,'Debit':0.0,'ExpenseType':'1','PayCode':'3','WhsCode':'BJSP','ERPCardCode':null,'ERPBaseCardCode':null,'ERPDocEntry':null,'ERPBaseNum':null,'CardCode':null,'CardName':null},{'TransId':1,'LineId':2,'AcctCode':'1002','ShorName':'1002','BPLId':1,'Credit':0.0,'Debit':0.0,'ExpenseType':'1','PayCode':'3','WhsCode':'BJSP','ERPCardCode':null,'ERPBaseCardCode':null,'ERPDocEntry':null,'ERPBaseNum':null,'CardCode':null,'CardName':null}]},
                         type: "post",
                         dataType: "json",
                         success: function (data) {
@@ -308,7 +324,7 @@
 
                     $.ajax({
                         url: "/Financial/JournalSource/SearchJournalSource",
-                        data: { bplId: 1, "BPLName": "asdf" },
+                        data: { bplId: 1, BPLName: "asdf", TransId: $("#txtTransId"), BeginDate: $("#txtBeginDate"), EndDate: $("#txtEndDate") },
                         type: "post",
                         dataType: "json",
                         success: function (data) {

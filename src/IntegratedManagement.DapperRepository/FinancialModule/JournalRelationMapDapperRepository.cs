@@ -50,7 +50,7 @@ namespace IntegratedManagement.RepositoryDapper.FinancialModule
             bool isSuccessOperate = false;
             using (var conn = SqlConnectionFactory.CreateSqlConnection())
             {
-                string sql = $@"update T_JournalRelationMap set IsMinusSync = '{documentSyncData.SyncResult}',
+                string sql = $@"update T_VIEW_JournalRelationMap set IsMinusSync = '{documentSyncData.SyncResult}',
                                                         NewMinusTransId = '{documentSyncData.SAPDocEntry}',
                                                         MinusSyncMessage = '{documentSyncData.SyncMsg}',
                                                         MinusSyncDate='{DateTime.Now}'  
