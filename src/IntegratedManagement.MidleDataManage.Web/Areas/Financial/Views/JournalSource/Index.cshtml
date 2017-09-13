@@ -56,13 +56,13 @@
                                             <div class="control-group">
                                                 <label class="control-label">开始时间：</label>
                                                 <div class="controls">
-                                                    <input type="text" class="span6" />
+                                                    <input type="text" id="txtBeginDate" class="span6" />
                                                 </div>
                                             </div>
                                             <div class="control-group">
                                                 <label class="control-label">结束时间：</label>
                                                 <div class="controls">
-                                                    <input type="text" class="span6" />
+                                                    <input type="text" id="txtEndDate" class="span6" />
                                                 </div>
                                             </div>
                                         </div>
@@ -70,13 +70,13 @@
                                             <div class="control-group">
                                                 <label class="control-label">创建人：</label>
                                                 <div class="controls">
-                                                    <input type="text" class="span8" />
+                                                    <input type="text" id="txtCreator" class="span8" />
                                                 </div>
                                             </div>
                                             <div class="control-group">
                                                 <label class="control-label">交易号：</label>
                                                 <div class="controls">
-                                                    <input type="text" class="span8" />
+                                                    <input type="text" id="txtTransId" class="span8" />
                                                 </div>
                                             </div>
                                         </div>
@@ -99,10 +99,14 @@
                                                 </div>
                                             </div>
                                             <div class="control-group">
-                                                @*<label class="control-label">订单号4：</label>
+                                                <label class="control-label">交易类型：</label>
                                                 <div class="controls">
-                                                    <input type="text" class="span8" />
-                                                </div>*@
+                                                    <select id="selTransType" class="span8">
+                                                        <option value="1">所有</option>
+                                                        <option value="2">未处理</option>
+                                                        <option value="3">已处理</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="span1">

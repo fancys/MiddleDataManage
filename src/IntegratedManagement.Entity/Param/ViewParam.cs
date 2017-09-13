@@ -13,17 +13,27 @@ namespace IntegratedManagement.Entity.Param
 
     public class ViewParam
     {
-        public DateTime MaxCreateDate { get; set; }
+        public DateTime BeginDate { get; set; }
 
-        public DateTime MinCreateDate { get; set; }
+        public DateTime EndDate { get; set; }
+
 
         public int BPLId { get; set; }
 
         public string BPLName { get; set; }
 
-        public string OMSDocEntry { get; set; }
+        public string Creator { get; set; }
 
         public int TransId { get; set; }
+
+        /// <summary>
+        /// 交易类型
+        /// </summary>
+        public int TransType { get; set; }
+        /// <summary>
+        /// 处理状态
+        /// </summary>
+        public int HandleStatu { get; set; }
 
 
     }
