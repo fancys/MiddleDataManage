@@ -48,7 +48,7 @@
                                            <div class="control-group">
                                                <label class="control-label">结束时间</label>
                                                <div class="controls">
-                                                   <input type="text" id="txtendDate" class="span8" />
+                                                   <input type="text" id="txtendDate" class="span6" />
                                                </div>
                                            </div>
                                        </div>
@@ -70,7 +70,7 @@
                                            <div class="control-group">
                                                <label class="control-label">分支</label>
                                                <div class="controls" style="min-width:60px">
-                                                   <select data-placeholder="选择分支" class="chzn-select-deselect span8" tabindex="-1" id="selCSI">
+                                                   @*<select data-placeholder="选择分支" class="chzn-select-deselect span8" tabindex="-1" id="selCSI">
                                                        <option value="0">选择分支<option />
                                                        <option value="1">北京尚派正品科技有限公司<option/>
                                                        <option value="2">主要<option/>
@@ -112,7 +112,7 @@
                                                        <option value="39">云南尚派正品科技有限公司曲靖美佳华分公司<option/>
                                                        <option value="40">陕西尚派正品科技有限公司西安第十分公司<option/>
                                                        <option value="41">陕西尚新风环境科技有限公司<option/>
-                                                </select>
+                                                </select>*@
                                                </div>
                                            </div>
                                            <div class="control-group">
@@ -295,11 +295,18 @@
                 },
                 searchClick: function () {
                     //获取查询条件
-
-
+                    
                     $.ajax({
                         url: "/Financial/JournalRelationMap/SearchJournalRelationMapList",
-                        data: { bplId: 1, BPLName: "asdf",TransId:$("#txtTransId"),BeginDate:$("#txtBeginDate"),EndDate:$("#txtEndDate")},
+                        data: {
+                            bplId: 1, BPLName: "asdf",
+                            TransId: $("#txtTransId").val(),
+                            BeginData: $("#txtBeginDate").val(),
+                            EndDate: $("#txtEndDate").val(),
+                            HandleStatu: $("selHandleStatu").val(),
+                            TransType:$("#selTransType").val(),
+                            Creator: $("#txtCreator").val()
+                        },
                         type: "post",
                         dataType: "json",
                         success: function (data) {

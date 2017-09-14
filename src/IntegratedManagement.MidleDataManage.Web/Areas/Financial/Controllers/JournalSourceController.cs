@@ -46,9 +46,9 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                 StringBuilder paramStr = new StringBuilder();
                 QueryParam queryParam = new QueryParam();
                 if (param.BeginDate != default(DateTime))
-                    paramStr.Append($"(CreateDate ge '{param.BeginDate}')");
+                    paramStr.Append($"(CreateDate ge '{param.BeginDate.ToShortDateString()}')");
                 if (param.EndDate != default(DateTime))
-                    paramStr.Append($"and (CreateDate le '{param.BeginDate}')");
+                    paramStr.Append($" and (CreateDate le '{param.BeginDate.ToShortDateString()}')");
                 if (!string.IsNullOrEmpty(param.Creator))
                     paramStr.Append($" and (Creator eq '{param.Creator}')");
                 if (param.TransId != default(int))

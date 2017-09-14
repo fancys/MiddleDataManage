@@ -38,13 +38,13 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                 StringBuilder paramStr = new StringBuilder();
                 QueryParam queryParam = new QueryParam();
                 if (param.BeginDate == default(DateTime) || param.BeginDate == null)
-                    paramStr.Append($"(CreateDate ge '{DateTime.Now.AddDays(1-DateTime.Now.Day)}')");
+                    paramStr.Append($"(CreateDate ge '{DateTime.Now.AddDays(1-DateTime.Now.Day).ToShortDateString()}')");
                 else
-                    paramStr.Append($"(CreateDate ge '{param.BeginDate}')");
+                    paramStr.Append($"(CreateDate ge '{param.BeginDate.Date.ToShortDateString()}')");
                 if (param.EndDate == default(DateTime)||param.EndDate == null)
-                    paramStr.Append($" and (CreateDate le '{DateTime.Now.AddDays(1 - DateTime.Now.Day).AddMonths(1).AddDays(-1)}')");
+                    paramStr.Append($" and (CreateDate le '{DateTime.Now.AddDays(1 - DateTime.Now.Day).AddMonths(1).AddDays(-1).ToShortDateString()}')");
                 else
-                    paramStr.Append($"and (CreateDate le '{param.BeginDate}')");
+                    paramStr.Append($"and (CreateDate le '{param.BeginDate.Date.ToShortDateString()}')");
                 if (!string.IsNullOrEmpty(param.Creator))
                     paramStr.Append($" and (Creator eq '{param.Creator}')");
                 if(param.TransId != default(int))
