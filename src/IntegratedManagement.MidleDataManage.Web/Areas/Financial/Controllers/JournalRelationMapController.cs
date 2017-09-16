@@ -122,13 +122,20 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
             QueryParam queryParam = new QueryParam();
             queryParam.filter = string.Format("TransId in {0}", IDs.TrimEnd(','));
             queryParam.orderby = "TransId";
-            var rt = await _journalRelationMapApp.GetJournalRelationMapListAsync(queryParam);
-            foreach (var item in rt)
+            string syncResult;
+            try
             {
-
+                var rt = await _journalRelationMapApp.GetJournalRelationMapListAsync(queryParam);
+                if (rt.Count != 0)
+                    syncResult = await _journalRelationMapApp.CreateJournalEntry(rt);
+                else
+                    syncResult = "数据查询出错";
             }
-
-            return Json(new { state = ResultType.success.ToString(), message = "" });
+            catch(Exception ex)
+            {
+                syncResult = ex.Message;
+            }
+            return Json(new { state = ResultType.success.ToString(), message = syncResult });
         }
     }
 }

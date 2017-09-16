@@ -22,5 +22,7 @@ namespace IntegratedManageMent.Application.FinancialModule
         Task<bool> UpdateJournalRelationMapPositiveStatuAsync(DocumentSync SyncData);
         Task<bool> UpdateJournalRelationMapMinusStatuAsync(DocumentSync SyncData);
         Task<bool> UpdateJournalRelationMapStatuAsync(DocumentSync SyncData);
+
+        Task<string> CreateJournalEntry(List<JournalRelationMap> JournalRelationMaps);
     }
 }

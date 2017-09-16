@@ -18,6 +18,9 @@ namespace IntegratedManagement.Entity.Document
         }
         public string DocEntry { get; set; }
 
+        /// <summary>
+        /// N 标识失败，Y标识成功
+        /// </summary>
         public string SyncResult { get; set; }
 
         public string SyncMsg { get; set; }

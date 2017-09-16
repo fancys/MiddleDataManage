@@ -104,6 +104,10 @@
       <Project>{FD034FFD-204A-4C89-B558-01FCEB152CA8}</Project>
       <Name>IntegratedManagement.IRepository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IntegrateManagement.MiddleBaseService.B1\IntegrateManagement.MiddleBaseService.B1.csproj">
+      <Project>{B1AE8922-2508-4585-BB5E-2C425FAF4F8D}</Project>
+      <Name>IntegrateManagement.MiddleBaseService.B1</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
