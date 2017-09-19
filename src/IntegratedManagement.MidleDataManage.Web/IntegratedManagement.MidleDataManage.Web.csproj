@@ -698,6 +698,7 @@
     <Content Include="Configs\system.config" />
     <Content Include="Areas\Financial\Views\JournalSource\Index.cshtml" />
     <Content Include="Areas\Financial\Views\JournalRelationMap\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\SPMiddleBase.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

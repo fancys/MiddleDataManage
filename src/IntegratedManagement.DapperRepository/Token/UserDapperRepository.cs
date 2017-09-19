@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using IntegratedManagement.Entity.Token;
 using IntegratedManagement.RepositoryDapper.BaseRepository;
-using Dapper;
 using System.Data;
+using Dapper;
 
 namespace IntegratedManagement.RepositoryDapper.Token
 {
