@@ -62,6 +62,8 @@
     <Compile Include="FinancialModule\JournalDestinationApp.cs" />
     <Compile Include="FinancialModule\JournalRelationMapApp.cs" />
     <Compile Include="FinancialModule\JournalSourceApp.cs" />
+    <Compile Include="Help\ISerialNumberApp.cs" />
+    <Compile Include="Help\SerialNumberApp.cs" />
     <Compile Include="InventoryModule\IMaterialApp.cs" />
     <Compile Include="InventoryModule\MaterialApp.cs" />
     <Compile Include="PaymentReceivedModule\IRefundApp.cs" />

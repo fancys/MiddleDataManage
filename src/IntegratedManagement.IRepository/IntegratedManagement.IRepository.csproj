@@ -49,6 +49,7 @@
     <Compile Include="FinancialModule\IJournalDestinationRepository.cs" />
     <Compile Include="FinancialModule\IJournalRelationMapRepository.cs" />
     <Compile Include="FinancialModule\IJournalSourceRepository.cs" />
+    <Compile Include="Help\ISerialNumberRepository.cs" />
     <Compile Include="InventoryModule\IMaterialRepository.cs" />
     <Compile Include="IRepositoryBase\IRepositoryBase.cs" />
     <Compile Include="PaymentReceivedModule\IRefundRepository.cs" />

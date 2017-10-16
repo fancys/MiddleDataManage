@@ -22,6 +22,7 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
 
         public string ShorName { get; set; }
 
+        public string LineMemo { get; set; }
         /// <summary>
         /// 分支
         /// </summary>
@@ -46,10 +47,13 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
 
         public string OrcCode3 { get; set; }
 
-        /// <summary>
-        /// 行备注
-        /// </summary>
-        public string LineMemo { get; set; }
+       
+        public string ProfitCode { get; set; }
+
+        public string OcrCode2 { get; set; }
+        public string OcrCode3 { get; set; }
+        public string OcrCode4 { get; set; }
+        public string OcrCode5 { get; set; }
         /// <summary>
         /// 贸易伙伴代码
         /// </summary>

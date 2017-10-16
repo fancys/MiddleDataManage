@@ -66,6 +66,7 @@
     <Compile Include="FinancialModule\JournalDestinationDapperRepository.cs" />
     <Compile Include="FinancialModule\JournalRelationMapDapperRepository.cs" />
     <Compile Include="FinancialModule\JournalSourceDapperRepository.cs" />
+    <Compile Include="Help\SerialNumberDapperRepository.cs" />
     <Compile Include="InventoryModule\MaterialDapperRepository.cs" />
     <Compile Include="PaymentReceivedModule\RefundDapperRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

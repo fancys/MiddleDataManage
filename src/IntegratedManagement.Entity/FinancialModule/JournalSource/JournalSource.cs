@@ -27,6 +27,7 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
 
         public int TransType { get; set; }
 
+        public int BtfLine { get; set; }
         /// <summary>
         /// 分支编号
         /// </summary>
@@ -65,6 +66,13 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
         /// </summary>
         public DateTime CreateDate { get; set; }
 
+        public string Memo { get; set; }
+
+        public string Ref1 { get; set; }
+        public string Ref2 { get; set; }
+        public string Ref3 { get; set; }
+
+        public string Series { get; set; }
         /// <summary>
         /// 是否拆分单据
         /// </summary>
@@ -79,6 +87,8 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
         /// 创建人
         /// </summary>
         public string Creator { get; set; }
+
+        public string Approver { get; set; }
 
         public List<JournalSourceLine> JournalSourceLines { get; set; }
     }

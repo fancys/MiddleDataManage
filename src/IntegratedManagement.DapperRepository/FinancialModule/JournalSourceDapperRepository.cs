@@ -15,14 +15,13 @@ namespace IntegratedManagement.RepositoryDapper.FinancialModule
 	===============================================================================================================================*/
     public class JournalSourceDapperRepository : IJournalSourceRepository
     {
-        public async Task<List<JournalSource>> GetJournalSourceList(QueryParam Param)
+        public async Task<List<JournalSource>> GetJournalSourceList(QueryParam queryParam)
         {
             List<JournalSource> collection = null;
             using (var conn = SqlConnectionFactory.CreateSqlConnection())
             {
                 conn.Open();
-
-                string sql = $"SELECT  top {Param.limit} {Param.select} FROM T_VIEW_JOURNAL_SOURCE t0 left JOIN T_View_JournalSourceItem t1 on t0.TransId = t1.TransId {Param.filter + " " + Param.orderby} ";
+                string sql = $"select * from(SELECT  top {queryParam.limit} {queryParam.select} FROM T_VIEW_JOURNAL_SOURCE t0  {queryParam.filter + " " + queryParam.orderby}) t2 left JOIN T_View_JournalSourceItem t1 on t2.DocEntry = t1.DocEntry ";
                 try
                 {
                     var coll = await conn.QueryParentChildAsync<JournalSource, JournalSourceLine, int>(sql, p => p.TransId, p => p.JournalSourceLines, splitOn: "TransId");

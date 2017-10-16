@@ -20,14 +20,13 @@ namespace IntegratedManagement.RepositoryDapper.FinancialModule
 	===============================================================================================================================*/
     public class JournalRelationMapDapperRepository : IJournalRelationMapRepository
     {
-        public async Task<List<JournalRelationMap>> GetJournalRelationMapList(QueryParam Param)
+        public async Task<List<JournalRelationMap>> GetJournalRelationMapList(QueryParam queryParam)
         {
             List<JournalRelationMap> collection = null;
             using (var conn = SqlConnectionFactory.CreateSqlConnection())
             {
                 conn.Open();
-
-                string sql = $"SELECT  top {Param.limit} {Param.select} FROM T_JournalRelationMap t0 left JOIN T_JournalRelationMapItem t1 on t0.DocEntry = t1.DocEntry {Param.filter + " " + Param.orderby} ";
+                string sql = $"select * from(SELECT  top {queryParam.limit} {queryParam.select} FROM T_JournalRelationMap t0  {queryParam.filter + " " + queryParam.orderby}) t2 left JOIN T_JournalRelationMapItem t1 on t2.DocEntry = t1.DocEntry ";
                 try
                 {
                     var coll = await conn.QueryParentChildAsync<JournalRelationMap, JournalRelationMapLine, int>(sql, p => p.DocEntry, p => p.JournalRelationMapLines, splitOn: "DocEntry");
