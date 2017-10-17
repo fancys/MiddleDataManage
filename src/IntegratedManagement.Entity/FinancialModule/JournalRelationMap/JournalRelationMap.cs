@@ -82,10 +82,10 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
         /// 是否同步至财务系统
         /// </summary>
         public string IsSyncToCW { get; set; }
-        /// <summary>
-        /// 创建人
-        /// </summary>
-        public string Creator { get; set; }
+        ///// <summary>
+        ///// 创建人
+        ///// </summary>
+        //public string Creator { get; set; }
 
         public string Approver { get; set; }
 

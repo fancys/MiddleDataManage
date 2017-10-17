@@ -33,6 +33,7 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
         /// </summary>
         public int BPLId { get; set; }
 
+        public string BPLName { get; set; }
         /// <summary>
         /// ERP订单号
         /// </summary>

@@ -282,7 +282,7 @@
                     journalList.forEach(function (journal) {
                         tr += " <tr class='odd gradeX'><td><input type='checkbox' class='checkboxes' value='"+journal.TransId +"' /></td><td>" +
                             journal.TransId + "</td><td class='hidden-phone'>" +
-                            journal.bplId + "</td><td class='hidden-phone'>" +
+                            journal.BPLName + "</td><td class='hidden-phone'>" +
                             journal.TransType + "</td><td class='hidden-phone'>" +
                             journal.RefDate + "</td><td class='hidden-phone'>" +
                             journal.Creator + "</td>";
@@ -320,8 +320,8 @@
                     $.ajax({
                         url: "/Financial/JournalSource/SearchJournalSource",
                         data: {
-                            bplId: 1,
-                            BPLName: "asdf",
+                            bplId: $("#selCSI").val(),
+                           
                             TransId: $("#txtTransId").val(),
                             TransType: $("#selTransType").val(),
                             BeginDate: $("#txtBeginDate").val(),

@@ -145,9 +145,9 @@ namespace IntegratedManagement.RepositoryDapper.FinancialModule
                 try
                 {
                     string insertSql = @"INSERT INTO T_JournalRelationMap
-                                            (Number,TransId,BPLId,ERPOrderNum,SourceTable,WorkFlow,RefDate,DueDate,TaxDate,CreateDate)
+                                            (Number,TransId,BPLId,SourceTable,WorkFlow,RefDate,DueDate,TaxDate,CreateDate)
                                             VALUES
-                                            (@Number,@TransId,@BPLId,@ERPOrderNum,@SourceTable,@WorkFlow,@RefDate,@DueDate,@TaxDate,@CreateDate)select SCOPE_IDENTITY();";
+                                            (@Number,@TransId,@BPLId,@SourceTable,@WorkFlow,@RefDate,@DueDate,@TaxDate,@CreateDate)select SCOPE_IDENTITY();";
                     string insertItemSql = @"INSERT INTO T_JournalRelationMapItem
                                             (DocEntry,LineNum,TransId,LineId,BPLId,AcctCode,ShorName,LineMemo,CardCode,CardName,Credit,Debit,ProfitCode,OcrCode,OcrCode2,OcrCode3,OcrCode4,OcrCode5)
                                             VALUES

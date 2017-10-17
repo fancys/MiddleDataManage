@@ -40,11 +40,11 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                 if (param.BeginDate == default(DateTime) || param.BeginDate == null)
                     paramStr.Append($"(CreateDate ge '{DateTime.Now.AddDays(1-DateTime.Now.Day).ToShortDateString()}')");
                 else
-                    paramStr.Append($"(CreateDate ge '{param.BeginDate.Date.ToShortDateString()}')");
+                    paramStr.Append($" (CreateDate ge '{param.BeginDate.Date.ToShortDateString()}')");
                 if (param.EndDate == default(DateTime)||param.EndDate == null)
                     paramStr.Append($" and (CreateDate le '{DateTime.Now.AddDays(1 - DateTime.Now.Day).AddMonths(1).AddDays(-1).ToShortDateString()}')");
                 else
-                    paramStr.Append($"and (CreateDate le '{param.BeginDate.Date.ToShortDateString()}')");
+                    paramStr.Append($" and (CreateDate le '{param.EndDate.Date.ToShortDateString()}')");
                 if (!string.IsNullOrEmpty(param.Creator))
                     paramStr.Append($" and (Creator eq '{param.Creator}')");
                 if(param.TransId != default(int))
@@ -55,6 +55,8 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                     paramStr.Append($" and (HandleResult eq '{param.HandleStatu}')");
                 if(!string.IsNullOrEmpty(param.BPLName))
                     paramStr.Append($" and (BPLName eq '{param.BPLName}')");
+                if (param.BPLId != 0)
+                    paramStr.Append($" and (BPLId eq '{param.BPLId}')");
                 queryParam.filter = paramStr.ToString();
                 queryParam.orderby = "TransId";
                 var rt = await _journalRelationMapApp.GetJournalRelationMapListAsync(queryParam);
