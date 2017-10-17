@@ -36,17 +36,6 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
         /// </summary>
         public decimal Debit { get; set; }
 
-        /// <summary>
-        /// 现金流
-        /// </summary>
-        public int CashCode { get; set; }
-
-        public string OrcCode { get; set; }
-
-        public string OrcCode2 { get; set; }
-
-        public string OrcCode3 { get; set; }
-
        
         public string ProfitCode { get; set; }
 
@@ -62,34 +51,6 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
         /// 贸易伙伴名称
         /// </summary>
         public string CardName { get; set; }
-
-
-
-
-        /// <summary>
-        /// 报销明细类型
-        /// </summary>
-        public string ExpenseType { get; set; }
-
-        /// <summary>
-        /// 付款编码
-        /// </summary>
-        public string PayCode { get; set; }
-        /// <summary>
-        /// 仓库编码
-        /// </summary>
-        public string WhsCode { get; set; }
-        /// <summary>
-        /// ERP客户编码
-        /// </summary>
-        public string ERPCardCode { get; set; }
-        /// <summary>
-        /// ERP原单据客户编码
-        /// </summary>
-        public string ERPBaseCardCode { get; set; }
-      
-
-
 
     }
 }

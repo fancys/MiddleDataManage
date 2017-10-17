@@ -31,17 +31,19 @@ namespace IntegrateManagement.MiddleBaseService.B1
                     myJE.Lines.ShortName = item.ShorName;
                     myJE.Lines.AccountCode = item.AcctCode;
                     myJE.Lines.LineMemo = item.LineMemo;
-                    myJE.Lines.CostingCode = item.OrcCode;
-                    myJE.Lines.CostingCode2 = item.OrcCode2;
-                    myJE.Lines.CostingCode2 = item.OrcCode3;
+                    myJE.Lines.CostingCode = item.ProfitCode;
+                    myJE.Lines.CostingCode2 = item.OcrCode2;
+                    myJE.Lines.CostingCode3 = item.OcrCode3;
+                    myJE.Lines.CostingCode4 = item.OcrCode4;
+                    myJE.Lines.CostingCode5 = item.OcrCode5;
                     myJE.Lines.UserFields.Fields.Item("U_TransId").Value = item.TransId;
                     myJE.Lines.UserFields.Fields.Item("U_LineId").Value = item.LineId;
 
-                    myJE.Lines.UserFields.Fields.Item("U_PAYCODE").Value = item.PayCode;
+                  //  myJE.Lines.UserFields.Fields.Item("U_PAYCODE").Value = item.PayCode;
                     myJE.Lines.UserFields.Fields.Item("U_CardCode").Value = item.CardCode;
                     myJE.Lines.UserFields.Fields.Item("U_CardName").Value = item.CardName;
-                    myJE.Lines.UserFields.Fields.Item("U_ERPCARDCODE").Value = item.ERPCardCode;
-                    myJE.Lines.UserFields.Fields.Item("U_ERPBASECARDCODE").Value = item.ERPBaseCardCode;
+                    //myJE.Lines.UserFields.Fields.Item("U_ERPCARDCODE").Value = item.ERPCardCode;
+                    //myJE.Lines.UserFields.Fields.Item("U_ERPBASECARDCODE").Value = item.ERPBaseCardCode;
                     //myJE.Lines.PrimaryFormItems.CashFlowLineItemID = item.
                     if (item.Debit != 0)
                         myJE.Lines.Debit = Convert.ToDouble(item.Debit);
@@ -93,17 +95,19 @@ namespace IntegrateManagement.MiddleBaseService.B1
                     myJE.Lines.ShortName = item.ShorName;
                     myJE.Lines.AccountCode = item.AcctCode;
                     myJE.Lines.LineMemo = item.LineMemo;
-                    myJE.Lines.CostingCode = item.OrcCode;
-                    myJE.Lines.CostingCode2 = item.OrcCode2;
-                    myJE.Lines.CostingCode2 = item.OrcCode3;
+                    myJE.Lines.CostingCode = item.ProfitCode;
+                    myJE.Lines.CostingCode2 = item.OcrCode2;
+                    myJE.Lines.CostingCode3 = item.OcrCode3;
+                    myJE.Lines.CostingCode4 = item.OcrCode4;
+                    myJE.Lines.CostingCode5 = item.OcrCode5;
                     myJE.Lines.UserFields.Fields.Item("U_TransId").Value = item.TransId;
                     myJE.Lines.UserFields.Fields.Item("U_LineId").Value = item.LineId;
 
-                    myJE.Lines.UserFields.Fields.Item("U_PAYCODE").Value = item.PayCode;
+                   // myJE.Lines.UserFields.Fields.Item("U_PAYCODE").Value = item.PayCode;
                     myJE.Lines.UserFields.Fields.Item("U_CardCode").Value = item.CardCode;
                     myJE.Lines.UserFields.Fields.Item("U_CardName").Value = item.CardName;
-                    myJE.Lines.UserFields.Fields.Item("U_ERPCARDCODE").Value = item.ERPCardCode;
-                    myJE.Lines.UserFields.Fields.Item("U_ERPBASECARDCODE").Value = item.ERPBaseCardCode;
+                    //myJE.Lines.UserFields.Fields.Item("U_ERPCARDCODE").Value = item.ERPCardCode;
+                    //myJE.Lines.UserFields.Fields.Item("U_ERPBASECARDCODE").Value = item.ERPBaseCardCode;
                     //myJE.Lines.PrimaryFormItems.CashFlowLineItemID = item.
                     if (item.Debit < 0 && item.Credit == 0)
                         myJE.Lines.Debit = Convert.ToDouble(item.Debit);
@@ -156,17 +160,19 @@ namespace IntegrateManagement.MiddleBaseService.B1
                     myJE.Lines.ShortName = item.ShorName;
                     myJE.Lines.AccountCode = item.AcctCode;
                     myJE.Lines.LineMemo = item.LineMemo;
-                    myJE.Lines.CostingCode = item.OrcCode;
-                    myJE.Lines.CostingCode2 = item.OrcCode2;
-                    myJE.Lines.CostingCode2 = item.OrcCode3;
+                    myJE.Lines.CostingCode = item.ProfitCode;
+                    myJE.Lines.CostingCode2 = item.OcrCode2;
+                    myJE.Lines.CostingCode3 = item.OcrCode3;
+                    myJE.Lines.CostingCode4 = item.OcrCode4;
+                    myJE.Lines.CostingCode5 = item.OcrCode5;
                     myJE.Lines.UserFields.Fields.Item("U_TransId").Value = item.TransId;
                     myJE.Lines.UserFields.Fields.Item("U_LineId").Value = item.LineId;
 
-                    myJE.Lines.UserFields.Fields.Item("U_PAYCODE").Value = item.PayCode;
+                    //myJE.Lines.UserFields.Fields.Item("U_PAYCODE").Value = item.PayCode;
                     myJE.Lines.UserFields.Fields.Item("U_CardCode").Value = item.CardCode;
                     myJE.Lines.UserFields.Fields.Item("U_CardName").Value = item.CardName;
-                    myJE.Lines.UserFields.Fields.Item("U_ERPCARDCODE").Value = item.ERPCardCode;
-                    myJE.Lines.UserFields.Fields.Item("U_ERPBASECARDCODE").Value = item.ERPBaseCardCode;
+                    //myJE.Lines.UserFields.Fields.Item("U_ERPCARDCODE").Value = item.ERPCardCode;
+                    //myJE.Lines.UserFields.Fields.Item("U_ERPBASECARDCODE").Value = item.ERPBaseCardCode;
                     //myJE.Lines.PrimaryFormItems.CashFlowLineItemID = item.
                     if (item.Debit > 0 && item.Credit == 0)
                         myJE.Lines.Debit = Convert.ToDouble(item.Debit);
