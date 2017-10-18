@@ -65,6 +65,7 @@
     <Compile Include="FinancialModule\JournalRelationMap\JournalRelationMapLine.cs" />
     <Compile Include="FinancialModule\JournalSource\JournalSource.cs" />
     <Compile Include="FinancialModule\JournalSource\JournalSourceLine.cs" />
+    <Compile Include="FinancialModule\JournalSource\JournalSourceList.cs" />
     <Compile Include="Help\SerialNumber.cs" />
     <Compile Include="InventoryModule\Material\Materiel.cs" />
     <Compile Include="InventoryModule\Warehouse\Warehouse.cs" />

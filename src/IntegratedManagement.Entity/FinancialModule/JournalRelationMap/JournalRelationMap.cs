@@ -30,26 +30,14 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
 
         public int TransType { get; set; }
 
+        public int BaseRef { get; set; }
         public int BtfLine { get; set; }
         /// <summary>
         /// 分支编号
         /// </summary>
         public int BPLId { get; set; }
 
-        /// <summary>
-        /// ERP订单号
-        /// </summary>
-        public string ERPOrderNum { get; set; }
-
-        /// <summary>
-        /// 订单来源
-        /// </summary>
-        public string SourceTable { get; set; }
-
-        /// <summary>
-        /// 业务流
-        /// </summary>
-        public string WorkFlow { get; set; }
+        public string BPLName { get; set; }
 
         /// <summary>
         /// 过账日期
@@ -132,6 +120,52 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
 
         public List<JournalRelationMapLine> JournalRelationMapLines { get; set; }
 
+
+        public static JournalRelationMap Create(JournalSource.JournalSource JRSource)
+        {
+            JournalRelationMap jrMap = new JournalRelationMap();
+            jrMap.JournalRelationMapLines = new List<JournalRelationMapLine>();
+            jrMap.TransId = JRSource.TransId;
+            jrMap.TransType = JRSource.TransType;
+            jrMap.BPLId = JRSource.BPLId;
+            jrMap.CreateDate = JRSource.CreateDate;
+            jrMap.TaxDate = JRSource.TaxDate;
+            jrMap.Number = JRSource.Number;
+            jrMap.RefDate = JRSource.RefDate;
+            jrMap.DueDate = JRSource.DueDate;
+            jrMap.BPLName = JRSource.BPLName;
+            jrMap.BaseRef = JRSource.BaseRef;
+            jrMap.Ref1 = JRSource.Ref1;
+            jrMap.Ref2 = JRSource.Ref2;
+            jrMap.Ref3 = JRSource.Ref3;
+            jrMap.Memo = JRSource.Memo;
+            jrMap.Creator = JRSource.Creator;
+            jrMap.Approver = JRSource.Approver;
+            jrMap.IsApart = JRSource.IsApart;
+            jrMap.Series = JRSource.Series;
+            jrMap.BtfLine = JRSource.BtfLine;
+            foreach(var item in JRSource.JournalSourceLines)
+            {
+                JournalRelationMapLine line = new JournalRelationMapLine();
+                line.BPLId = item.BPLId;
+                line.CardCode = item.CardCode;
+                line.CardName = item.CardName;
+                line.AcctCode = item.AcctCode;
+                line.Credit = item.Credit;
+                line.Debit = item.Debit;
+                line.LineMemo = item.LineMemo;
+                line.LineId = item.LineId;
+                line.TransId = item.TransId;
+                line.OcrCode2 = item.OcrCode2;
+                line.OcrCode3 = item.OcrCode3;
+                line.OcrCode4 = item.OcrCode4;
+                line.OcrCode5 = item.OcrCode5;
+                line.ShorName = item.ShorName;
+                line.ProfitCode = item.ProfitCode;
+                jrMap.JournalRelationMapLines.Add(line);
+            }
+            return jrMap;
+        }
 
     }
 }

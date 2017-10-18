@@ -38,6 +38,9 @@
       <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MagicBox.Log">
+      <HintPath>..\IntegratedManagement.MidleDataManage.Web\Dll\MagicBox.Log.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />

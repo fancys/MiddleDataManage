@@ -27,6 +27,8 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
 
         public int TransType { get; set; }
 
+        public int BaseRef { get; set; }
+
         public int BtfLine { get; set; }
         /// <summary>
         /// 分支编号
@@ -34,20 +36,7 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
         public int BPLId { get; set; }
 
         public string BPLName { get; set; }
-        /// <summary>
-        /// ERP订单号
-        /// </summary>
-        public string ERPOrderNum { get; set; }
-
-        /// <summary>
-        /// 订单来源
-        /// </summary>
-        public string SourceTable { get; set; }
-
-        /// <summary>
-        /// 业务流
-        /// </summary>
-        public string WorkFlow { get; set; }
+        
 
         /// <summary>
         /// 过账日期

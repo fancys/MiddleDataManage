@@ -26,7 +26,7 @@ namespace IntegratedManagement.RepositoryDapper.FinancialModule
             using (var conn = SqlConnectionFactory.CreateSqlConnection())
             {
                 conn.Open();
-                string sql = $"select * from(SELECT  top {queryParam.limit} {queryParam.select} FROM T_JournalRelationMap t0  {queryParam.filter + " " + queryParam.orderby}) t2 left JOIN T_JournalRelationMapItem t1 on t2.DocEntry = t1.DocEntry ";
+                string sql = $"select * from(SELECT  top {queryParam.limit} {queryParam.select} FROM T_JournalRelationMap t0  {queryParam.filter + " " + queryParam.orderby}) t2 inner JOIN T_JournalRelationMapItem t1 on t2.DocEntry = t1.DocEntry ";
                 try
                 {
                     var coll = await conn.QueryParentChildAsync<JournalRelationMap, JournalRelationMapLine, int>(sql, p => p.DocEntry, p => p.JournalRelationMapLines, splitOn: "DocEntry");
@@ -134,10 +134,10 @@ namespace IntegratedManagement.RepositoryDapper.FinancialModule
             }
         }
 
-        public async Task<SaveResult> SaveJournalRelationMap(JournalRelationMap JournalSource)
+        public async Task<SaveResult> SaveJournalRelationMap(JournalRelationMap JournalRelationMap)
         {
             SaveResult saveRlt = new SaveResult();
-            saveRlt.UniqueKey = JournalSource.TransId.ToString();//回传接收方的主键
+            saveRlt.UniqueKey = JournalRelationMap.TransId.ToString();//回传接收方的主键
             using (IDbConnection conn = SqlConnectionFactory.CreateSqlConnection())
             {
                 conn.Open();
@@ -145,30 +145,38 @@ namespace IntegratedManagement.RepositoryDapper.FinancialModule
                 try
                 {
                     string insertSql = @"INSERT INTO T_JournalRelationMap
-                                            (Number,TransId,BPLId,SourceTable,WorkFlow,RefDate,DueDate,TaxDate,CreateDate)
-                                            VALUES
-                                            (@Number,@TransId,@BPLId,@SourceTable,@WorkFlow,@RefDate,@DueDate,@TaxDate,@CreateDate)select SCOPE_IDENTITY();";
+                                            (Number,TransId,TransType,BPLId,Series,BaseRef,Memo,RefDate,DueDate,TaxDate,CreateDate,BPLName,Ref1,Ref2,Ref3,Creator,Approver,BtfLine,IsApart)    
+                                            VALUES(@Number,@TransId,@TransType,@BPLId,@Series,@BaseRef,@Memo,@RefDate,@DueDate,@TaxDate,@CreateDate,@BPLName,@Ref1,@Ref2,@Ref3,@Creator,@Approver,@BtfLine,@IsApart)
+                                            select SCOPE_IDENTITY();";
                     string insertItemSql = @"INSERT INTO T_JournalRelationMapItem
-                                            (DocEntry,LineNum,TransId,LineId,BPLId,AcctCode,ShorName,LineMemo,CardCode,CardName,Credit,Debit,ProfitCode,OcrCode,OcrCode2,OcrCode3,OcrCode4,OcrCode5)
-                                            VALUES
-                                            (@DocEntry,@LineNum,@TransId,@LineId,@BPLId,@AcctCode,@ShorName,@LineMemo,@CardCode,@CardName,@Credit,@Debit,@ProfitCode,@OcrCode,@OcrCode2,@OcrCode3,@OcrCode4,@OcrCode5)";
+                                            (DocEntry,LineNum,TransId,LineId,BPLId,AcctCode,ShorName,ProfitCode,OcrCode2,OcrCode3,OcrCode4,OcrCode5,LineMemo,CardCode,CardName,Credit,Debit)     
+                                            VALUES(@DocEntry,@LineNum,@TransId,@LineId,@BPLId,@AcctCode,@ShorName,@ProfitCode,@OcrCode2,@OcrCode3,@OcrCode4,@OcrCode5,@LineMemo,@CardCode,@CardName,@Credit,@Debit)";
 
                     object DocEntry = await conn.ExecuteScalarAsync(insertSql,
                         new
                         {
-                            Number=JournalSource.Number
-                            ,TransId=JournalSource.TransId
-                            ,BPLId=JournalSource.BPLId
-                            ,ERPOrderNum=JournalSource.ERPOrderNum
-                            ,SourceTable=JournalSource.SourceTable
-                            ,WorkFlow=JournalSource.WorkFlow
-                            ,RefDate=JournalSource.RefDate
-                            ,DueDate=JournalSource.DueDate
-                            ,TaxDate=JournalSource.TaxDate
-                            ,CreateDate=JournalSource.CreateDate
+                            Number = JournalRelationMap.Number,
+                            TransId = JournalRelationMap.TransId,
+                            BPLId = JournalRelationMap.BPLId,
+                            Series = JournalRelationMap.Series,
+                            BaseRef = JournalRelationMap.BaseRef,
+                            Memo = JournalRelationMap.Memo,
+                            RefDate = JournalRelationMap.RefDate,
+                            DueDate = JournalRelationMap.DueDate,
+                            TaxDate = JournalRelationMap.TaxDate,
+                            CreateDate = JournalRelationMap.CreateDate,
+                            BPLName = JournalRelationMap.BPLName,
+                            Ref1 = JournalRelationMap.Ref1,
+                            Ref2 = JournalRelationMap.Ref2,
+                            Ref3 = JournalRelationMap.Ref3,
+                            Creator = JournalRelationMap.Creator,
+                            Approver = JournalRelationMap.Approver,
+                            BtfLine = JournalRelationMap.BtfLine,
+                            IsApart = JournalRelationMap.IsApart,
+                            TransType=JournalRelationMap.TransType
                         }, dbTransaction);
                     saveRlt.ReturnUniqueKey = DocEntry.ToString();//回传保存订单的主键
-                    await conn.ExecuteAsync(insertItemSql, DocumentItemHandle<JournalRelationMapLine>.GetDocumentItems(JournalSource.JournalRelationMapLines, Convert.ToInt32(DocEntry)), dbTransaction);
+                    await conn.ExecuteAsync(insertItemSql, DocumentItemHandle<JournalRelationMapLine>.GetDocumentItems(JournalRelationMap.JournalRelationMapLines, Convert.ToInt32(DocEntry)), dbTransaction);
 
                     dbTransaction.Commit();
                     saveRlt.Code = 0;

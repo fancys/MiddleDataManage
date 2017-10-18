@@ -2,6 +2,7 @@
 using IntegratedManagement.Entity.Param;
 using IntegratedManageMent.Application.FinancialModule;
 using IntegrateManagement.MiddleBaseService.B1;
+using MagicBox.Log;
 using ReportFormManage.Code.Web;
 using System;
 using System.Collections.Generic;
@@ -58,8 +59,9 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                 if (param.BPLId != 0)
                     paramStr.Append($" and (BPLId eq '{param.BPLId}')");
                 queryParam.filter = paramStr.ToString();
-                queryParam.orderby = "TransId";
+                queryParam.orderby = "BPLId,CreateDate,TransId";
                 var rt = await _journalRelationMapApp.GetJournalRelationMapListAsync(queryParam);
+                
                 return Json(new { state = ResultType.success.ToString(), data = Newtonsoft.Json.JsonConvert.SerializeObject(rt) });
             }
             catch (Exception ex)
@@ -105,6 +107,7 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                 }
                 catch(Exception ex)
                 {
+                    Logger.Writer(ex);
                     await _journalRelationMapApp.UpdateJournalRelationMapStatuAsync(
                         new Entity.Document.DocumentSync()
                         {
@@ -122,8 +125,8 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
             if(string.IsNullOrEmpty(IDs))
                 return Json(new { state = ResultType.error.ToString(), message = "选择的数据为空" });
             QueryParam queryParam = new QueryParam();
-            queryParam.filter = string.Format("TransId in {0}", IDs.TrimEnd(','));
-            queryParam.orderby = "TransId";
+            queryParam.filter = string.Format("TransId in ({0})", IDs.TrimEnd(','));
+            queryParam.orderby = "BPLId,CreateDate,TransId";
             string syncResult;
             try
             {
@@ -135,6 +138,7 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
             }
             catch(Exception ex)
             {
+                Logger.Writer(ex);
                 syncResult = ex.Message;
             }
             return Json(new { state = ResultType.success.ToString(), message = syncResult });

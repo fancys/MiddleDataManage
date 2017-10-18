@@ -230,7 +230,7 @@
                         tr += " <tr class='odd gradeX'><td><input type='checkbox' class='checkboxes' value='"+journal.TransId +"' /></td><td>" +
                             journal.TransId + "</td><td class='hidden-phone' name='p_transId'>" +
                             journal.BPLName + "</td><td class='hidden-phone'>" +
-                            journal.TansType + "</td><td class='hidden-phone'>" +
+                            journal.TransType + "</td><td class='hidden-phone'>" +
                             journal.RefDate + "</td><td class='hidden-phone'>" +
                             journal.HandleResult + "</td><td class='hidden-phone'>" +
                             journal.HandleDate + "</td><td class='hidden-phone'>" +
@@ -262,7 +262,7 @@
                         dataType: "json",
                         success: function (data) {
                             if (data.state == "success") {
-                                alert("数据全部成功生成到财务系统");
+                                alert(data.message + ';' + idsData.toString());
                                 $.search.searchClick();
                             } else {
                                 alert(data.message);

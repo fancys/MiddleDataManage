@@ -3,6 +3,7 @@ using IntegratedManagement.Entity.FinancialModule.JournalSource;
 using IntegratedManagement.Entity.Param;
 using IntegratedManageMent.Application.BusinessPartnerModule;
 using IntegratedManageMent.Application.FinancialModule;
+using MagicBox.Log;
 using ReportFormManage.Code.Web;
 using System;
 using System.Collections.Generic;
@@ -64,8 +65,9 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                 if (param.BPLId != 0)
                     paramStr.Append($" and (BPLId eq '{param.BPLId}')");
                 queryParam.filter = paramStr.ToString();
-                queryParam.orderby = "TransId";
+                queryParam.orderby = "BPLId,CreateDate,TransId";
                 var rt = await _JournalSourceApp.GetJournalSourceAsync(queryParam);
+                Logger.Writer("Search Data:"+Newtonsoft.Json.JsonConvert.SerializeObject(rt));
                 return Json(new { state = ResultType.success.ToString(), data = Newtonsoft.Json.JsonConvert.SerializeObject(rt) });
             }
             catch(Exception ex)
@@ -75,19 +77,20 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> SyncAllData(JournalRelationMapList journalRelationMapList)
+        public async Task<ActionResult> SyncAllData(JournalSourceList journalSourceList)
         {
-           
+            Logger.Writer(Newtonsoft.Json.JsonConvert.SerializeObject(journalSourceList));
             string errorData = "";
-            foreach (var item in journalRelationMapList.JournalRelationMaps)
+            foreach (var journalSource in journalSourceList.JournalSources)
             {
                 try
                 {
+                    var item = JournalRelationMap.Create(journalSource);
                     await _JournalRelationMapApp.SaveJournalRelationMapAsync(item);
                 }
                 catch (Exception ex)
                 {
-                    errorData = item.TransId + ",";
+                    errorData = journalSource.TransId + "," + ex.Message + ";";
                 }
 
             }
@@ -105,9 +108,10 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
             if (string.IsNullOrEmpty(IDs))
                 return Json(new { state = ResultType.error.ToString(), message = "选择的数据为空" });
             QueryParam queryParam = new QueryParam();
-            queryParam.filter = string.Format("TransId in {0}", IDs.TrimEnd(','));
-            queryParam.orderby = "TransId";
+            queryParam.filter = string.Format("TransId in ({0})", IDs.TrimEnd(','));
+            queryParam.orderby = "BPLId,CreateDate,TransId";
             var rt = await _JournalSourceApp.GetJournalSourceAsync(queryParam);
+            Logger.Writer(Newtonsoft.Json.JsonConvert.SerializeObject(rt));
             string errorNum="";
             string errorMsg = "";
             foreach (var item in rt)
@@ -115,7 +119,7 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                 try
                 {
                     JournalRelationMap jrMap = new JournalRelationMap();
-                    jrMap = ToRelationMap(item);
+                    jrMap = JournalRelationMap.Create(item);
                     var syncResult = await _JournalRelationMapApp.SaveJournalRelationMapAsync(jrMap);
                     if (syncResult.Code != 0)
                     {
@@ -150,23 +154,6 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                 return Json(new { state = ResultType.error.ToString(), message = ex.Message });
             }
         }
-
-        private JournalRelationMap ToRelationMap(JournalSource JRSource)
-        {
-            JournalRelationMap jrMap = new JournalRelationMap();
-            jrMap.TransId = JRSource.TransId;
-            jrMap.TransType = JRSource.TransType;
-            jrMap.BPLId = JRSource.BPLId;
-            jrMap.CreateDate = JRSource.CreateDate;
-            jrMap.TaxDate = JRSource.TaxDate;
-            jrMap.Number = JRSource.Number;
-            jrMap.RefDate = JRSource.RefDate;
-            jrMap.DueDate = JRSource.DueDate;
-            jrMap.ERPOrderNum = JRSource.ERPOrderNum;
-            jrMap.SourceTable = JRSource.SourceTable;
-
-            return jrMap;
-        }
-
+        
     }
 }

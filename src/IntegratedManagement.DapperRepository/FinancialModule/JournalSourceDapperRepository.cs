@@ -21,7 +21,7 @@ namespace IntegratedManagement.RepositoryDapper.FinancialModule
             using (var conn = SqlConnectionFactory.CreateSqlConnection())
             {
                 conn.Open();
-                string sql = $"select * from(SELECT  top {queryParam.limit} {queryParam.select} FROM T_VIEW_JOURNAL_SOURCE t0  {queryParam.filter + " " + queryParam.orderby}) t2 left JOIN T_View_JournalSourceItem t1 on t2.DocEntry = t1.DocEntry ";
+                string sql = $"select * from(SELECT  top {queryParam.limit} {queryParam.select} FROM T_VIEW_JOURNAL_SOURCE t0  {queryParam.filter + " " + queryParam.orderby}) t2 inner JOIN T_View_JournalSourceItem t1 on t2.TransId = t1.TransId ";
                 try
                 {
                     var coll = await conn.QueryParentChildAsync<JournalSource, JournalSourceLine, int>(sql, p => p.TransId, p => p.JournalSourceLines, splitOn: "TransId");

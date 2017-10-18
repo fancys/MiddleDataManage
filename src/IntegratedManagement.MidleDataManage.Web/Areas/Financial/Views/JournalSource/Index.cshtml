@@ -245,7 +245,7 @@
                 syncAllData: function (allData) {
                     $.ajax({
                         url: "/Financial/JournalSource/SyncAllData",
-                        data: { JournalRelationMaps: eval(allData.replace("JournalSourceLines", "JournalRelationMapLines")) },
+                        data: { JournalSources: eval(allData) },
                         type: "post",
                         dataType: "json",
                         success: function (data) {
