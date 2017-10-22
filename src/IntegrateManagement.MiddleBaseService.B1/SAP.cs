@@ -59,7 +59,7 @@ namespace IntegrateManagement.MiddleBaseService.B1
             int RntCode = _SAPCompany.Connect();
             if (RntCode != 0)
             {
-                string errMsg = string.Format("ErrorCode:[{0}],ErrrMsg:[{1}];", SAP.SAPCompany.GetLastErrorCode(), SAP.SAPCompany.GetLastErrorDescription());
+                string errMsg = string.Format("ErrorCode:[{0}],ErrrMsg:[{1}];", _SAPCompany.GetLastErrorCode(), _SAPCompany.GetLastErrorDescription());
                 Logger.Writer(errMsg);
                 throw new Exception(errMsg);
             }

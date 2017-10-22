@@ -20,7 +20,7 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
 
         public string AcctCode { get; set; }
 
-        public string ShorName { get; set; }
+        public string ShortName { get; set; }
 
         public string LineMemo { get; set; }
         /// <summary>

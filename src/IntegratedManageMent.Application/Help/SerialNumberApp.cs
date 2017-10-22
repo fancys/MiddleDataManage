@@ -21,7 +21,7 @@ namespace IntegratedManageMent.Application.Help
         public async Task<SerialNumber> GetSerialNumberOfDateTimeNow()
         {
             SerialNumber serialNumber = await _serialNumberRepository.GetSerialNumber();
-            if(serialNumber != null)
+            if(serialNumber == null)
             {
                 serialNumber = new SerialNumber();
                 serialNumber.Year = DateTime.Now.Year;

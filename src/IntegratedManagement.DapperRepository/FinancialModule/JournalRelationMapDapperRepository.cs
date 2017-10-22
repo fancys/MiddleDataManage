@@ -109,14 +109,25 @@ namespace IntegratedManagement.RepositoryDapper.FinancialModule
             bool isSuccessOperate = false;
             using (var conn = SqlConnectionFactory.CreateSqlConnection())
             {
-                string sql = $@"update T_JournalRelationMap set IsSync = '{documentSyncData.SyncResult}',
-                                                        NewTransId = '{documentSyncData.SAPDocEntry}',
-                                                        SyncMessage = '{documentSyncData.SyncMsg}',
-                                                        SyncDate='{DateTime.Now}'  
-                                    where DocEntry in ( {documentSyncData.DocEntry} )";
+                //string sql = $@"update T_JournalRelationMap set IsSync = '{documentSyncData.SyncResult}',
+                //                                        NewTransId = '{documentSyncData.SAPDocEntry}',
+                //                                        SyncMessage = '{documentSyncData.SyncMsg}',
+                //                                        SyncDate='{DateTime.Now}'  
+                //                    where DocEntry in ( {documentSyncData.DocEntry} )";
+                string sql = $@"update T_JournalRelationMap set IsSync = @IsSync,
+                                                        NewTransId = @NewTransId,
+                                                        SyncMessage = @SyncMessage,
+                                                        SyncDate= @SyncDate  
+                                    where DocEntry in ( @DocEntry )";
                 try
                 {
-                    var rtCount = await conn.ExecuteAsync(sql);
+                    var rtCount = await conn.ExecuteAsync(sql,new {
+                        IsSync  = documentSyncData.SyncResult,
+                        NewTransId = documentSyncData.SAPDocEntry,
+                        SyncMessage = documentSyncData.SyncMsg,
+                        SyncDate = DateTime.Now,
+                        DocEntry = documentSyncData.DocEntry
+                    });
                     if (rtCount >= 1)
                         isSuccessOperate = true;
                     else if (rtCount == 0)

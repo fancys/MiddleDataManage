@@ -1,6 +1,8 @@
 ﻿using IntegratedManagement.Entity.FinancialModule.JournalRelationMap;
+using IntegratedManagement.Entity.Help;
 using IntegratedManagement.Entity.Param;
 using IntegratedManageMent.Application.FinancialModule;
+using IntegratedManageMent.Application.Help;
 using IntegrateManagement.MiddleBaseService.B1;
 using MagicBox.Log;
 using ReportFormManage.Code.Web;
@@ -17,9 +19,11 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
     public class JournalRelationMapController : Controller
     {
         IJournalRelationMapApp _journalRelationMapApp;
-        public JournalRelationMapController(IJournalRelationMapApp IJournalRelationMapApp)
+        ISerialNumberApp _serialNumberApp;
+        public JournalRelationMapController(IJournalRelationMapApp IJournalRelationMapApp, ISerialNumberApp ISerialNumberApp)
         {
             this._journalRelationMapApp = IJournalRelationMapApp;
+            this._serialNumberApp = ISerialNumberApp;
         }
         // GET: Financial/JournalRalationMap
         public ActionResult Index()
@@ -62,7 +66,7 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                 queryParam.orderby = "BPLId,CreateDate,TransId";
                 var rt = await _journalRelationMapApp.GetJournalRelationMapListAsync(queryParam);
                 
-                return Json(new { state = ResultType.success.ToString(), data = Newtonsoft.Json.JsonConvert.SerializeObject(rt) });
+                return Json(new { state = ResultType.success.ToString(), data = Newtonsoft.Json.JsonConvert.SerializeObject(JournalRelationMap.Hanlde(rt)) });
             }
             catch (Exception ex)
             {
@@ -75,49 +79,8 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
         {
             if(journalRelationMapList == null)
                 return Json(new { state = ResultType.error.ToString(), message = "未选择需要同步的数据" });
-            foreach (var item in journalRelationMapList.JournalRelationMaps)
-            {
-                try
-                {
-                    #region 生成分录条件
-                    //1 需要拆分且拆分标识字段为N的
-                    if(item.IsApart == "Y")
-                    {
-                        if(item.IsPositiveSync == "N")
-                        {
-                            //拆分正数单据
-                            var rt = JournalEntryService.ApartPositiveJournal(item);
-                            await _journalRelationMapApp.UpdateJournalRelationMapPositiveStatuAsync(rt);
-                        }
-                        if(item.IsMinusSync == "N")
-                        {
-                            //拆分负数单据
-                            var rt = JournalEntryService.ApartMinusJournal(item);
-                            await _journalRelationMapApp.UpdateJournalRelationMapMinusStatuAsync(rt);
-                        }
-                    }
-                    //2 不需要拆分且生成标识字段为N的
-                    else if (item.IsApart == "N" && item.IsSync == "N")
-                    {
-                        var rt = JournalEntryService.CreateJournal(item);
-                        await _journalRelationMapApp.UpdateJournalRelationMapStatuAsync(rt);
-                    }
-                    #endregion
 
-                }
-                catch(Exception ex)
-                {
-                    Logger.Writer(ex);
-                    await _journalRelationMapApp.UpdateJournalRelationMapStatuAsync(
-                        new Entity.Document.DocumentSync()
-                        {
-                            DocEntry = item.DocEntry.ToString(),
-                            SyncResult = "N",
-                            SyncMsg = ex.Message
-                        });
-                }
-            }
-            return Json(new { state = ResultType.success.ToString(), message = "" });
+            return await this.CreateJournal(journalRelationMapList.JournalRelationMaps);
         }
         [HttpPost]
         public async Task<ActionResult> SelectAndCreateJournal(string IDs)
@@ -132,7 +95,8 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
             {
                 var rt = await _journalRelationMapApp.GetJournalRelationMapListAsync(queryParam);
                 if (rt.Count != 0)
-                    syncResult = await _journalRelationMapApp.CreateJournalEntry(rt);
+                    //syncResult = await _journalRelationMapApp.CreateJournalEntry(rt);
+                    return await this.CreateJournal(rt);
                 else
                     syncResult = "数据查询出错";
             }
@@ -142,6 +106,68 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
                 syncResult = ex.Message;
             }
             return Json(new { state = ResultType.success.ToString(), message = syncResult });
+        }
+
+        private async Task<ActionResult> CreateJournal(List<JournalRelationMap> journalRelations)
+        {
+            foreach (var item in journalRelations)
+            {
+                var serialNumber = await _serialNumberApp.GetSerialNumberOfDateTimeNow();
+                item.SerialNumber =  GetSerialNumber(serialNumber);
+                serialNumber.CurrentNumber++;
+                try
+                {
+                    #region 生成分录条件
+                    //1 需要拆分且拆分标识字段为N的
+                    if (item.IsApart == "Y")
+                    {
+                        if (item.IsPositiveSync == "N")
+                        {
+                            //拆分正数单据
+                            var rt = JournalEntryService.ApartPositiveJournal(item);
+                            var result = await _journalRelationMapApp.UpdateJournalRelationMapPositiveStatuAsync(rt);
+                            if (rt.SyncResult == "Y")
+                                await this._serialNumberApp.UpdateCurrentNumber(serialNumber);
+                            
+                        }
+                        if (item.IsMinusSync == "N")
+                        {
+                            //拆分负数单据
+                            var rt = JournalEntryService.ApartMinusJournal(item);
+                            await _journalRelationMapApp.UpdateJournalRelationMapMinusStatuAsync(rt);
+                            if (rt.SyncResult == "Y")
+                                await this._serialNumberApp.UpdateCurrentNumber(serialNumber);
+                        }
+                    }
+                    //2 不需要拆分且生成标识字段为N的
+                    else if (item.IsApart == "N" && item.IsSync == "N")
+                    {
+                        var rt = JournalEntryService.CreateJournal(item);
+                        await _journalRelationMapApp.UpdateJournalRelationMapStatuAsync(rt);
+                        if (rt.SyncResult == "Y")
+                            await this._serialNumberApp.UpdateCurrentNumber(serialNumber);
+                    }
+                    #endregion
+
+                }
+                catch (Exception ex)
+                {
+                    Logger.Writer(ex);
+                    await _journalRelationMapApp.UpdateJournalRelationMapStatuAsync(
+                        new Entity.Document.DocumentSync()
+                        {
+                            DocEntry = item.DocEntry.ToString(),
+                            SyncResult = "N",
+                            SyncMsg = ex.Message
+                        });
+                }
+            }
+            return Json(new { state = ResultType.success.ToString(), message = "同步完成" });
+        }
+
+        private string GetSerialNumber(SerialNumber SerialNumber)
+        {
+            return SerialNumber.Year + SerialNumber.Month + SerialNumber.CurrentNumber.ToString("000");
         }
     }
 }

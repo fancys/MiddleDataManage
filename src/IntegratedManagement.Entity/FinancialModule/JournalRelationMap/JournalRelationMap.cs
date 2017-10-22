@@ -118,6 +118,8 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
 
         public string HandleMessage { get; set; }
 
+        public string SerialNumber { get; set; }
+
         public List<JournalRelationMapLine> JournalRelationMapLines { get; set; }
 
 
@@ -160,12 +162,59 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
                 line.OcrCode3 = item.OcrCode3;
                 line.OcrCode4 = item.OcrCode4;
                 line.OcrCode5 = item.OcrCode5;
-                line.ShorName = item.ShorName;
+                line.ShorName = item.ShortName;
                 line.ProfitCode = item.ProfitCode;
                 jrMap.JournalRelationMapLines.Add(line);
             }
             return jrMap;
         }
 
+        public static List<JournalRelationMap> Hanlde(List<JournalRelationMap> JournalRelationMaps)
+        {
+            if(JournalRelationMaps.Count != 0)
+            {
+                foreach (var item in JournalRelationMaps)
+                {
+                    if(item.IsApart == "N")
+                    {
+                        if (item.IsSync == "Y")
+                        {
+                            item.HandleResult = "生成成功";
+                        }
+                        else if (item.IsSync == "N")
+                        {
+                            item.HandleResult = "未生成";
+                            item.HandleMessage = item.SyncMessage;
+                        }
+                        item.HandleDate = item.SyncDate;
+                    }
+                    else
+                    {
+                        if(item.IsMinusSync == "N" && item.IsPositiveSync == "N")
+                        {
+                            item.HandleResult = "未生成";
+                        }
+                        else if (item.IsMinusSync == "Y" && item.IsPositiveSync == "N")
+                        {
+                            item.HandleResult = "生成成功";
+                            item.HandleDate = item.MinusSyncDate;
+                        }
+                        else if(item.IsMinusSync == "Y" && item.IsPositiveSync == "N")
+                        {
+                            item.HandleResult = "正向拆分生成失败";
+                            item.HandleMessage = item.PositiveSyncMessage;
+                            item.HandleDate = item.PositiveSyncDate;
+                        }
+                        else if (item.IsMinusSync == "N" && item.IsPositiveSync == "Y")
+                        {
+                            item.HandleResult = "负向拆分生成失败";
+                            item.HandleMessage = item.MinusSyncMessage;
+                            item.HandleDate = item.MinusSyncDate;
+                        }
+                    }
+                }
+            }
+            return JournalRelationMaps;
+        }
     }
 }
