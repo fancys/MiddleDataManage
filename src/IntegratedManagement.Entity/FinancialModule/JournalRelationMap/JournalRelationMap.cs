@@ -194,7 +194,7 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
                         {
                             item.HandleResult = "未生成";
                         }
-                        else if (item.IsMinusSync == "Y" && item.IsPositiveSync == "N")
+                        else if (item.IsMinusSync == "Y" && item.IsPositiveSync == "Y")
                         {
                             item.HandleResult = "生成成功";
                             item.HandleDate = item.MinusSyncDate;

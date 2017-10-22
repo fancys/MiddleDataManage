@@ -167,7 +167,7 @@ namespace IntegratedManagement.MidleDataManage.Web.Areas.Financial.Controllers
 
         private string GetSerialNumber(SerialNumber SerialNumber)
         {
-            return SerialNumber.Year + SerialNumber.Month + SerialNumber.CurrentNumber.ToString("000");
+            return SerialNumber.Year.ToString() + SerialNumber.Month.ToString() + SerialNumber.CurrentNumber.ToString("000");
         }
     }
 }

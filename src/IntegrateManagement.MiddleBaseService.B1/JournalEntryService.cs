@@ -25,8 +25,11 @@ namespace IntegrateManagement.MiddleBaseService.B1
                 myJE.TaxDate = JournalRelationMap.TaxDate;
                 myJE.DueDate = JournalRelationMap.DueDate;
                 myJE.UserFields.Fields.Item("U_TransId").Value = JournalRelationMap.TransId;
-                myJE.UserFields.Fields.Item("U_Creator").Value = JournalRelationMap.Creator;
-                myJE.UserFields.Fields.Item("U_Approver").Value = JournalRelationMap.Approver;
+                if (!string.IsNullOrEmpty(JournalRelationMap.Creator))
+                    myJE.UserFields.Fields.Item("U_Creator").Value = JournalRelationMap.Creator;
+                if (!string.IsNullOrEmpty(JournalRelationMap.Approver))
+                    myJE.UserFields.Fields.Item("U_Approver").Value = JournalRelationMap.Approver;
+                myJE.UserFields.Fields.Item("U_PrintTransId").Value = JournalRelationMap.SerialNumber;
 
                 foreach (var item in JournalRelationMap.JournalRelationMapLines)
                 {
@@ -96,34 +99,42 @@ namespace IntegrateManagement.MiddleBaseService.B1
                 myJE.TaxDate = JournalRelationMap.TaxDate;
                 myJE.DueDate = JournalRelationMap.DueDate;
                 myJE.UserFields.Fields.Item("U_TransId").Value = JournalRelationMap.TransId;
-                myJE.UserFields.Fields.Item("U_Creator").Value = JournalRelationMap.Creator;
-                myJE.UserFields.Fields.Item("U_Approver").Value = JournalRelationMap.Approver;
+                if (!string.IsNullOrEmpty(JournalRelationMap.Creator))
+                    myJE.UserFields.Fields.Item("U_Creator").Value = JournalRelationMap.Creator;
+                if (!string.IsNullOrEmpty(JournalRelationMap.Approver))
+                    myJE.UserFields.Fields.Item("U_Approver").Value = JournalRelationMap.Approver;
+                myJE.UserFields.Fields.Item("U_PrintTransId").Value = JournalRelationMap.SerialNumber;
+
                 foreach (var item in JournalRelationMap.JournalRelationMapLines)
                 {
-                    myJE.Lines.BPLID = item.BPLId;
-                    myJE.Lines.ShortName = item.ShorName;
-                    myJE.Lines.AccountCode = item.AcctCode;
-                    myJE.Lines.LineMemo = item.LineMemo;
-                    myJE.Lines.CostingCode = item.ProfitCode;
-                    myJE.Lines.CostingCode2 = item.OcrCode2;
-                    myJE.Lines.CostingCode3 = item.OcrCode3;
-                    myJE.Lines.CostingCode4 = item.OcrCode4;
-                    myJE.Lines.CostingCode5 = item.OcrCode5;
-                    myJE.Lines.UserFields.Fields.Item("U_TransId").Value = item.TransId;
-                    myJE.Lines.UserFields.Fields.Item("U_LineId").Value = item.LineId;
+                    if(item.Debit < 0 || item.Credit < 0)
+                    {
+                        myJE.Lines.BPLID = item.BPLId;
+                        myJE.Lines.ShortName = item.ShorName;
+                        myJE.Lines.AccountCode = item.AcctCode;
+                        myJE.Lines.LineMemo = item.LineMemo;
+                        myJE.Lines.CostingCode = item.ProfitCode;
+                        myJE.Lines.CostingCode2 = item.OcrCode2;
+                        myJE.Lines.CostingCode3 = item.OcrCode3;
+                        myJE.Lines.CostingCode4 = item.OcrCode4;
+                        myJE.Lines.CostingCode5 = item.OcrCode5;
+                        myJE.Lines.UserFields.Fields.Item("U_TransId").Value = item.TransId;
+                        myJE.Lines.UserFields.Fields.Item("U_LineId").Value = item.LineId;
 
-                   // myJE.Lines.UserFields.Fields.Item("U_PAYCODE").Value = item.PayCode;
-                    myJE.Lines.UserFields.Fields.Item("U_CardCode").Value = item.CardCode;
-                    myJE.Lines.UserFields.Fields.Item("U_CardName").Value = item.CardName;
-                    //myJE.Lines.UserFields.Fields.Item("U_ERPCARDCODE").Value = item.ERPCardCode;
-                    //myJE.Lines.UserFields.Fields.Item("U_ERPBASECARDCODE").Value = item.ERPBaseCardCode;
-                    //myJE.Lines.PrimaryFormItems.CashFlowLineItemID = item.
-                    if (item.Debit < 0 && item.Credit == 0)
-                        myJE.Lines.Debit = Convert.ToDouble(item.Debit);
-                    if (item.Credit < 0 && item.Debit == 0)
-                        myJE.Lines.Credit = Convert.ToDouble(item.Credit);
-                    myJE.Lines.Add();
-
+                        // myJE.Lines.UserFields.Fields.Item("U_PAYCODE").Value = item.PayCode;
+                        if (!string.IsNullOrEmpty(item.CardCode))
+                            myJE.Lines.UserFields.Fields.Item("U_CardCode").Value = item.CardCode;
+                        if (!string.IsNullOrEmpty(item.CardName))
+                            myJE.Lines.UserFields.Fields.Item("U_CardName").Value = item.CardName;
+                        //myJE.Lines.UserFields.Fields.Item("U_ERPCARDCODE").Value = item.ERPCardCode;
+                        //myJE.Lines.UserFields.Fields.Item("U_ERPBASECARDCODE").Value = item.ERPBaseCardCode;
+                        //myJE.Lines.PrimaryFormItems.CashFlowLineItemID = item.
+                        if (item.Debit < 0 && item.Credit == 0)
+                            myJE.Lines.Debit = Convert.ToDouble(item.Debit);
+                        if (item.Credit < 0 && item.Debit == 0)
+                            myJE.Lines.Credit = Convert.ToDouble(item.Credit);
+                        myJE.Lines.Add();
+                    }
                 }
                 int rtCode = myJE.Add();
                 if (rtCode == 0)
@@ -163,33 +174,43 @@ namespace IntegrateManagement.MiddleBaseService.B1
                 myJE.TaxDate = JournalRelationMap.TaxDate;
                 myJE.DueDate = JournalRelationMap.DueDate;
                 myJE.UserFields.Fields.Item("U_TransId").Value = JournalRelationMap.TransId;
-                myJE.UserFields.Fields.Item("U_Creator").Value = JournalRelationMap.Creator;
-                myJE.UserFields.Fields.Item("U_Approver").Value = JournalRelationMap.Approver;
+                if(!string.IsNullOrEmpty(JournalRelationMap.Creator))
+                    myJE.UserFields.Fields.Item("U_Creator").Value = JournalRelationMap.Creator;
+                if (!string.IsNullOrEmpty(JournalRelationMap.Approver))
+                    myJE.UserFields.Fields.Item("U_Approver").Value = JournalRelationMap.Approver;
+                myJE.UserFields.Fields.Item("U_PrintTransId").Value = JournalRelationMap.SerialNumber;
+
                 foreach (var item in JournalRelationMap.JournalRelationMapLines)
                 {
-                    myJE.Lines.BPLID = item.BPLId;
-                    myJE.Lines.ShortName = item.ShorName;
-                    myJE.Lines.AccountCode = item.AcctCode;
-                    myJE.Lines.LineMemo = item.LineMemo;
-                    myJE.Lines.CostingCode = item.ProfitCode;
-                    myJE.Lines.CostingCode2 = item.OcrCode2;
-                    myJE.Lines.CostingCode3 = item.OcrCode3;
-                    myJE.Lines.CostingCode4 = item.OcrCode4;
-                    myJE.Lines.CostingCode5 = item.OcrCode5;
-                    myJE.Lines.UserFields.Fields.Item("U_TransId").Value = item.TransId;
-                    myJE.Lines.UserFields.Fields.Item("U_LineId").Value = item.LineId;
+                    if (item.Debit > 0 || item.Credit > 0)
+                    {
+                        myJE.Lines.BPLID = item.BPLId;
+                        myJE.Lines.ShortName = item.ShorName;
+                        myJE.Lines.AccountCode = item.AcctCode;
+                        myJE.Lines.LineMemo = item.LineMemo;
+                        myJE.Lines.CostingCode = item.ProfitCode;
+                        myJE.Lines.CostingCode2 = item.OcrCode2;
+                        myJE.Lines.CostingCode3 = item.OcrCode3;
+                        myJE.Lines.CostingCode4 = item.OcrCode4;
+                        myJE.Lines.CostingCode5 = item.OcrCode5;
+                        myJE.Lines.UserFields.Fields.Item("U_TransId").Value = item.TransId;
+                        myJE.Lines.UserFields.Fields.Item("U_LineId").Value = item.LineId;
 
-                    //myJE.Lines.UserFields.Fields.Item("U_PAYCODE").Value = item.PayCode;
-                    myJE.Lines.UserFields.Fields.Item("U_CardCode").Value = item.CardCode;
-                    myJE.Lines.UserFields.Fields.Item("U_CardName").Value = item.CardName;
-                    //myJE.Lines.UserFields.Fields.Item("U_ERPCARDCODE").Value = item.ERPCardCode;
-                    //myJE.Lines.UserFields.Fields.Item("U_ERPBASECARDCODE").Value = item.ERPBaseCardCode;
-                    //myJE.Lines.PrimaryFormItems.CashFlowLineItemID = item.
-                    if (item.Debit > 0 && item.Credit == 0)
-                        myJE.Lines.Debit = Convert.ToDouble(item.Debit);
-                    if (item.Credit > 0 && item.Debit == 0)
-                        myJE.Lines.Credit = Convert.ToDouble(item.Credit);
-                    myJE.Lines.Add();
+                        //myJE.Lines.UserFields.Fields.Item("U_PAYCODE").Value = item.PayCode;
+                        if (!string.IsNullOrEmpty(item.CardCode))
+                            myJE.Lines.UserFields.Fields.Item("U_CardCode").Value = item.CardCode;
+                        if (!string.IsNullOrEmpty(item.CardName))
+                            myJE.Lines.UserFields.Fields.Item("U_CardName").Value = item.CardName;
+                        //myJE.Lines.UserFields.Fields.Item("U_ERPCARDCODE").Value = item.ERPCardCode;
+                        //myJE.Lines.UserFields.Fields.Item("U_ERPBASECARDCODE").Value = item.ERPBaseCardCode;
+                        //myJE.Lines.PrimaryFormItems.CashFlowLineItemID = item.
+                        if (item.Debit > 0 && item.Credit == 0)
+                            myJE.Lines.Debit = Convert.ToDouble(item.Debit);
+                        if (item.Credit > 0 && item.Debit == 0)
+                            myJE.Lines.Credit = Convert.ToDouble(item.Credit);
+                        myJE.Lines.Add();
+                    }
+                    
 
                 }
                 int rtCode = myJE.Add();
