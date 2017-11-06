@@ -55,6 +55,8 @@
     <Compile Include="BusinessPartnerModule\BusinessPartnerApp.cs" />
     <Compile Include="BusinessPartnerModule\IBranchApp.cs" />
     <Compile Include="BusinessPartnerModule\IBusinessPartnerApp.cs" />
+    <Compile Include="BusinessPartnerModule\IProfitCentersApp.cs" />
+    <Compile Include="BusinessPartnerModule\ProfitCentersApp.cs" />
     <Compile Include="CallbackModule\DocCallbackApp.cs" />
     <Compile Include="FinancialModule\IJournalDestinationApp.cs" />
     <Compile Include="FinancialModule\IJournalRelationMapApp.cs" />
@@ -65,7 +67,9 @@
     <Compile Include="Help\ISerialNumberApp.cs" />
     <Compile Include="Help\SerialNumberApp.cs" />
     <Compile Include="InventoryModule\IMaterialApp.cs" />
+    <Compile Include="InventoryModule\IWarehouseApp.cs" />
     <Compile Include="InventoryModule\MaterialApp.cs" />
+    <Compile Include="InventoryModule\WarehouseApp.cs" />
     <Compile Include="PaymentReceivedModule\IRefundApp.cs" />
     <Compile Include="PaymentReceivedModule\RefundApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
