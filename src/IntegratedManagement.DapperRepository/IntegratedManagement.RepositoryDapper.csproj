@@ -63,10 +63,12 @@
     <Compile Include="BaseRepository\SqlConnectionFactory.cs" />
     <Compile Include="BusinessPartnerModule\BranchDapperRepository.cs" />
     <Compile Include="BusinessPartnerModule\BusinessPartnerDapperRepository.cs" />
+    <Compile Include="BusinessPartnerModule\ProfitCentersDapperRepository.cs" />
     <Compile Include="FinancialModule\JournalDestinationDapperRepository.cs" />
     <Compile Include="FinancialModule\JournalRelationMapDapperRepository.cs" />
     <Compile Include="FinancialModule\JournalSourceDapperRepository.cs" />
     <Compile Include="Help\SerialNumberDapperRepository.cs" />
+    <Compile Include="InventoryModule\WarehouseDapperRepository.cs" />
     <Compile Include="InventoryModule\MaterialDapperRepository.cs" />
     <Compile Include="PaymentReceivedModule\RefundDapperRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

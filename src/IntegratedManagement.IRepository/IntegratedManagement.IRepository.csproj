@@ -46,11 +46,13 @@
   <ItemGroup>
     <Compile Include="BusinessPartnerModule\IBranchRepository.cs" />
     <Compile Include="BusinessPartnerModule\IBusinessPartnerRepository.cs" />
+    <Compile Include="BusinessPartnerModule\IProfitCentersRepository.cs" />
     <Compile Include="FinancialModule\IJournalDestinationRepository.cs" />
     <Compile Include="FinancialModule\IJournalRelationMapRepository.cs" />
     <Compile Include="FinancialModule\IJournalSourceRepository.cs" />
     <Compile Include="Help\ISerialNumberRepository.cs" />
     <Compile Include="InventoryModule\IMaterialRepository.cs" />
+    <Compile Include="InventoryModule\IWarehouseRepository.cs" />
     <Compile Include="IRepositoryBase\IRepositoryBase.cs" />
     <Compile Include="PaymentReceivedModule\IRefundRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
