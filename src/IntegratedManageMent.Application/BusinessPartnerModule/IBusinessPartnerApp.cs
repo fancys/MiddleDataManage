@@ -20,8 +20,10 @@ namespace IntegratedManageMent.Application.BusinessPartnerModule
 
         Task<bool> PatchBusinessPartner(BusinessPartner businessPartner);
 
-        Task<bool> UpdateSyncData(string CardCode);
+        Task<bool> UpdateSyncData(string cardCode);
 
         Task<bool> PatchBusinessPartner(string businessPartner);
+
+        string CreateBusinessPartner(List<BusinessPartner> businessPartners);
     }
 }

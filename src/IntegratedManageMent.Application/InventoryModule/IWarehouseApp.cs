@@ -14,5 +14,7 @@ namespace IntegratedManageMent.Application.InventoryModule
     public interface IWarehouseApp
     {
         Task<List<Warehouse>> GetWarehouseAsync(QueryParam queryParam);
+
+        string CreateWarehouse(List<Warehouse> warehouses);
     }
 }

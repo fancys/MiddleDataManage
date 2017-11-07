@@ -14,5 +14,7 @@ namespace IntegratedManageMent.Application.BusinessPartnerModule
     public interface IProfitCentersApp
     {
         Task<List<ProfitCenters>> GetProfitCentersList(QueryParam queryParam);
+
+        string CreateProfitCenter(List<ProfitCenters> profitCenterss);
     }
 }

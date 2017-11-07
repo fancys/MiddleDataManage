@@ -1,4 +1,5 @@
 ﻿using IntegratedManagement.Entity.BusinessPartnerModule.ProfitCenter;
+using IntegratedManagement.Entity.Document;
 using System;
 using System.Collections.Generic;
 using System.Linq;

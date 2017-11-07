@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessPartnerSerivice.cs" />
     <Compile Include="BusinessPlacesService.cs" />
     <Compile Include="JournalEntryService.cs" />
     <Compile Include="ProfitCenterService.cs" />

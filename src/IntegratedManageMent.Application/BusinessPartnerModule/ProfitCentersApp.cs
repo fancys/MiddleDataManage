@@ -7,6 +7,7 @@ using IntegratedManagement.Entity.BusinessPartnerModule.ProfitCenter;
 using IntegratedManagement.Entity.Param;
 using IntegratedManagement.IRepository.BusinessPartnerModule;
 using IntegratedManagement.Core.ParamHandle;
+using IntegrateManagement.MiddleBaseService.B1;
 
 namespace IntegratedManageMent.Application.BusinessPartnerModule
 {
@@ -20,6 +21,28 @@ namespace IntegratedManageMent.Application.BusinessPartnerModule
         {
             this._ProfitCentersRepository = ProfitCentersRepository;
         }
+
+        public string CreateProfitCenter(List<ProfitCenters> profitCenterss)
+        {
+            StringBuilder resultStr = new StringBuilder();
+            foreach (var item in profitCenterss)
+            {
+                try
+                {
+                    ProfitCenterService.AddOrUpdateProfitCenter(item);
+                }
+                catch(Exception ex)
+                {
+                    resultStr.Append(ex.Message + ";");
+                }
+            }
+            if (string.IsNullOrEmpty(resultStr.ToString()))
+            {
+                return "同步成功。";
+            }
+            return resultStr.ToString();
+        }
+
         public async Task<List<ProfitCenters>> GetProfitCentersList(QueryParam queryParam)
         {
             return await _ProfitCentersRepository.GetProfitCenters(QueryParamHandle.ParamHanle(queryParam));

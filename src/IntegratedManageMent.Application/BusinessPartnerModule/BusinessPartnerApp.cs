@@ -4,6 +4,7 @@ using IntegratedManagement.Entity.Param;
 using IntegratedManagement.Entity.Result;
 using IntegratedManagement.IRepository.BusinessPartnerModule;
 using IntegratedManagement.RepositoryDapper.BusinessPartnerModule;
+using IntegrateManagement.MiddleBaseService.B1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,5 +65,27 @@ namespace IntegratedManageMent.Application.BusinessPartnerModule
             }
             return await _BusinessPartnerRepository.Update(_businessPartner);
         }
+
+        public  string CreateBusinessPartner(List<BusinessPartner> businessPartners)
+        {
+            StringBuilder resultStr = new StringBuilder();
+            foreach (var item in businessPartners)
+            {
+                try
+                {
+                    BusinessPartnerSerivice.AddOrUpdateBusinessPartner(item);
+                }
+                catch (Exception ex)
+                {
+                    resultStr.Append(ex.Message + ";");
+                }
+            }
+            if (string.IsNullOrEmpty(resultStr.ToString()))
+            {
+                return "同步成功。";
+            }
+            return resultStr.ToString();
+        }
+
     }
 }

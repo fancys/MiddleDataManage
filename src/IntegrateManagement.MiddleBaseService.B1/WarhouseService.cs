@@ -1,4 +1,5 @@
-﻿using IntegratedManagement.Entity.InventoryModule.Warehouse;
+﻿using IntegratedManagement.Entity.Document;
+using IntegratedManagement.Entity.InventoryModule.Warehouse;
 using SAPbobsCOM;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,9 @@ namespace IntegrateManagement.MiddleBaseService.B1
 	===============================================================================================================================*/
     public class WarhouseService
     {
-        public static void AddOrUpdateWarehouse(Warehouse Warehouse)
+        public static DocumentSync AddOrUpdateWarehouse(Warehouse Warehouse)
         {
+            DocumentSync rt = new DocumentSync();
             SAPbobsCOM.Warehouses oWH = SAP.SAPCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oWarehouses);
             oWH.WarehouseCode = Warehouse.WhsCode;
             oWH.WarehouseName = Warehouse.WhsName;
@@ -34,9 +36,15 @@ namespace IntegrateManagement.MiddleBaseService.B1
                 rtCode = oWH.Add();
             if (rtCode != 0)
             {
-                //failed
-                
+                rt.SyncResult = "N";
+                rt.SyncMsg = SAP.SAPCompany.GetLastErrorDescription();
             }
+            else
+            {
+                rt.SyncResult = "Y";
+                rt.SyncMsg = "sync successful";
+            }
+            return rt;
         }
 
        
