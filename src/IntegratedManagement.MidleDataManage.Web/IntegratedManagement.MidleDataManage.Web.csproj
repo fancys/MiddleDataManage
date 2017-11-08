@@ -641,6 +641,7 @@
     <Content Include="Dll\MagicBox.Log.dll" />
     <Content Include="Dll\ReportFormManage.Code.dll" />
     <Content Include="Global.asax" />
+    <Content Include="Sql\view.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
