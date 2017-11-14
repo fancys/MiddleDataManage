@@ -60,10 +60,12 @@
     <Compile Include="Document\DocumentSync.cs" />
     <Compile Include="Document\IDocumentSync.cs" />
     <Compile Include="FinancialModule\JournalDestination\JournalDestination.cs" />
+    <Compile Include="FinancialModule\JournalRelationMap\JournalRelationMapCashFlow.cs" />
     <Compile Include="FinancialModule\JournalRelationMap\JournalRelationMapList.cs" />
     <Compile Include="FinancialModule\JournalRelationMap\JournalRelationMap.cs" />
     <Compile Include="FinancialModule\JournalRelationMap\JournalRelationMapLine.cs" />
     <Compile Include="FinancialModule\JournalSource\JournalSource.cs" />
+    <Compile Include="FinancialModule\JournalSource\JournalSourceCashFlow.cs" />
     <Compile Include="FinancialModule\JournalSource\JournalSourceLine.cs" />
     <Compile Include="FinancialModule\JournalSource\JournalSourceList.cs" />
     <Compile Include="Help\SerialNumber.cs" />

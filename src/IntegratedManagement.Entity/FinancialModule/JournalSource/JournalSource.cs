@@ -14,6 +14,7 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
         public JournalSource()
         {
             this.JournalSourceLines = new List<JournalSourceLine>();
+            this.JournalSourceCashFlows = new List<JournalSourceCashFlow>();
         }
         /// <summary>
         /// 编号
@@ -81,5 +82,7 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalSource
         public string Approver { get; set; }
 
         public List<JournalSourceLine> JournalSourceLines { get; set; }
+
+        public List<JournalSourceCashFlow> JournalSourceCashFlows { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
         public JournalRelationMap()
         {
             this.JournalRelationMapLines = new List<JournalRelationMapLine>();
+            this.JournalRelationMapCashFlows = new List<JournalRelationMapCashFlow>();
         }
         public int DocEntry { get; set; }
 
@@ -122,7 +123,7 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
 
         public List<JournalRelationMapLine> JournalRelationMapLines { get; set; }
 
-
+        public List<JournalRelationMapCashFlow> JournalRelationMapCashFlows { get; set; }
         public static JournalRelationMap Create(JournalSource.JournalSource JRSource)
         {
             JournalRelationMap jrMap = new JournalRelationMap();
@@ -148,6 +149,7 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
             jrMap.BtfLine = JRSource.BtfLine;
             foreach(var item in JRSource.JournalSourceLines)
             {
+                #region 行数据
                 JournalRelationMapLine line = new JournalRelationMapLine();
                 line.BPLId = item.BPLId;
                 line.CardCode = item.CardCode;
@@ -165,6 +167,17 @@ namespace IntegratedManagement.Entity.FinancialModule.JournalRelationMap
                 line.ShorName = item.ShortName;
                 line.ProfitCode = item.ProfitCode;
                 jrMap.JournalRelationMapLines.Add(line);
+                #endregion
+            }
+            foreach (var item in JRSource.JournalSourceCashFlows)
+            {
+                #region 现金流行数据
+                JournalRelationMapCashFlow line = new JournalRelationMapCashFlow();
+                line.CFTId = item.CFTId;
+                line.CFWId = item.CFWId;
+                line.Debit = item.Debit;
+                line.Credit = item.Credit;
+                #endregion
             }
             return jrMap;
         }

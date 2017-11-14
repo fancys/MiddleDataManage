@@ -10,6 +10,7 @@ using Dapper;
 using IntegratedManagement.IRepository.BusinessPartnerModule;
 using IntegratedManagement.Entity.BusinessPartnerModule.BusinessPartner;
 using IntegratedManagement.Entity.Param;
+using System.Data.SqlClient;
 
 namespace IntegratedManagement.RepositoryDapper.BusinessPartnerModule
 {
